@@ -8,7 +8,7 @@ set(BINARY_NAME "planner")
 
 # Explicitly opt in to modern CMake behaviors to avoid warnings with recent
 # versions of CMake.
-cmake_policy(SET CMP0063 NEW)
+cmake_policy(VERSION 3.14...3.25)
 
 # Define build configuration option.
 get_property(IS_MULTICONFIG GLOBAL PROPERTY GENERATOR_IS_MULTI_CONFIG)
@@ -46,11 +46,12 @@ function(APPLY_STANDARD_SETTINGS TARGET)
 endfunction()
 
 # Flutter library and tool build rules.
-set(FLUTTER_MANAGED_DIR "flutter")
+set(FLUTTER_MANAGED_DIR "${CMAKE_CURRENT_SOURCE_DIR}/flutter")
 add_subdirectory(${FLUTTER_MANAGED_DIR})
 
 # Application build; see runner/CMakeLists.txt.
 add_subdirectory("runner")
+
 
 # Generated plugin build rules, which manage building the plugins and adding
 # them to the application.

@@ -1,0 +1,3 @@
+class OriginExternals {}
+
+class ReactiveExternals {}
