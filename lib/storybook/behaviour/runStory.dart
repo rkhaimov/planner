@@ -1,11 +1,12 @@
 import 'dart:typed_data';
 
 import 'package:flutter/cupertino.dart';
+import 'package:planner/reusables/either.dart';
 
 import '../tester/index.dart';
 import '../types.dart';
 
-final runStory = (
+Future<Either<void, SuccessStoryResult>> runStory(
   Future<Uint8List> Function() screenshot,
   ActiveStory active,
 ) async {
@@ -18,31 +19,23 @@ final runStory = (
 
     await act.controller.settle();
 
-    return Success(
+    final success = (
       intermediateScreenshots: screenshots,
       lastScreenshot: await screenshot(),
       interactionsPassed:
           active.recorder.toMatchInteractions(active.story.commands),
     );
+
+    return Either.right(success);
   } catch (error) {
     print('${FlutterErrorDetails(exception: error)}');
 
-    return Failure();
+    return Either.left(null);
   }
-};
-
-sealed class StoryResult {}
-
-class Success extends StoryResult {
-  final Iterable<Screenshot> intermediateScreenshots;
-  final Uint8List lastScreenshot;
-  final bool interactionsPassed;
-
-  Success({
-    required this.intermediateScreenshots,
-    required this.lastScreenshot,
-    required this.interactionsPassed,
-  });
 }
 
-class Failure extends StoryResult {}
+typedef SuccessStoryResult = ({
+  Iterable<Screenshot> intermediateScreenshots,
+  Uint8List lastScreenshot,
+  bool interactionsPassed,
+});
