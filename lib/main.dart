@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:planner/createApp.dart';
 import 'package:planner/externals/index.dart';
 
-// flutter run ./lib/storybook/entry.dart --dart-define=MODE="PRODUCTION"
+// flutter run ./lib/main.dart --dart-define=MODE="PRODUCTION"
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 

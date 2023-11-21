@@ -31,7 +31,7 @@ final useBehaviour = () {
 
     if (category.text.isNotEmpty) {
       await externals
-          .pushSourcedEvent(CategoryChangedSE(id, at, description.text));
+          .pushSourcedEvent(CategoryChangedSE(id, at, category.text));
     }
 
     if (thought.value) {

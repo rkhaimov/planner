@@ -16,7 +16,7 @@ final addToDoStories = createGroup('AddToDo', [
       'pushSourcedEvent: [{"parent":0,"at":"2023-03-01T00:00:00.000","runtimeType":"CreatedSE"}]',
       'pushSourcedEvent: [{"parent":0,"at":"2023-03-01T00:00:00.000","title":"Реализовать тесты","runtimeType":"TitleChangedSE"}]',
       'pushSourcedEvent: [{"parent":0,"at":"2023-03-01T00:00:00.000","description":"С нужным описанием","runtimeType":"DescriptionChangedSE"}]',
-      'pushSourcedEvent: [{"parent":0,"at":"2023-03-01T00:00:00.000","category":"С нужным описанием","runtimeType":"CategoryChangedSE"}]',
+      'pushSourcedEvent: [{"parent":0,"at":"2023-03-01T00:00:00.000","category":"Программирование","runtimeType":"CategoryChangedSE"}]',
       'pushSourcedEvent: [{"parent":0,"at":"2023-03-01T00:00:00.000","runtimeType":"MarkedAsThoughtSE"}]',
     ],
   ),
