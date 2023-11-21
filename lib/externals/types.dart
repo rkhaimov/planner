@@ -1,62 +1,44 @@
 import 'package:planner/reusables/types.dart';
+import 'package:planner/reusables/utils.dart';
 
-class ToDoID {
-  final String id;
+// TODO: Constructor should have only zero and subsequent factories
+class ID {
+  final int value;
 
-  ToDoID(this.id);
+  ID(this.value);
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  bool operator ==(Object other) => value == requireType<ID>(other).value;
 }
 
-// TODO: What about deleting todos?
-class ToDoSourcedEventAggregate {
-  final ToDoID id;
-  final ToDoInitialSourced initial;
-  final Iterable<ToDoSourcedEvent> events;
+sealed class SourcedEvent {
+  final ID parent;
+  final DateTime at;
 
-  ToDoSourcedEventAggregate({
-    required this.id,
-    required this.initial,
-    required this.events,
-  });
+  SourcedEvent(this.parent, this.at);
 }
 
-class ToDoInitialSourced {
-  final ToDoTitleChangedSE title;
-  final ToDoDescriptionChangedSE description;
-  final ToDoStatusChangedSE status;
-
-  ToDoInitialSourced({
-    required this.title,
-    required this.description,
-    required this.status,
-  });
+class CreatedSE extends SourcedEvent {
+  CreatedSE(super.parent, super.at);
 }
 
-sealed class ToDoSourcedEvent {}
-
-class ToDoCreatedSE extends ToDoSourcedEvent {
-  ToDoCreatedSE();
-}
-
-class ToDoTitleChangedSE extends ToDoSourcedEvent {
+class TitleChangedSE extends SourcedEvent {
   final String title;
 
-  ToDoTitleChangedSE(this.title);
+  TitleChangedSE(super.parent, super.at, this.title);
 }
 
-class ToDoDescriptionChangedSE extends ToDoSourcedEvent {
+class DescriptionChangedSE extends SourcedEvent {
   final String description;
 
-  ToDoDescriptionChangedSE(this.description);
+  DescriptionChangedSE(super.parent, super.at, this.description);
 }
 
-class ToDoStatusChangedSE extends ToDoSourcedEvent {
+class StatusChangedSE extends SourcedEvent {
   final ToDoStatus status;
 
-  ToDoStatusChangedSE(this.status);
-}
-
-class ToDoCategoryChangedSE extends ToDoSourcedEvent {
-  final String? category;
-
-  ToDoCategoryChangedSE(this.category);
+  StatusChangedSE(super.parent, super.at, this.status);
 }

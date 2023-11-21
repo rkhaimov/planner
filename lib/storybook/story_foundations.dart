@@ -43,5 +43,5 @@ final createStory = <TParams>({
       arrange: arrange ?? (it) => it,
     );
 
-typedef ActFunction = ActBuilder Function(ActBuilder act);
+typedef ActFunction = ActBuilder Function(ActBuilder actor);
 typedef ArrangeFunction = OriginExternals Function(OriginExternals externals);

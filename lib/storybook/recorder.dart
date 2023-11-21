@@ -14,10 +14,10 @@ class Recorder {
   });
 }
 
-typedef CommandSnapshot = ({String method, String args});
+typedef CommandSnapshotStruct = ({String method, String args});
 
 final createRecorder = (void Function(String) log) {
-  var commands = <CommandSnapshot>[];
+  var commands = <CommandSnapshotStruct>[];
   final escape = (String str) => str.replaceAll('\r', r'\r');
 
   return Recorder(

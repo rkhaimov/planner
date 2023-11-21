@@ -6,9 +6,9 @@ import 'package:planner/reusables/either.dart';
 import '../tester/index.dart';
 import '../types.dart';
 
-Future<Either<void, SuccessStoryResult>> runStory(
+Future<Either<void, SuccessStoryResultStruct>> runStory(
   Future<Uint8List> Function() screenshot,
-  ActiveStory active,
+  ActiveStoryStruct active,
 ) async {
   try {
     final act = createAct(screenshot);
@@ -34,8 +34,8 @@ Future<Either<void, SuccessStoryResult>> runStory(
   }
 }
 
-typedef SuccessStoryResult = ({
-  Iterable<Screenshot> intermediateScreenshots,
+typedef SuccessStoryResultStruct = ({
+  Iterable<ScreenshotStruct> intermediateScreenshots,
   Uint8List lastScreenshot,
   bool interactionsPassed,
 });

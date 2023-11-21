@@ -10,7 +10,7 @@ import 'createTextTyper.dart';
 final createAct = (Future<Uint8List> Function() screenshot) {
   final controller = _createController();
 
-  final acts = <Future<Iterable<Screenshot>> Function()>[];
+  final acts = <Future<Iterable<ScreenshotStruct>> Function()>[];
   late final ActBuilder Function() createActBuilder;
 
   ActBuilder withoutScreenshot(Future<void> Function() act) {
@@ -160,7 +160,7 @@ class ActBuilder {
   final ActBuilder Function({Offset? scrollTo}) scrollTop;
   final ActBuilder Function({Offset? scrollTo}) scrollBottom;
   final ActBuilder Function([String? title]) screenshot;
-  final Future<Iterable<Screenshot>> Function() act;
+  final Future<Iterable<ScreenshotStruct>> Function() act;
 
   ActBuilder({
     required this.settle,

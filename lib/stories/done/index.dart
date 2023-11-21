@@ -6,8 +6,8 @@ import 'package:planner/reusables/toToDoStruct.dart';
 import 'package:planner/reusables/types.dart';
 
 // TODO: Deduplicate
-class ToDo extends HookWidget {
-  const ToDo({super.key});
+class Done extends HookWidget {
+  const Done({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,8 +17,8 @@ class ToDo extends HookWidget {
       createQuery: externals.getAllSourcedEvents,
       onInitializing: (context) => const Text('Waiting'),
       onData: (context, response) {
-        final todos = toToDoStruct(response)
-            .where((it) => it.status == ToDoStatus.TO_DO || it.status == null);
+        final todos =
+            toToDoStruct(response).where((it) => it.status == ToDoStatus.DONE);
 
         return ListView.builder(
           itemCount: todos.length,
@@ -26,6 +26,7 @@ class ToDo extends HookWidget {
             title: Text(todos.elementAt(index).title ?? '<НЕТ ОГЛАВЛЕНИЯ>'),
             subtitle:
                 Text(todos.elementAt(index).description ?? '<НЕТ ОПИСАНИЯ>'),
+            trailing: const Icon(Icons.done),
             onTap: () {},
             onLongPress: () {},
           ),

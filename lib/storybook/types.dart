@@ -4,15 +4,15 @@ import '../externals/externals.dart';
 import 'recorder.dart';
 import 'story_foundations.dart';
 
-typedef ActiveStory = ({
+typedef ActiveStoryStruct = ({
   Story story,
   OriginExternals externals,
   Recorder recorder
 });
 
-typedef Screenshot = ({String? label, Uint8List content});
+typedef ScreenshotStruct = ({String? label, Uint8List content});
 
-typedef Stories = ({
+typedef StoriesStruct = ({
   Story fallback,
   Iterable<Node> all,
 });

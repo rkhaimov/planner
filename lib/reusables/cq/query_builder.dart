@@ -7,24 +7,19 @@ import 'types.dart';
 
 class QueryBuilder<T> extends HookWidget {
   final Query<T> Function() createQuery;
-  final List<Object?> dependencies;
   final WidgetBuilder onInitializing;
-  final Widget Function(BuildContext context, Response<T> response) onData;
+  final Widget Function(BuildContext context, T response) onData;
 
   const QueryBuilder({
     super.key,
     required this.createQuery,
     required this.onInitializing,
     required this.onData,
-    this.dependencies = const [],
   });
 
   @override
   Widget build(BuildContext context) => SafeStreamBuilder(
-        stream: useMemoized(
-          () => toQueryResponseStream(createQuery()),
-          dependencies,
-        ),
+        stream: useMemoized(() => toQueryResponseStream(createQuery())),
         onWaiting: onInitializing,
         onData: onData,
       );

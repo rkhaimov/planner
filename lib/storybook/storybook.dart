@@ -6,22 +6,24 @@ import './behaviour/createUseBehaviour.dart';
 import './view/menu.dart';
 import 'types.dart';
 
-final createStorybook = (Stories stories) async {
+final createStorybook = (StoriesStruct stories) async {
   final useBehaviour = await createUseBehaviour(stories);
 
-  return createAppMaterial(
-    HookBuilder(
-      builder: (context) {
-        final behaviour = useBehaviour();
+  return HookBuilder(
+    builder: (context) {
+      final behaviour = useBehaviour();
 
-        return Menu(
+      return Root(
+        key: ValueKey(behaviour.active.story),
+        externals: behaviour.active.externals,
+        ui: Menu(
           key: ValueKey(behaviour.active),
-          selected: behaviour.active,
+          selected: behaviour.active.story,
           onSelect: behaviour.setStory,
           nodes: stories.all,
-          child: createAppHome(),
-        );
-      },
-    ),
+          child: const UI(),
+        ),
+      );
+    },
   );
 };
