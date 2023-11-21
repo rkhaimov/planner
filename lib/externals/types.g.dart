@@ -55,27 +55,36 @@ Map<String, dynamic> _$$DescriptionChangedSEImplToJson(
       'runtimeType': instance.$type,
     };
 
-_$StatusChangedSEImpl _$$StatusChangedSEImplFromJson(
+_$MarkedAsThoughtSEImpl _$$MarkedAsThoughtSEImplFromJson(
         Map<String, dynamic> json) =>
-    _$StatusChangedSEImpl(
+    _$MarkedAsThoughtSEImpl(
       ID.fromJson(json['parent']),
       DateTime.parse(json['at'] as String),
-      $enumDecode(_$ToDoStatusEnumMap, json['status']),
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$StatusChangedSEImplToJson(
-        _$StatusChangedSEImpl instance) =>
+Map<String, dynamic> _$$MarkedAsThoughtSEImplToJson(
+        _$MarkedAsThoughtSEImpl instance) =>
     <String, dynamic>{
       'parent': instance.parent,
       'at': instance.at.toIso8601String(),
-      'status': _$ToDoStatusEnumMap[instance.status]!,
       'runtimeType': instance.$type,
     };
 
-const _$ToDoStatusEnumMap = {
-  ToDoStatus.IN_PROGRESS: 'IN_PROGRESS',
-  ToDoStatus.TO_DO: 'TO_DO',
-  ToDoStatus.NOTE: 'NOTE',
-  ToDoStatus.DONE: 'DONE',
-};
+_$CategoryChangedSEImpl _$$CategoryChangedSEImplFromJson(
+        Map<String, dynamic> json) =>
+    _$CategoryChangedSEImpl(
+      ID.fromJson(json['parent']),
+      DateTime.parse(json['at'] as String),
+      json['category'] as String,
+      $type: json['runtimeType'] as String?,
+    );
+
+Map<String, dynamic> _$$CategoryChangedSEImplToJson(
+        _$CategoryChangedSEImpl instance) =>
+    <String, dynamic>{
+      'parent': instance.parent,
+      'at': instance.at.toIso8601String(),
+      'category': instance.category,
+      'runtimeType': instance.$type,
+    };

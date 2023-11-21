@@ -9,6 +9,8 @@ final useBehaviour = () {
   final externals = useExternals();
   final title = useTextEditingController();
   final description = useTextEditingController();
+  final category = useTextEditingController();
+  final thought = useState(false);
 
   final submit = () async {
     final last = (await externals.getAllSourcedEvents().request()).lastOrNull;
@@ -27,12 +29,23 @@ final useBehaviour = () {
           .pushSourcedEvent(DescriptionChangedSE(id, at, description.text));
     }
 
+    if (category.text.isNotEmpty) {
+      await externals
+          .pushSourcedEvent(CategoryChangedSE(id, at, description.text));
+    }
+
+    if (thought.value) {
+      await externals.pushSourcedEvent(MarkedAsThoughtSE(id, at));
+    }
+
     Navigator.of(context).pop();
   };
 
   return (
     title: title,
     description: description,
+    category: category,
+    thought: thought,
     submit: submit,
   );
 };

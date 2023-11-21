@@ -22,8 +22,10 @@ SourcedEvent _$SourcedEventFromJson(Map<String, dynamic> json) {
       return TitleChangedSE.fromJson(json);
     case 'DescriptionChangedSE':
       return DescriptionChangedSE.fromJson(json);
-    case 'StatusChangedSE':
-      return StatusChangedSE.fromJson(json);
+    case 'MarkedAsThoughtSE':
+      return MarkedAsThoughtSE.fromJson(json);
+    case 'CategoryChangedSE':
+      return CategoryChangedSE.fromJson(json);
 
     default:
       throw CheckedFromJsonException(json, 'runtimeType', 'SourcedEvent',
@@ -42,8 +44,9 @@ mixin _$SourcedEvent {
         TitleChangedSE,
     required TResult Function(ID parent, DateTime at, String description)
         DescriptionChangedSE,
-    required TResult Function(ID parent, DateTime at, ToDoStatus status)
-        StatusChangedSE,
+    required TResult Function(ID parent, DateTime at) MarkedAsThoughtSE,
+    required TResult Function(ID parent, DateTime at, String category)
+        CategoryChangedSE,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -52,8 +55,9 @@ mixin _$SourcedEvent {
     TResult? Function(ID parent, DateTime at, String title)? TitleChangedSE,
     TResult? Function(ID parent, DateTime at, String description)?
         DescriptionChangedSE,
-    TResult? Function(ID parent, DateTime at, ToDoStatus status)?
-        StatusChangedSE,
+    TResult? Function(ID parent, DateTime at)? MarkedAsThoughtSE,
+    TResult? Function(ID parent, DateTime at, String category)?
+        CategoryChangedSE,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -62,8 +66,9 @@ mixin _$SourcedEvent {
     TResult Function(ID parent, DateTime at, String title)? TitleChangedSE,
     TResult Function(ID parent, DateTime at, String description)?
         DescriptionChangedSE,
-    TResult Function(ID parent, DateTime at, ToDoStatus status)?
-        StatusChangedSE,
+    TResult Function(ID parent, DateTime at)? MarkedAsThoughtSE,
+    TResult Function(ID parent, DateTime at, String category)?
+        CategoryChangedSE,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -72,7 +77,8 @@ mixin _$SourcedEvent {
     required TResult Function(CreatedSE value) CreatedSE,
     required TResult Function(TitleChangedSE value) TitleChangedSE,
     required TResult Function(DescriptionChangedSE value) DescriptionChangedSE,
-    required TResult Function(StatusChangedSE value) StatusChangedSE,
+    required TResult Function(MarkedAsThoughtSE value) MarkedAsThoughtSE,
+    required TResult Function(CategoryChangedSE value) CategoryChangedSE,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -80,7 +86,8 @@ mixin _$SourcedEvent {
     TResult? Function(CreatedSE value)? CreatedSE,
     TResult? Function(TitleChangedSE value)? TitleChangedSE,
     TResult? Function(DescriptionChangedSE value)? DescriptionChangedSE,
-    TResult? Function(StatusChangedSE value)? StatusChangedSE,
+    TResult? Function(MarkedAsThoughtSE value)? MarkedAsThoughtSE,
+    TResult? Function(CategoryChangedSE value)? CategoryChangedSE,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -88,7 +95,8 @@ mixin _$SourcedEvent {
     TResult Function(CreatedSE value)? CreatedSE,
     TResult Function(TitleChangedSE value)? TitleChangedSE,
     TResult Function(DescriptionChangedSE value)? DescriptionChangedSE,
-    TResult Function(StatusChangedSE value)? StatusChangedSE,
+    TResult Function(MarkedAsThoughtSE value)? MarkedAsThoughtSE,
+    TResult Function(CategoryChangedSE value)? CategoryChangedSE,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -223,8 +231,9 @@ class _$CreatedSEImpl implements CreatedSE {
         TitleChangedSE,
     required TResult Function(ID parent, DateTime at, String description)
         DescriptionChangedSE,
-    required TResult Function(ID parent, DateTime at, ToDoStatus status)
-        StatusChangedSE,
+    required TResult Function(ID parent, DateTime at) MarkedAsThoughtSE,
+    required TResult Function(ID parent, DateTime at, String category)
+        CategoryChangedSE,
   }) {
     return CreatedSE(parent, at);
   }
@@ -236,8 +245,9 @@ class _$CreatedSEImpl implements CreatedSE {
     TResult? Function(ID parent, DateTime at, String title)? TitleChangedSE,
     TResult? Function(ID parent, DateTime at, String description)?
         DescriptionChangedSE,
-    TResult? Function(ID parent, DateTime at, ToDoStatus status)?
-        StatusChangedSE,
+    TResult? Function(ID parent, DateTime at)? MarkedAsThoughtSE,
+    TResult? Function(ID parent, DateTime at, String category)?
+        CategoryChangedSE,
   }) {
     return CreatedSE?.call(parent, at);
   }
@@ -249,8 +259,9 @@ class _$CreatedSEImpl implements CreatedSE {
     TResult Function(ID parent, DateTime at, String title)? TitleChangedSE,
     TResult Function(ID parent, DateTime at, String description)?
         DescriptionChangedSE,
-    TResult Function(ID parent, DateTime at, ToDoStatus status)?
-        StatusChangedSE,
+    TResult Function(ID parent, DateTime at)? MarkedAsThoughtSE,
+    TResult Function(ID parent, DateTime at, String category)?
+        CategoryChangedSE,
     required TResult orElse(),
   }) {
     if (CreatedSE != null) {
@@ -265,7 +276,8 @@ class _$CreatedSEImpl implements CreatedSE {
     required TResult Function(CreatedSE value) CreatedSE,
     required TResult Function(TitleChangedSE value) TitleChangedSE,
     required TResult Function(DescriptionChangedSE value) DescriptionChangedSE,
-    required TResult Function(StatusChangedSE value) StatusChangedSE,
+    required TResult Function(MarkedAsThoughtSE value) MarkedAsThoughtSE,
+    required TResult Function(CategoryChangedSE value) CategoryChangedSE,
   }) {
     return CreatedSE(this);
   }
@@ -276,7 +288,8 @@ class _$CreatedSEImpl implements CreatedSE {
     TResult? Function(CreatedSE value)? CreatedSE,
     TResult? Function(TitleChangedSE value)? TitleChangedSE,
     TResult? Function(DescriptionChangedSE value)? DescriptionChangedSE,
-    TResult? Function(StatusChangedSE value)? StatusChangedSE,
+    TResult? Function(MarkedAsThoughtSE value)? MarkedAsThoughtSE,
+    TResult? Function(CategoryChangedSE value)? CategoryChangedSE,
   }) {
     return CreatedSE?.call(this);
   }
@@ -287,7 +300,8 @@ class _$CreatedSEImpl implements CreatedSE {
     TResult Function(CreatedSE value)? CreatedSE,
     TResult Function(TitleChangedSE value)? TitleChangedSE,
     TResult Function(DescriptionChangedSE value)? DescriptionChangedSE,
-    TResult Function(StatusChangedSE value)? StatusChangedSE,
+    TResult Function(MarkedAsThoughtSE value)? MarkedAsThoughtSE,
+    TResult Function(CategoryChangedSE value)? CategoryChangedSE,
     required TResult orElse(),
   }) {
     if (CreatedSE != null) {
@@ -416,8 +430,9 @@ class _$TitleChangedSEImpl implements TitleChangedSE {
         TitleChangedSE,
     required TResult Function(ID parent, DateTime at, String description)
         DescriptionChangedSE,
-    required TResult Function(ID parent, DateTime at, ToDoStatus status)
-        StatusChangedSE,
+    required TResult Function(ID parent, DateTime at) MarkedAsThoughtSE,
+    required TResult Function(ID parent, DateTime at, String category)
+        CategoryChangedSE,
   }) {
     return TitleChangedSE(parent, at, title);
   }
@@ -429,8 +444,9 @@ class _$TitleChangedSEImpl implements TitleChangedSE {
     TResult? Function(ID parent, DateTime at, String title)? TitleChangedSE,
     TResult? Function(ID parent, DateTime at, String description)?
         DescriptionChangedSE,
-    TResult? Function(ID parent, DateTime at, ToDoStatus status)?
-        StatusChangedSE,
+    TResult? Function(ID parent, DateTime at)? MarkedAsThoughtSE,
+    TResult? Function(ID parent, DateTime at, String category)?
+        CategoryChangedSE,
   }) {
     return TitleChangedSE?.call(parent, at, title);
   }
@@ -442,8 +458,9 @@ class _$TitleChangedSEImpl implements TitleChangedSE {
     TResult Function(ID parent, DateTime at, String title)? TitleChangedSE,
     TResult Function(ID parent, DateTime at, String description)?
         DescriptionChangedSE,
-    TResult Function(ID parent, DateTime at, ToDoStatus status)?
-        StatusChangedSE,
+    TResult Function(ID parent, DateTime at)? MarkedAsThoughtSE,
+    TResult Function(ID parent, DateTime at, String category)?
+        CategoryChangedSE,
     required TResult orElse(),
   }) {
     if (TitleChangedSE != null) {
@@ -458,7 +475,8 @@ class _$TitleChangedSEImpl implements TitleChangedSE {
     required TResult Function(CreatedSE value) CreatedSE,
     required TResult Function(TitleChangedSE value) TitleChangedSE,
     required TResult Function(DescriptionChangedSE value) DescriptionChangedSE,
-    required TResult Function(StatusChangedSE value) StatusChangedSE,
+    required TResult Function(MarkedAsThoughtSE value) MarkedAsThoughtSE,
+    required TResult Function(CategoryChangedSE value) CategoryChangedSE,
   }) {
     return TitleChangedSE(this);
   }
@@ -469,7 +487,8 @@ class _$TitleChangedSEImpl implements TitleChangedSE {
     TResult? Function(CreatedSE value)? CreatedSE,
     TResult? Function(TitleChangedSE value)? TitleChangedSE,
     TResult? Function(DescriptionChangedSE value)? DescriptionChangedSE,
-    TResult? Function(StatusChangedSE value)? StatusChangedSE,
+    TResult? Function(MarkedAsThoughtSE value)? MarkedAsThoughtSE,
+    TResult? Function(CategoryChangedSE value)? CategoryChangedSE,
   }) {
     return TitleChangedSE?.call(this);
   }
@@ -480,7 +499,8 @@ class _$TitleChangedSEImpl implements TitleChangedSE {
     TResult Function(CreatedSE value)? CreatedSE,
     TResult Function(TitleChangedSE value)? TitleChangedSE,
     TResult Function(DescriptionChangedSE value)? DescriptionChangedSE,
-    TResult Function(StatusChangedSE value)? StatusChangedSE,
+    TResult Function(MarkedAsThoughtSE value)? MarkedAsThoughtSE,
+    TResult Function(CategoryChangedSE value)? CategoryChangedSE,
     required TResult orElse(),
   }) {
     if (TitleChangedSE != null) {
@@ -615,8 +635,9 @@ class _$DescriptionChangedSEImpl implements DescriptionChangedSE {
         TitleChangedSE,
     required TResult Function(ID parent, DateTime at, String description)
         DescriptionChangedSE,
-    required TResult Function(ID parent, DateTime at, ToDoStatus status)
-        StatusChangedSE,
+    required TResult Function(ID parent, DateTime at) MarkedAsThoughtSE,
+    required TResult Function(ID parent, DateTime at, String category)
+        CategoryChangedSE,
   }) {
     return DescriptionChangedSE(parent, at, description);
   }
@@ -628,8 +649,9 @@ class _$DescriptionChangedSEImpl implements DescriptionChangedSE {
     TResult? Function(ID parent, DateTime at, String title)? TitleChangedSE,
     TResult? Function(ID parent, DateTime at, String description)?
         DescriptionChangedSE,
-    TResult? Function(ID parent, DateTime at, ToDoStatus status)?
-        StatusChangedSE,
+    TResult? Function(ID parent, DateTime at)? MarkedAsThoughtSE,
+    TResult? Function(ID parent, DateTime at, String category)?
+        CategoryChangedSE,
   }) {
     return DescriptionChangedSE?.call(parent, at, description);
   }
@@ -641,8 +663,9 @@ class _$DescriptionChangedSEImpl implements DescriptionChangedSE {
     TResult Function(ID parent, DateTime at, String title)? TitleChangedSE,
     TResult Function(ID parent, DateTime at, String description)?
         DescriptionChangedSE,
-    TResult Function(ID parent, DateTime at, ToDoStatus status)?
-        StatusChangedSE,
+    TResult Function(ID parent, DateTime at)? MarkedAsThoughtSE,
+    TResult Function(ID parent, DateTime at, String category)?
+        CategoryChangedSE,
     required TResult orElse(),
   }) {
     if (DescriptionChangedSE != null) {
@@ -657,7 +680,8 @@ class _$DescriptionChangedSEImpl implements DescriptionChangedSE {
     required TResult Function(CreatedSE value) CreatedSE,
     required TResult Function(TitleChangedSE value) TitleChangedSE,
     required TResult Function(DescriptionChangedSE value) DescriptionChangedSE,
-    required TResult Function(StatusChangedSE value) StatusChangedSE,
+    required TResult Function(MarkedAsThoughtSE value) MarkedAsThoughtSE,
+    required TResult Function(CategoryChangedSE value) CategoryChangedSE,
   }) {
     return DescriptionChangedSE(this);
   }
@@ -668,7 +692,8 @@ class _$DescriptionChangedSEImpl implements DescriptionChangedSE {
     TResult? Function(CreatedSE value)? CreatedSE,
     TResult? Function(TitleChangedSE value)? TitleChangedSE,
     TResult? Function(DescriptionChangedSE value)? DescriptionChangedSE,
-    TResult? Function(StatusChangedSE value)? StatusChangedSE,
+    TResult? Function(MarkedAsThoughtSE value)? MarkedAsThoughtSE,
+    TResult? Function(CategoryChangedSE value)? CategoryChangedSE,
   }) {
     return DescriptionChangedSE?.call(this);
   }
@@ -679,7 +704,8 @@ class _$DescriptionChangedSEImpl implements DescriptionChangedSE {
     TResult Function(CreatedSE value)? CreatedSE,
     TResult Function(TitleChangedSE value)? TitleChangedSE,
     TResult Function(DescriptionChangedSE value)? DescriptionChangedSE,
-    TResult Function(StatusChangedSE value)? StatusChangedSE,
+    TResult Function(MarkedAsThoughtSE value)? MarkedAsThoughtSE,
+    TResult Function(CategoryChangedSE value)? CategoryChangedSE,
     required TResult orElse(),
   }) {
     if (DescriptionChangedSE != null) {
@@ -716,22 +742,22 @@ abstract class DescriptionChangedSE implements SourcedEvent {
 }
 
 /// @nodoc
-abstract class _$$StatusChangedSEImplCopyWith<$Res>
+abstract class _$$MarkedAsThoughtSEImplCopyWith<$Res>
     implements $SourcedEventCopyWith<$Res> {
-  factory _$$StatusChangedSEImplCopyWith(_$StatusChangedSEImpl value,
-          $Res Function(_$StatusChangedSEImpl) then) =
-      __$$StatusChangedSEImplCopyWithImpl<$Res>;
+  factory _$$MarkedAsThoughtSEImplCopyWith(_$MarkedAsThoughtSEImpl value,
+          $Res Function(_$MarkedAsThoughtSEImpl) then) =
+      __$$MarkedAsThoughtSEImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({ID parent, DateTime at, ToDoStatus status});
+  $Res call({ID parent, DateTime at});
 }
 
 /// @nodoc
-class __$$StatusChangedSEImplCopyWithImpl<$Res>
-    extends _$SourcedEventCopyWithImpl<$Res, _$StatusChangedSEImpl>
-    implements _$$StatusChangedSEImplCopyWith<$Res> {
-  __$$StatusChangedSEImplCopyWithImpl(
-      _$StatusChangedSEImpl _value, $Res Function(_$StatusChangedSEImpl) _then)
+class __$$MarkedAsThoughtSEImplCopyWithImpl<$Res>
+    extends _$SourcedEventCopyWithImpl<$Res, _$MarkedAsThoughtSEImpl>
+    implements _$$MarkedAsThoughtSEImplCopyWith<$Res> {
+  __$$MarkedAsThoughtSEImplCopyWithImpl(_$MarkedAsThoughtSEImpl _value,
+      $Res Function(_$MarkedAsThoughtSEImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -739,9 +765,8 @@ class __$$StatusChangedSEImplCopyWithImpl<$Res>
   $Res call({
     Object? parent = null,
     Object? at = null,
-    Object? status = null,
   }) {
-    return _then(_$StatusChangedSEImpl(
+    return _then(_$MarkedAsThoughtSEImpl(
       null == parent
           ? _value.parent
           : parent // ignore: cast_nullable_to_non_nullable
@@ -750,58 +775,50 @@ class __$$StatusChangedSEImplCopyWithImpl<$Res>
           ? _value.at
           : at // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as ToDoStatus,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$StatusChangedSEImpl implements StatusChangedSE {
-  _$StatusChangedSEImpl(this.parent, this.at, this.status,
-      {final String? $type})
-      : $type = $type ?? 'StatusChangedSE';
+class _$MarkedAsThoughtSEImpl implements MarkedAsThoughtSE {
+  _$MarkedAsThoughtSEImpl(this.parent, this.at, {final String? $type})
+      : $type = $type ?? 'MarkedAsThoughtSE';
 
-  factory _$StatusChangedSEImpl.fromJson(Map<String, dynamic> json) =>
-      _$$StatusChangedSEImplFromJson(json);
+  factory _$MarkedAsThoughtSEImpl.fromJson(Map<String, dynamic> json) =>
+      _$$MarkedAsThoughtSEImplFromJson(json);
 
   @override
   final ID parent;
   @override
   final DateTime at;
-  @override
-  final ToDoStatus status;
 
   @JsonKey(name: 'runtimeType')
   final String $type;
 
   @override
   String toString() {
-    return 'SourcedEvent.StatusChangedSE(parent: $parent, at: $at, status: $status)';
+    return 'SourcedEvent.MarkedAsThoughtSE(parent: $parent, at: $at)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$StatusChangedSEImpl &&
+            other is _$MarkedAsThoughtSEImpl &&
             (identical(other.parent, parent) || other.parent == parent) &&
-            (identical(other.at, at) || other.at == at) &&
-            (identical(other.status, status) || other.status == status));
+            (identical(other.at, at) || other.at == at));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, parent, at, status);
+  int get hashCode => Object.hash(runtimeType, parent, at);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$StatusChangedSEImplCopyWith<_$StatusChangedSEImpl> get copyWith =>
-      __$$StatusChangedSEImplCopyWithImpl<_$StatusChangedSEImpl>(
+  _$$MarkedAsThoughtSEImplCopyWith<_$MarkedAsThoughtSEImpl> get copyWith =>
+      __$$MarkedAsThoughtSEImplCopyWithImpl<_$MarkedAsThoughtSEImpl>(
           this, _$identity);
 
   @override
@@ -812,10 +829,11 @@ class _$StatusChangedSEImpl implements StatusChangedSE {
         TitleChangedSE,
     required TResult Function(ID parent, DateTime at, String description)
         DescriptionChangedSE,
-    required TResult Function(ID parent, DateTime at, ToDoStatus status)
-        StatusChangedSE,
+    required TResult Function(ID parent, DateTime at) MarkedAsThoughtSE,
+    required TResult Function(ID parent, DateTime at, String category)
+        CategoryChangedSE,
   }) {
-    return StatusChangedSE(parent, at, status);
+    return MarkedAsThoughtSE(parent, at);
   }
 
   @override
@@ -825,10 +843,11 @@ class _$StatusChangedSEImpl implements StatusChangedSE {
     TResult? Function(ID parent, DateTime at, String title)? TitleChangedSE,
     TResult? Function(ID parent, DateTime at, String description)?
         DescriptionChangedSE,
-    TResult? Function(ID parent, DateTime at, ToDoStatus status)?
-        StatusChangedSE,
+    TResult? Function(ID parent, DateTime at)? MarkedAsThoughtSE,
+    TResult? Function(ID parent, DateTime at, String category)?
+        CategoryChangedSE,
   }) {
-    return StatusChangedSE?.call(parent, at, status);
+    return MarkedAsThoughtSE?.call(parent, at);
   }
 
   @override
@@ -838,12 +857,13 @@ class _$StatusChangedSEImpl implements StatusChangedSE {
     TResult Function(ID parent, DateTime at, String title)? TitleChangedSE,
     TResult Function(ID parent, DateTime at, String description)?
         DescriptionChangedSE,
-    TResult Function(ID parent, DateTime at, ToDoStatus status)?
-        StatusChangedSE,
+    TResult Function(ID parent, DateTime at)? MarkedAsThoughtSE,
+    TResult Function(ID parent, DateTime at, String category)?
+        CategoryChangedSE,
     required TResult orElse(),
   }) {
-    if (StatusChangedSE != null) {
-      return StatusChangedSE(parent, at, status);
+    if (MarkedAsThoughtSE != null) {
+      return MarkedAsThoughtSE(parent, at);
     }
     return orElse();
   }
@@ -854,9 +874,10 @@ class _$StatusChangedSEImpl implements StatusChangedSE {
     required TResult Function(CreatedSE value) CreatedSE,
     required TResult Function(TitleChangedSE value) TitleChangedSE,
     required TResult Function(DescriptionChangedSE value) DescriptionChangedSE,
-    required TResult Function(StatusChangedSE value) StatusChangedSE,
+    required TResult Function(MarkedAsThoughtSE value) MarkedAsThoughtSE,
+    required TResult Function(CategoryChangedSE value) CategoryChangedSE,
   }) {
-    return StatusChangedSE(this);
+    return MarkedAsThoughtSE(this);
   }
 
   @override
@@ -865,9 +886,10 @@ class _$StatusChangedSEImpl implements StatusChangedSE {
     TResult? Function(CreatedSE value)? CreatedSE,
     TResult? Function(TitleChangedSE value)? TitleChangedSE,
     TResult? Function(DescriptionChangedSE value)? DescriptionChangedSE,
-    TResult? Function(StatusChangedSE value)? StatusChangedSE,
+    TResult? Function(MarkedAsThoughtSE value)? MarkedAsThoughtSE,
+    TResult? Function(CategoryChangedSE value)? CategoryChangedSE,
   }) {
-    return StatusChangedSE?.call(this);
+    return MarkedAsThoughtSE?.call(this);
   }
 
   @override
@@ -876,38 +898,241 @@ class _$StatusChangedSEImpl implements StatusChangedSE {
     TResult Function(CreatedSE value)? CreatedSE,
     TResult Function(TitleChangedSE value)? TitleChangedSE,
     TResult Function(DescriptionChangedSE value)? DescriptionChangedSE,
-    TResult Function(StatusChangedSE value)? StatusChangedSE,
+    TResult Function(MarkedAsThoughtSE value)? MarkedAsThoughtSE,
+    TResult Function(CategoryChangedSE value)? CategoryChangedSE,
     required TResult orElse(),
   }) {
-    if (StatusChangedSE != null) {
-      return StatusChangedSE(this);
+    if (MarkedAsThoughtSE != null) {
+      return MarkedAsThoughtSE(this);
     }
     return orElse();
   }
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$StatusChangedSEImplToJson(
+    return _$$MarkedAsThoughtSEImplToJson(
       this,
     );
   }
 }
 
-abstract class StatusChangedSE implements SourcedEvent {
-  factory StatusChangedSE(
-          final ID parent, final DateTime at, final ToDoStatus status) =
-      _$StatusChangedSEImpl;
+abstract class MarkedAsThoughtSE implements SourcedEvent {
+  factory MarkedAsThoughtSE(final ID parent, final DateTime at) =
+      _$MarkedAsThoughtSEImpl;
 
-  factory StatusChangedSE.fromJson(Map<String, dynamic> json) =
-      _$StatusChangedSEImpl.fromJson;
+  factory MarkedAsThoughtSE.fromJson(Map<String, dynamic> json) =
+      _$MarkedAsThoughtSEImpl.fromJson;
 
   @override
   ID get parent;
   @override
   DateTime get at;
-  ToDoStatus get status;
   @override
   @JsonKey(ignore: true)
-  _$$StatusChangedSEImplCopyWith<_$StatusChangedSEImpl> get copyWith =>
+  _$$MarkedAsThoughtSEImplCopyWith<_$MarkedAsThoughtSEImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$CategoryChangedSEImplCopyWith<$Res>
+    implements $SourcedEventCopyWith<$Res> {
+  factory _$$CategoryChangedSEImplCopyWith(_$CategoryChangedSEImpl value,
+          $Res Function(_$CategoryChangedSEImpl) then) =
+      __$$CategoryChangedSEImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({ID parent, DateTime at, String category});
+}
+
+/// @nodoc
+class __$$CategoryChangedSEImplCopyWithImpl<$Res>
+    extends _$SourcedEventCopyWithImpl<$Res, _$CategoryChangedSEImpl>
+    implements _$$CategoryChangedSEImplCopyWith<$Res> {
+  __$$CategoryChangedSEImplCopyWithImpl(_$CategoryChangedSEImpl _value,
+      $Res Function(_$CategoryChangedSEImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? parent = null,
+    Object? at = null,
+    Object? category = null,
+  }) {
+    return _then(_$CategoryChangedSEImpl(
+      null == parent
+          ? _value.parent
+          : parent // ignore: cast_nullable_to_non_nullable
+              as ID,
+      null == at
+          ? _value.at
+          : at // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      null == category
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$CategoryChangedSEImpl implements CategoryChangedSE {
+  _$CategoryChangedSEImpl(this.parent, this.at, this.category,
+      {final String? $type})
+      : $type = $type ?? 'CategoryChangedSE';
+
+  factory _$CategoryChangedSEImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CategoryChangedSEImplFromJson(json);
+
+  @override
+  final ID parent;
+  @override
+  final DateTime at;
+  @override
+  final String category;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'SourcedEvent.CategoryChangedSE(parent: $parent, at: $at, category: $category)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CategoryChangedSEImpl &&
+            (identical(other.parent, parent) || other.parent == parent) &&
+            (identical(other.at, at) || other.at == at) &&
+            (identical(other.category, category) ||
+                other.category == category));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, parent, at, category);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CategoryChangedSEImplCopyWith<_$CategoryChangedSEImpl> get copyWith =>
+      __$$CategoryChangedSEImplCopyWithImpl<_$CategoryChangedSEImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(ID parent, DateTime at) CreatedSE,
+    required TResult Function(ID parent, DateTime at, String title)
+        TitleChangedSE,
+    required TResult Function(ID parent, DateTime at, String description)
+        DescriptionChangedSE,
+    required TResult Function(ID parent, DateTime at) MarkedAsThoughtSE,
+    required TResult Function(ID parent, DateTime at, String category)
+        CategoryChangedSE,
+  }) {
+    return CategoryChangedSE(parent, at, category);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(ID parent, DateTime at)? CreatedSE,
+    TResult? Function(ID parent, DateTime at, String title)? TitleChangedSE,
+    TResult? Function(ID parent, DateTime at, String description)?
+        DescriptionChangedSE,
+    TResult? Function(ID parent, DateTime at)? MarkedAsThoughtSE,
+    TResult? Function(ID parent, DateTime at, String category)?
+        CategoryChangedSE,
+  }) {
+    return CategoryChangedSE?.call(parent, at, category);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(ID parent, DateTime at)? CreatedSE,
+    TResult Function(ID parent, DateTime at, String title)? TitleChangedSE,
+    TResult Function(ID parent, DateTime at, String description)?
+        DescriptionChangedSE,
+    TResult Function(ID parent, DateTime at)? MarkedAsThoughtSE,
+    TResult Function(ID parent, DateTime at, String category)?
+        CategoryChangedSE,
+    required TResult orElse(),
+  }) {
+    if (CategoryChangedSE != null) {
+      return CategoryChangedSE(parent, at, category);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CreatedSE value) CreatedSE,
+    required TResult Function(TitleChangedSE value) TitleChangedSE,
+    required TResult Function(DescriptionChangedSE value) DescriptionChangedSE,
+    required TResult Function(MarkedAsThoughtSE value) MarkedAsThoughtSE,
+    required TResult Function(CategoryChangedSE value) CategoryChangedSE,
+  }) {
+    return CategoryChangedSE(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(CreatedSE value)? CreatedSE,
+    TResult? Function(TitleChangedSE value)? TitleChangedSE,
+    TResult? Function(DescriptionChangedSE value)? DescriptionChangedSE,
+    TResult? Function(MarkedAsThoughtSE value)? MarkedAsThoughtSE,
+    TResult? Function(CategoryChangedSE value)? CategoryChangedSE,
+  }) {
+    return CategoryChangedSE?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CreatedSE value)? CreatedSE,
+    TResult Function(TitleChangedSE value)? TitleChangedSE,
+    TResult Function(DescriptionChangedSE value)? DescriptionChangedSE,
+    TResult Function(MarkedAsThoughtSE value)? MarkedAsThoughtSE,
+    TResult Function(CategoryChangedSE value)? CategoryChangedSE,
+    required TResult orElse(),
+  }) {
+    if (CategoryChangedSE != null) {
+      return CategoryChangedSE(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$CategoryChangedSEImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class CategoryChangedSE implements SourcedEvent {
+  factory CategoryChangedSE(
+          final ID parent, final DateTime at, final String category) =
+      _$CategoryChangedSEImpl;
+
+  factory CategoryChangedSE.fromJson(Map<String, dynamic> json) =
+      _$CategoryChangedSEImpl.fromJson;
+
+  @override
+  ID get parent;
+  @override
+  DateTime get at;
+  String get category;
+  @override
+  @JsonKey(ignore: true)
+  _$$CategoryChangedSEImplCopyWith<_$CategoryChangedSEImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

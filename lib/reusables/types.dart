@@ -3,7 +3,6 @@ import 'package:planner/externals/types.dart';
 enum ToDoStatus {
   IN_PROGRESS,
   TO_DO,
-  NOTE,
   DONE,
 }
 

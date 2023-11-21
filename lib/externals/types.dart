@@ -1,9 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:planner/reusables/types.dart';
 import 'package:planner/reusables/utils.dart';
 
 part 'types.freezed.dart';
-
 part 'types.g.dart';
 
 // flutter pub run build_runner build --delete-conflicting-outputs
@@ -46,11 +44,14 @@ sealed class SourcedEvent with _$SourcedEvent {
     String description,
   ) = DescriptionChangedSE;
 
-  factory SourcedEvent.StatusChangedSE(
+  factory SourcedEvent.MarkedAsThoughtSE(ID parent, DateTime at) =
+      MarkedAsThoughtSE;
+
+  factory SourcedEvent.CategoryChangedSE(
     ID parent,
     DateTime at,
-    ToDoStatus status,
-  ) = StatusChangedSE;
+    String category,
+  ) = CategoryChangedSE;
 
   factory SourcedEvent.fromJson(Map<String, dynamic> json) =>
       _$SourcedEventFromJson(json);
