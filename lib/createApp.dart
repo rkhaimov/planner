@@ -51,7 +51,8 @@ class UI extends HookWidget {
       floatingActionButton: FloatingActionButton(
         shape: const CircleBorder(),
         child: const Icon(Icons.add),
-        onPressed: () => askForToDoInfo(context),
+        onPressed: () =>
+            askForToDoInfo(context).then((_) => page.value = Page.TO_DO),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(

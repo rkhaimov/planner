@@ -1,44 +1,57 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:planner/reusables/types.dart';
 import 'package:planner/reusables/utils.dart';
 
-// TODO: Constructor should have only zero and subsequent factories
+part 'types.freezed.dart';
+
+part 'types.g.dart';
+
+// flutter pub run build_runner build --delete-conflicting-outputs
 class ID {
   final int value;
 
-  ID(this.value);
+  factory ID.zero() => ID._(0);
+
+  factory ID.after(ID other) => ID._(other.value + 1);
+
+  factory ID.fromJson(Object? json) => ID._(json as int);
+
+  ID._(this.value);
 
   @override
   int get hashCode => value.hashCode;
 
   @override
   bool operator ==(Object other) => value == requireType<ID>(other).value;
+
+  int toJson() => value;
 }
 
-sealed class SourcedEvent {
-  final ID parent;
-  final DateTime at;
+@freezed
+sealed class SourcedEvent with _$SourcedEvent {
+  factory SourcedEvent.CreatedSE(
+    ID parent,
+    DateTime at,
+  ) = CreatedSE;
 
-  SourcedEvent(this.parent, this.at);
-}
+  factory SourcedEvent.TitleChangedSE(
+    ID parent,
+    DateTime at,
+    String title,
+  ) = TitleChangedSE;
 
-class CreatedSE extends SourcedEvent {
-  CreatedSE(super.parent, super.at);
-}
+  factory SourcedEvent.DescriptionChangedSE(
+    ID parent,
+    DateTime at,
+    String description,
+  ) = DescriptionChangedSE;
 
-class TitleChangedSE extends SourcedEvent {
-  final String title;
+  factory SourcedEvent.StatusChangedSE(
+    ID parent,
+    DateTime at,
+    ToDoStatus status,
+  ) = StatusChangedSE;
 
-  TitleChangedSE(super.parent, super.at, this.title);
-}
-
-class DescriptionChangedSE extends SourcedEvent {
-  final String description;
-
-  DescriptionChangedSE(super.parent, super.at, this.description);
-}
-
-class StatusChangedSE extends SourcedEvent {
-  final ToDoStatus status;
-
-  StatusChangedSE(super.parent, super.at, this.status);
+  factory SourcedEvent.fromJson(Map<String, dynamic> json) =>
+      _$SourcedEventFromJson(json);
 }

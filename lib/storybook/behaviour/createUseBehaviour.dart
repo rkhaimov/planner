@@ -31,8 +31,12 @@ final createUseBehaviour = (StoriesStruct stories) async {
   };
 };
 
-ActiveStoryStruct _toActiveStory(Story story) => (
-      story: story,
-      externals: story.arrange(createMockOriginExternals),
-      recorder: createRecorder(log),
-    );
+ActiveStoryStruct _toActiveStory(Story story) {
+  final recorder = createRecorder();
+
+  return (
+    story: story,
+    externals: createMockOriginExternals().spy(recorder),
+    recorder: recorder,
+  );
+}

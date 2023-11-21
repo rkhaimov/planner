@@ -13,7 +13,7 @@ final useBehaviour = () {
   final submit = () async {
     final last = (await externals.getAllSourcedEvents().request()).lastOrNull;
 
-    final id = ID(last == null ? 0 : last.parent.value);
+    final id = last == null ? ID.zero() : ID.after(last.parent);
     final at = now();
 
     await externals.pushSourcedEvent(CreatedSE(id, at));

@@ -16,7 +16,7 @@ class Recorder {
 
 typedef CommandSnapshotStruct = ({String method, String args});
 
-final createRecorder = (void Function(String) log) {
+final createRecorder = () {
   var commands = <CommandSnapshotStruct>[];
   final escape = (String str) => str.replaceAll('\r', r'\r');
 
@@ -38,7 +38,7 @@ final createRecorder = (void Function(String) log) {
       } else {
         print('\x1B[31mCommands failed. The following was expected:\x1B[0m');
 
-        actual.forEach((it) => log(it.toString()));
+        actual.forEach((it) => print(it.toString()));
       }
 
       return passes;
