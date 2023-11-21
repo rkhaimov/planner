@@ -1,6 +1,29 @@
-import 'package:planner/externals/externals.dart';
+import 'dart:convert';
 
-final originExternals = OriginExternals(
-  getAllSourcedEvents: () async => [],
-  pushSourcedEvent: (_) async {},
-);
+import 'package:planner/externals/externals.dart';
+import 'package:planner/externals/types.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+final createOriginExternals = () {
+  final getAllSourcedEvents = () async {
+    final prefs = await SharedPreferences.getInstance();
+
+    final json = prefs.getString('events') ?? '[]';
+
+    return List<SourcedEvent>.from(
+      jsonDecode(json).map((it) => SourcedEvent.fromJson(it)),
+    );
+  };
+
+  return OriginExternals(
+    getAllSourcedEvents: () async => getAllSourcedEvents(),
+    pushSourcedEvent: (event) async {
+      final prefs = await SharedPreferences.getInstance();
+
+      prefs.setString(
+        'events',
+        jsonEncode([...await getAllSourcedEvents(), event]),
+      );
+    },
+  );
+};
