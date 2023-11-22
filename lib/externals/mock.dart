@@ -19,7 +19,7 @@ extension Mock on OriginExternals {
           return getAllSourcedEvents();
         },
         pushSourcedEvent: (event) {
-          recorder.command('pushSourcedEvent', [event]);
+          recorder.query('pushSourcedEvent', [event]);
 
           return pushSourcedEvent(event);
         },

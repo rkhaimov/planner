@@ -2,6 +2,7 @@ import 'package:planner/externals/types.dart';
 import 'package:planner/reusables/types.dart';
 import 'package:planner/reusables/utils.dart';
 
+// TODO: Unite with to do list view
 Iterable<ToDoStruct> toToDoStruct(Iterable<SourcedEvent> events) => events.fold(
       <ID, ToDoStruct>{},
       (all, event) => switch (event) {
@@ -9,7 +10,8 @@ Iterable<ToDoStruct> toToDoStruct(Iterable<SourcedEvent> events) => events.fold(
         TitleChangedSE() => _onTitleChanged(all, event),
         DescriptionChangedSE() => _onDescriptionChanged(all, event),
         MarkedAsThoughtSE() => all,
-        CategoryChangedSE() => all,
+        CategoryChangedSE() => _onCategoryChanged(all, event),
+        StatusChangedSE() => _onStatusChanged(all, event),
       },
     ).values;
 
@@ -53,6 +55,38 @@ Map<ID, ToDoStruct> _onDescriptionChanged(
   );
 
   todo.description = event.description;
+
+  all[event.parent] = todo;
+
+  return all;
+}
+
+Map<ID, ToDoStruct> _onCategoryChanged(
+  Map<ID, ToDoStruct> all,
+  CategoryChangedSE event,
+) {
+  final todo = requireNotNull(
+    all[event.parent],
+    'ToDo must be created before it is updated',
+  );
+
+  todo.category = CategoryStruct(event.category);
+
+  all[event.parent] = todo;
+
+  return all;
+}
+
+Map<ID, ToDoStruct> _onStatusChanged(
+  Map<ID, ToDoStruct> all,
+  StatusChangedSE event,
+) {
+  final todo = requireNotNull(
+    all[event.parent],
+    'ToDo must be created before it is updated',
+  );
+
+  todo.status = event.status;
 
   all[event.parent] = todo;
 

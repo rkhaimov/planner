@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:planner/reusables/types.dart';
 import 'package:planner/reusables/utils.dart';
 
 part 'types.freezed.dart';
@@ -52,6 +53,12 @@ sealed class SourcedEvent with _$SourcedEvent {
     DateTime at,
     String category,
   ) = CategoryChangedSE;
+
+  factory SourcedEvent.StatusChangedSE(
+    ID parent,
+    DateTime at,
+    ToDoStatus status,
+  ) = StatusChangedSE;
 
   factory SourcedEvent.fromJson(Map<String, dynamic> json) =>
       _$SourcedEventFromJson(json);

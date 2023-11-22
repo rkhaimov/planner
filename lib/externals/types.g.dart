@@ -88,3 +88,27 @@ Map<String, dynamic> _$$CategoryChangedSEImplToJson(
       'category': instance.category,
       'runtimeType': instance.$type,
     };
+
+_$StatusChangedSEImpl _$$StatusChangedSEImplFromJson(
+        Map<String, dynamic> json) =>
+    _$StatusChangedSEImpl(
+      ID.fromJson(json['parent']),
+      DateTime.parse(json['at'] as String),
+      $enumDecode(_$ToDoStatusEnumMap, json['status']),
+      $type: json['runtimeType'] as String?,
+    );
+
+Map<String, dynamic> _$$StatusChangedSEImplToJson(
+        _$StatusChangedSEImpl instance) =>
+    <String, dynamic>{
+      'parent': instance.parent,
+      'at': instance.at.toIso8601String(),
+      'status': _$ToDoStatusEnumMap[instance.status]!,
+      'runtimeType': instance.$type,
+    };
+
+const _$ToDoStatusEnumMap = {
+  ToDoStatus.IN_PROGRESS: 'IN_PROGRESS',
+  ToDoStatus.TO_DO: 'TO_DO',
+  ToDoStatus.DONE: 'DONE',
+};
