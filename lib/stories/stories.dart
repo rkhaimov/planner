@@ -28,7 +28,7 @@ final generalStories = createGroup('GeneralStories', [
         .tap(find.byIcon(Icons.add)),
   ),
   createStory(
-    title: 'ToDoAction',
+    title: 'ToInProgressAction',
     // TODO: Implement events cashing for faster tests-time development
     act: (actor) => actor
         .tap(find.byIcon(Icons.add))
@@ -36,9 +36,17 @@ final generalStories = createGroup('GeneralStories', [
         .enterText(find.text('Description'), 'С нужным описанием')
         .enterText(find.text('Category'), 'Программирование')
         .tap(find.byIcon(Icons.add))
+        .tap(find.byIcon(Icons.add))
+        .enterText(find.text('Title'), 'Проверить возможности EventSourcing')
+        .enterText(find.text('Category'), 'программирование ')
+        .tap(find.byIcon(Icons.add))
         .tap(find.text('Реализовать тесты'))
         .tap(find.text('Mark as in progress'))
         .screenshot('ToDoTab')
-        .tap(find.byIcon(Icons.run_circle_outlined)),
+        .tap(find.byIcon(Icons.run_circle_outlined))
+        .screenshot('InProgressTab')
+        .tap(find.byIcon(Icons.add))
+        .enterText(find.text('Title'), 'Реализовать сортировку todo')
+        .tap(find.byIcon(Icons.add)),
   ),
 ]);

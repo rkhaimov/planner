@@ -6,5 +6,5 @@ final entry = createStory(title: 'InitialEntry');
 
 final StoriesStruct stories = (
   fallback: entry,
-  all: [entry, generalStories],
+  all: [generalStories],
 );

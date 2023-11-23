@@ -3,6 +3,7 @@ import 'package:planner/reusables/types.dart';
 import 'package:planner/reusables/utils.dart';
 
 part 'types.freezed.dart';
+
 part 'types.g.dart';
 
 // flutter pub run build_runner build --delete-conflicting-outputs
@@ -11,11 +12,11 @@ class ID {
 
   factory ID.zero() => ID._(0);
 
-  factory ID.after(ID other) => ID._(other.value + 1);
-
   factory ID.fromJson(Object? json) => ID._(json as int);
 
   ID._(this.value);
+
+  ID after(ID other) => value > other.value ? this : ID._(other.value + 1);
 
   @override
   int get hashCode => value.hashCode;

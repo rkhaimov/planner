@@ -13,9 +13,10 @@ final useBehaviour = () {
   final thought = useState(false);
 
   final submit = () async {
-    final last = (await externals.getAllSourcedEvents().request()).lastOrNull;
+    final id = (await externals.getAllSourcedEvents().request())
+        .whereType<CreatedSE>()
+        .fold<ID>(ID.zero(), (latest, it) => latest.after(it.parent));
 
-    final id = last == null ? ID.zero() : ID.after(last.parent);
     final at = now();
 
     await externals.pushSourcedEvent(CreatedSE(id, at));

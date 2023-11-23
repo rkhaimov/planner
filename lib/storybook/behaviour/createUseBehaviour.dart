@@ -16,7 +16,7 @@ final createUseBehaviour = (StoriesStruct stories) async {
   final initial = sync.active ?? stories.fallback;
 
   return () {
-    final active = useState(_toActiveStory(initial));
+    final active = useState(toActiveStory(initial));
 
     useStreamEffect(() async* {
       // TODO: Implement cancellation
@@ -26,17 +26,7 @@ final createUseBehaviour = (StoriesStruct stories) async {
 
     return (
       active: active.value,
-      setStory: (Story next) => active.value = _toActiveStory(next)
+      setStory: (Story next) => active.value = toActiveStory(next)
     );
   };
 };
-
-ActiveStoryStruct _toActiveStory(Story story) {
-  final recorder = createRecorder();
-
-  return (
-    story: story,
-    externals: createMockOriginExternals().spy(recorder),
-    recorder: recorder,
-  );
-}

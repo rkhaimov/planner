@@ -38,7 +38,7 @@ final createAct = (Future<Uint8List> Function() screenshot) {
             withoutScreenshot(() => controller.waitUntilAppear(selector)),
         waitUntilDisappear: (selector) =>
             withoutScreenshot(() => controller.waitUntilDisappear(selector)),
-        screenshot: ([title]) {
+        screenshot: (title) {
           acts.add(
             () async => [
               (
@@ -159,7 +159,7 @@ class ActBuilder {
   final ActBuilder Function(Finder Function() selector) waitUntilDisappear;
   final ActBuilder Function({Offset? scrollTo}) scrollTop;
   final ActBuilder Function({Offset? scrollTo}) scrollBottom;
-  final ActBuilder Function([String? title]) screenshot;
+  final ActBuilder Function(String title) screenshot;
   final Future<Iterable<ScreenshotStruct>> Function() act;
 
   ActBuilder({
