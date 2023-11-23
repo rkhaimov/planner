@@ -20,6 +20,7 @@ class Root extends StatelessWidget {
       externals: externals,
       child: MaterialApp(
         title: 'Planner',
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.blueAccent),
           useMaterial3: true,

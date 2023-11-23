@@ -1006,5 +1006,132 @@
     "parent": 51,
     "at": "2023-11-21T19:21:12.438894",
     "runtimeType": "MarkedAsThoughtSE"
+  },
+  {
+    "parent": 52,
+    "at": "2023-11-21T19:33:19.587308",
+    "runtimeType": "CreatedSE"
+  },
+  {
+    "parent": 52,
+    "at": "2023-11-21T19:33:19.587308",
+    "title": "взять мембранные штаны",
+    "runtimeType": "TitleChangedSE"
+  },
+  {
+    "parent": 52,
+    "at": "2023-11-21T19:33:19.587308",
+    "description": "в Спортмастере от 2к",
+    "runtimeType": "DescriptionChangedSE"
+  },
+  {
+    "parent": 52,
+    "at": "2023-11-21T19:33:19.587308",
+    "category": "здоровье",
+    "runtimeType": "CategoryChangedSE"
+  },
+  {
+    "parent": 53,
+    "at": "2023-11-21T19:39:36.482950",
+    "runtimeType": "CreatedSE"
+  },
+  {
+    "parent": 53,
+    "at": "2023-11-21T19:39:36.482950",
+    "title": "ходить на скалодром",
+    "runtimeType": "TitleChangedSE"
+  },
+  {
+    "parent": 53,
+    "at": "2023-11-21T19:39:36.482950",
+    "description": "записаться на следующие занятия",
+    "runtimeType": "DescriptionChangedSE"
+  },
+  {
+    "parent": 53,
+    "at": "2023-11-21T19:39:36.482950",
+    "category": "спорт",
+    "runtimeType": "CategoryChangedSE"
+  },
+  {
+    "parent": 54,
+    "at": "2023-11-21T20:01:48.896411",
+    "runtimeType": "CreatedSE"
+  },
+  {
+    "parent": 54,
+    "at": "2023-11-21T20:01:48.896411",
+    "title": "средство от прыщей на побородке",
+    "runtimeType": "TitleChangedSE"
+  },
+  {
+    "parent": 54,
+    "at": "2023-11-21T20:01:48.896411",
+    "category": "здоровье",
+    "runtimeType": "CategoryChangedSE"
+  },
+  {
+    "parent": 55,
+    "at": "2023-11-22T09:11:26.050029",
+    "runtimeType": "CreatedSE"
+  },
+  {
+    "parent": 55,
+    "at": "2023-11-22T09:11:26.050029",
+    "title": "помыть кузов",
+    "runtimeType": "TitleChangedSE"
+  },
+  {
+    "parent": 31,
+    "at": "2023-11-22T16:11:32.120242",
+    "status": "IN_PROGRESS",
+    "runtimeType": "StatusChangedSE"
+  },
+  {
+    "parent": 32,
+    "at": "2023-11-22T16:11:38.401223",
+    "status": "IN_PROGRESS",
+    "runtimeType": "StatusChangedSE"
+  },
+  {
+    "parent": 34,
+    "at": "2023-11-22T16:11:40.903226",
+    "status": "IN_PROGRESS",
+    "runtimeType": "StatusChangedSE"
+  },
+  {
+    "parent": 30,
+    "at": "2023-11-22T16:11:49.742128",
+    "status": "IN_PROGRESS",
+    "runtimeType": "StatusChangedSE"
+  },
+  {
+    "parent": 52,
+    "at": "2023-11-22T16:12:15.985194",
+    "status": "IN_PROGRESS",
+    "runtimeType": "StatusChangedSE"
+  },
+  {
+    "parent": 33,
+    "at": "2023-11-22T16:12:26.916784",
+    "status": "IN_PROGRESS",
+    "runtimeType": "StatusChangedSE"
+  },
+  {
+    "parent": 56,
+    "at": "2023-11-22T16:12:37.218451",
+    "runtimeType": "CreatedSE"
+  },
+  {
+    "parent": 34,
+    "at": "2023-11-22T16:12:37.218451",
+    "title": "все из ничего",
+    "runtimeType": "TitleChangedSE"
+  },
+  {
+    "parent": 34,
+    "at": "2023-11-22T16:12:37.218451",
+    "category": "книги",
+    "runtimeType": "CategoryChangedSE"
   }
 ]

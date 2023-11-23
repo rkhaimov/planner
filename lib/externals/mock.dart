@@ -8,6 +8,7 @@ final createMockOriginExternals = () {
   return OriginExternals(
     getAllSourcedEvents: () async => pushed,
     pushSourcedEvent: (event) async => pushed.add(event),
+    updateDataConsistency: (events) async {},
   );
 };
 
@@ -22,6 +23,11 @@ extension Mock on OriginExternals {
           recorder.query('pushSourcedEvent', [event]);
 
           return pushSourcedEvent(event);
+        },
+        updateDataConsistency: (events) {
+          recorder.query('updateDataConsistency', [events]);
+
+          return updateDataConsistency(events);
         },
       );
 }

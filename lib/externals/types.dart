@@ -27,6 +27,7 @@ class ID {
   int toJson() => value;
 }
 
+// TODO: Replace primitives with complex types
 @freezed
 sealed class SourcedEvent with _$SourcedEvent {
   factory SourcedEvent.CreatedSE(

@@ -16,7 +16,7 @@ final createOriginExternals = () {
   };
 
   return OriginExternals(
-    getAllSourcedEvents: () async => getAllSourcedEvents(),
+    getAllSourcedEvents: getAllSourcedEvents,
     pushSourcedEvent: (event) async {
       final prefs = await SharedPreferences.getInstance();
 
@@ -24,6 +24,11 @@ final createOriginExternals = () {
         'events',
         jsonEncode([...await getAllSourcedEvents(), event]),
       );
+    },
+    updateDataConsistency: (events) async {
+      final prefs = await SharedPreferences.getInstance();
+
+      await prefs.setString('events', jsonEncode(events));
     },
   );
 };
