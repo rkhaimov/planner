@@ -13,27 +13,32 @@ final useBehaviour = () {
   final thought = useState(false);
 
   final submit = () async {
-    final id = (await externals.getAllSourcedEvents().request())
+    final latest = (await externals.getAllSourcedEvents().request())
         .whereType<CreatedSE>()
-        .fold<ID>(ID.zero(), (latest, it) => latest.after(it.parent));
+        .lastOrNull;
 
+    final id = latest == null ? ID.zero() : ID.after(latest.parent);
     final at = now();
 
     await externals.pushSourcedEvent(CreatedSE(id, at));
 
-    if (title.text.isNotEmpty) {
-      await externals.pushSourcedEvent(TitleChangedSE(id, at, title.text));
-    }
+    await externals.pushSourcedEvent(TitleChangedSE(
+      id,
+      at,
+      NonEmptyString.create(title.text),
+    ));
 
-    if (description.text.isNotEmpty) {
-      await externals
-          .pushSourcedEvent(DescriptionChangedSE(id, at, description.text));
-    }
+    await externals.pushSourcedEvent(DescriptionChangedSE(
+      id,
+      at,
+      NonEmptyString.create(description.text),
+    ));
 
-    if (category.text.isNotEmpty) {
-      await externals
-          .pushSourcedEvent(CategoryChangedSE(id, at, category.text));
-    }
+    await externals.pushSourcedEvent(CategoryChangedSE(
+      id,
+      at,
+      NonEmptyString.create(category.text),
+    ));
 
     if (thought.value) {
       await externals.pushSourcedEvent(MarkedAsThoughtSE(id, at));

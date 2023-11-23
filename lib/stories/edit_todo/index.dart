@@ -1,24 +1,34 @@
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:planner/externals/provider.dart';
+import 'package:planner/reusables/safe_future_builder.dart';
+import 'package:planner/reusables/toToDoStruct.dart';
+import 'package:planner/reusables/types.dart';
 import 'package:planner/reusables/utils.dart';
-import 'package:planner/stories/add_todo/useBehaviour.dart';
+
+import './useBehaviour.dart';
 
 // TODO: Duplicate
-final askForCreateToDoInfo = (BuildContext context) => Navigator.of(context)
-    .push(MaterialPageRoute(builder: (_) => const _AddToDo()));
+// TODO: Add imports rules auto-formatter
+final askForEditToDoInfo = (BuildContext context, ToDoStruct todo) =>
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (_) => _EditToDo(todo: todo)));
 
-class _AddToDo extends HookWidget {
-  const _AddToDo();
+class _EditToDo extends HookWidget {
+  final ToDoStruct todo;
+
+  const _EditToDo({required this.todo});
 
   @override
   Widget build(BuildContext context) {
-    final behaviour = useBehaviour();
+    final behaviour = useBehaviour(todo: todo);
 
     return Scaffold(
-      appBar: AppBar(title: const Text('ADD TODO')),
+      appBar: AppBar(title: const Text('EDIT TODO')),
       floatingActionButton: IconButton(
         onPressed: behaviour.submit,
-        icon: const Icon(Icons.add),
+        icon: const Icon(Icons.check),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -38,13 +48,6 @@ class _AddToDo extends HookWidget {
             TextFormField(
               controller: behaviour.category,
               decoration: const InputDecoration(labelText: 'Category'),
-            ),
-            CheckboxListTile(
-              contentPadding: EdgeInsets.zero,
-              value: behaviour.thought.value,
-              onChanged: (_) =>
-                  behaviour.thought.value = behaviour.thought.value.not(),
-              title: Text('Thought'),
             ),
           ],
         ),

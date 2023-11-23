@@ -1,5 +1,8 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:planner/externals/types.dart';
 import 'package:planner/reusables/utils.dart';
+
+part 'types.freezed.dart';
 
 enum ToDoStatus {
   IN_PROGRESS,
@@ -8,11 +11,15 @@ enum ToDoStatus {
 }
 
 class CategoryStruct {
-  final String value;
+  final NonEmptyString value;
 
-  CategoryStruct(String value)
-      : value =
-            '${value.substring(0, 1).toUpperCase()}${value.substring(1)}'.trim();
+  factory CategoryStruct.create(NonEmptyString value) {
+    final (first, rest) = value.toFirstAndRest();
+
+    return CategoryStruct._(first.toUpperCase().join(rest));
+  }
+
+  CategoryStruct._(this.value);
 
   @override
   int get hashCode => value.hashCode;
@@ -22,18 +29,23 @@ class CategoryStruct {
       value == requireType<CategoryStruct>(other).value;
 }
 
-class ToDoStruct {
-  ID id;
-  String? title;
-  String? description;
-  ToDoStatus? status;
-  CategoryStruct? category;
+@freezed
+class ToDoStruct with _$ToDoStruct {
+  factory ToDoStruct({
+    required ID id,
+    NonEmptyString? title,
+    NonEmptyString? description,
+    ToDoStatus? status,
+    CategoryStruct? category,
+  }) = _ToDoStruct;
+}
 
-  ToDoStruct({
-    required this.id,
-    this.title,
-    this.description,
-    this.status,
-    this.category,
-  });
+@freezed
+class ThoughtStruct with _$ThoughtStruct {
+  factory ThoughtStruct({
+    required ID id,
+    NonEmptyString? title,
+    NonEmptyString? description,
+    CategoryStruct? category,
+  }) = _ThoughtStruct;
 }

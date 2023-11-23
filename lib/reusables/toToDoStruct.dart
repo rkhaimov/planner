@@ -3,17 +3,55 @@ import 'package:planner/reusables/types.dart';
 import 'package:planner/reusables/utils.dart';
 
 // TODO: Unite with to do list view
-Iterable<ToDoStruct> toToDoStruct(Iterable<SourcedEvent> events) => events.fold(
-      <ID, ToDoStruct>{},
-      (all, event) => switch (event) {
-        CreatedSE() => _onCreated(all, event),
-        TitleChangedSE() => _onTitleChanged(all, event),
-        DescriptionChangedSE() => _onDescriptionChanged(all, event),
-        MarkedAsThoughtSE() => all,
-        CategoryChangedSE() => _onCategoryChanged(all, event),
-        StatusChangedSE() => _onStatusChanged(all, event),
-      },
-    ).values;
+Iterable<ToDoStruct> toToDoStruct(Iterable<SourcedEvent> events) {
+  final thoughts =
+      events.whereType<MarkedAsThoughtSE>().map((it) => it.parent).toSet();
+
+  return events.where((event) => thoughts.contains(event.parent).not()).fold(
+    <ID, ToDoStruct>{},
+    (all, event) => switch (event) {
+      CreatedSE() => _onCreated(all, event),
+      TitleChangedSE() => _update(
+          all,
+          event,
+          (curr) => curr.copyWith(title: event.title),
+        ),
+      DescriptionChangedSE() => _update(
+          all,
+          event,
+          (curr) => curr.copyWith(description: event.description),
+        ),
+      MarkedAsThoughtSE() => all,
+      CategoryChangedSE() => _update(
+          all,
+          event,
+          (curr) {
+            final category = event.category;
+
+            final struct =
+                category == null ? null : CategoryStruct.create(category);
+
+            return curr.copyWith(category: struct);
+          },
+        ),
+      MarkedAsInProgress() => _update(
+          all,
+          event,
+          (curr) => curr.copyWith(status: ToDoStatus.IN_PROGRESS),
+        ),
+      MarkedAsDone() => _update(
+          all,
+          event,
+          (curr) => curr.copyWith(status: ToDoStatus.DONE),
+        ),
+      MarkedAsToDo() => _update(
+          all,
+          event,
+          (curr) => curr.copyWith(status: ToDoStatus.TO_DO),
+        ),
+    },
+  ).values;
+}
 
 Map<ID, ToDoStruct> _onCreated(
   Map<ID, ToDoStruct> all,
@@ -29,66 +67,17 @@ Map<ID, ToDoStruct> _onCreated(
   return all;
 }
 
-Map<ID, ToDoStruct> _onTitleChanged(
+Map<ID, ToDoStruct> _update(
   Map<ID, ToDoStruct> all,
-  TitleChangedSE event,
+  SourcedEvent event,
+  ToDoStruct Function(ToDoStruct curr) update,
 ) {
   final todo = requireNotNull(
     all[event.parent],
     'ToDo must be created before it is updated',
   );
 
-  todo.title = event.title;
-
-  all[event.parent] = todo;
-
-  return all;
-}
-
-Map<ID, ToDoStruct> _onDescriptionChanged(
-  Map<ID, ToDoStruct> all,
-  DescriptionChangedSE event,
-) {
-  final todo = requireNotNull(
-    all[event.parent],
-    'ToDo must be created before it is updated',
-  );
-
-  todo.description = event.description;
-
-  all[event.parent] = todo;
-
-  return all;
-}
-
-Map<ID, ToDoStruct> _onCategoryChanged(
-  Map<ID, ToDoStruct> all,
-  CategoryChangedSE event,
-) {
-  final todo = requireNotNull(
-    all[event.parent],
-    'ToDo must be created before it is updated',
-  );
-
-  todo.category = CategoryStruct(event.category);
-
-  all[event.parent] = todo;
-
-  return all;
-}
-
-Map<ID, ToDoStruct> _onStatusChanged(
-  Map<ID, ToDoStruct> all,
-  StatusChangedSE event,
-) {
-  final todo = requireNotNull(
-    all[event.parent],
-    'ToDo must be created before it is updated',
-  );
-
-  todo.status = event.status;
-
-  all[event.parent] = todo;
+  all[event.parent] = update(todo);
 
   return all;
 }

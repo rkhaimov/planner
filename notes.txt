@@ -1,0 +1,4 @@
+* User events are very abstract and easily can be reinterpretated without migrations as needed
+* Tests that do every data mutation automatically cover all transformations as well (that are visible on the screen)
+* There is a problem referencing concrete icons coz they might be different depending on a platform
+* Either must be modeled with never, especially when ensure is implemented

@@ -10,7 +10,5 @@ final toReactiveExternals = (OriginExternals origin) {
     getAllSourcedEvents: () =>
         Query(request: origin.getAllSourcedEvents, source: se),
     pushSourcedEvent: (event) => se.updateAfter(origin.pushSourcedEvent(event)),
-    updateDataConsistency: (events) =>
-        se.updateAfter(origin.updateDataConsistency(events)),
   );
 };

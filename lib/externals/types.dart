@@ -1,5 +1,6 @@
+import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:planner/reusables/types.dart';
+import 'package:planner/reusables/either.dart';
 import 'package:planner/reusables/utils.dart';
 
 part 'types.freezed.dart';
@@ -12,11 +13,11 @@ class ID {
 
   factory ID.zero() => ID._(0);
 
+  factory ID.after(ID other) => ID._(other.value + 1);
+
   factory ID.fromJson(Object? json) => ID._(json as int);
 
   ID._(this.value);
-
-  ID after(ID other) => value > other.value ? this : ID._(other.value + 1);
 
   @override
   int get hashCode => value.hashCode;
@@ -25,6 +26,45 @@ class ID {
   bool operator ==(Object other) => value == requireType<ID>(other).value;
 
   int toJson() => value;
+}
+
+// Trimmed non empty string
+class NonEmptyString {
+  final String raw;
+
+  static NonEmptyString? create(String source) {
+    final trimmed = source.trim();
+
+    if (trimmed.isEmpty) {
+      return null;
+    }
+
+    return NonEmptyString._(trimmed);
+  }
+
+  NonEmptyString._(this.raw);
+
+  NonEmptyString trim() => this;
+
+  NonEmptyString toUpperCase() => NonEmptyString._(raw.toUpperCase());
+
+  (NonEmptyString, String) toFirstAndRest() =>
+      (NonEmptyString._(raw.substring(0, 1)), raw.substring(1));
+
+  NonEmptyString join(String right) =>
+      NonEmptyString._('$raw${NonEmptyString.create(right)?.raw ?? ''}');
+
+  factory NonEmptyString.fromJson(Object? json) =>
+      requireNotNull(NonEmptyString.create(json as String));
+
+  @override
+  int get hashCode => raw.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      raw == requireType<NonEmptyString>(other).raw;
+
+  String toJson() => raw;
 }
 
 // TODO: Replace primitives with complex types
@@ -38,13 +78,13 @@ sealed class SourcedEvent with _$SourcedEvent {
   factory SourcedEvent.TitleChangedSE(
     ID parent,
     DateTime at,
-    String title,
+    NonEmptyString? title,
   ) = TitleChangedSE;
 
   factory SourcedEvent.DescriptionChangedSE(
     ID parent,
     DateTime at,
-    String description,
+    NonEmptyString? description,
   ) = DescriptionChangedSE;
 
   factory SourcedEvent.MarkedAsThoughtSE(ID parent, DateTime at) =
@@ -53,14 +93,15 @@ sealed class SourcedEvent with _$SourcedEvent {
   factory SourcedEvent.CategoryChangedSE(
     ID parent,
     DateTime at,
-    String category,
+    NonEmptyString? category,
   ) = CategoryChangedSE;
 
-  factory SourcedEvent.StatusChangedSE(
-    ID parent,
-    DateTime at,
-    ToDoStatus status,
-  ) = StatusChangedSE;
+  factory SourcedEvent.MarkedAsInProgress(ID parent, DateTime at) =
+      MarkedAsInProgress;
+
+  factory SourcedEvent.MarkedAsDone(ID parent, DateTime at) = MarkedAsDone;
+
+  factory SourcedEvent.MarkedAsToDo(ID parent, DateTime at) = MarkedAsToDo;
 
   factory SourcedEvent.fromJson(Map<String, dynamic> json) =>
       _$SourcedEventFromJson(json);

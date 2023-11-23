@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'either.dart';
+import 'package:planner/reusables/toSafeAsyncSnapshot.dart';
 
 class SafeStreamBuilder<T> extends StatelessWidget {
   final Stream<T> stream;
@@ -18,29 +17,8 @@ class SafeStreamBuilder<T> extends StatelessWidget {
   Widget build(BuildContext context) {
     return StreamBuilder(
       stream: stream,
-      builder: (context, snapshot) => switch (_toSafeAsyncSnapshot(snapshot)) {
-        Left() => onWaiting(context),
-        Right(value: final response) => onData(context, response),
-      },
+      builder: (context, snapshot) => toSafeAsyncSnapshot(snapshot)
+          .fold((_) => onWaiting(context), (it) => onData(context, it)),
     );
-  }
-}
-
-Either<void, T> _toSafeAsyncSnapshot<T>(AsyncSnapshot snapshot) {
-  _ensureNoErrors(snapshot);
-
-  final waiting = {ConnectionState.none, ConnectionState.waiting}
-      .contains(snapshot.connectionState);
-
-  if (waiting) {
-    return Either.left(null);
-  }
-
-  return Either.right(snapshot.data as T);
-}
-
-void _ensureNoErrors(AsyncSnapshot snapshot) {
-  if (snapshot.error != null) {
-    throw Error.throwWithStackTrace(snapshot.error!, snapshot.stackTrace!);
   }
 }

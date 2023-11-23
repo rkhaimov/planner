@@ -2,21 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:planner/externals/provider.dart';
 import 'package:planner/reusables/cq/query_builder.dart';
-import 'package:planner/reusables/toToDoStruct.dart';
+import 'package:planner/reusables/toThoughtsStruct.dart';
 import 'package:planner/reusables/types.dart';
 
-typedef ToDoActionBuilder = Iterable<ListTile> Function(ToDoStruct todo);
-
-// TODO: Refactor
-class ToDoListView extends HookWidget {
-  final bool Function(ToDoStruct todo) filter;
-  final ToDoActionBuilder buildActions;
-
-  const ToDoListView({
-    super.key,
-    required this.filter,
-    required this.buildActions,
-  });
+class Thoughts extends HookWidget {
+  const Thoughts({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +17,7 @@ class ToDoListView extends HookWidget {
       onInitializing: (context) => const Text('Waiting'),
       onData: (context, response) {
         final categorized =
-            toToDoStruct(response).where(filter).fold<CategorizedToDoStructs>(
+            toThoughtStruct(response).fold<CategorizedThoughtsStructs>(
           (categorized: {}, other: []),
           (all, it) {
             final category = it.category;
@@ -45,7 +35,7 @@ class ToDoListView extends HookWidget {
           },
         );
 
-        final tiles = _buildItemRenderers(buildActions, categorized);
+        final tiles = _buildItemRenderers(categorized);
 
         return ListView.builder(
           itemCount: tiles.length,
@@ -58,20 +48,19 @@ class ToDoListView extends HookWidget {
 
 typedef TileBuilder = ListTile Function(BuildContext context);
 
-typedef CategorizedToDoStructs = ({
-  Map<CategoryStruct, Iterable<ToDoStruct>> categorized,
-  Iterable<ToDoStruct> other,
+typedef CategorizedThoughtsStructs = ({
+  Map<CategoryStruct, Iterable<ThoughtStruct>> categorized,
+  Iterable<ThoughtStruct> other,
 });
 
 Iterable<TileBuilder> _buildItemRenderers(
-  ToDoActionBuilder buildActions,
-  CategorizedToDoStructs elements,
+  CategorizedThoughtsStructs elements,
 ) {
   final categorized = elements.categorized.entries.expand<TileBuilder>(
     (it) => [
       (context) => _buildCategoryTile(context, it.key),
-      ...it.value.map(
-          (todo) => (context) => _buildToDoTile(context, buildActions, todo)),
+      ...it.value
+          .map((thought) => (context) => _buildThoughtTile(context, thought)),
     ],
   );
 
@@ -83,7 +72,7 @@ Iterable<TileBuilder> _buildItemRenderers(
     ...categorized,
     (context) => _buildOthersCategoryTile(context),
     ...elements.other
-        .map((todo) => (context) => _buildToDoTile(context, buildActions, todo))
+        .map((thought) => (context) => _buildThoughtTile(context, thought))
   ];
 }
 
@@ -95,36 +84,12 @@ final _buildCategoryTile =
           ),
         );
 
-final _buildToDoTile = (
-  BuildContext context,
-  ToDoActionBuilder buildActions,
-  ToDoStruct todo,
-) {
-  final description = todo.description;
+final _buildThoughtTile = (BuildContext context, ThoughtStruct thought) {
+  final description = thought.description;
 
   return ListTile(
-    title: Text(todo.title?.raw ?? '<НЕТ ОГЛАВЛЕНИЯ>'),
+    title: Text(thought.title?.raw ?? '<НЕТ ОГЛАВЛЕНИЯ>'),
     subtitle: description == null ? null : Text(description.raw),
-    onTap: () => showModalBottomSheet(
-      context: context,
-      builder: (_) => Container(
-        // TODO: Get rid off hard code values
-        height: 250,
-        padding: const EdgeInsets.symmetric(vertical: 20),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text('Select an action',
-                style: Theme.of(context).textTheme.bodyLarge),
-            const Spacer(flex: 1),
-            ListView(
-              shrinkWrap: true,
-              children: buildActions(todo).toList(),
-            ),
-          ],
-        ),
-      ),
-    ),
   );
 };
 

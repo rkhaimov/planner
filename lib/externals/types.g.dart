@@ -24,7 +24,7 @@ _$TitleChangedSEImpl _$$TitleChangedSEImplFromJson(Map<String, dynamic> json) =>
     _$TitleChangedSEImpl(
       ID.fromJson(json['parent']),
       DateTime.parse(json['at'] as String),
-      json['title'] as String,
+      json['title'] == null ? null : NonEmptyString.fromJson(json['title']),
       $type: json['runtimeType'] as String?,
     );
 
@@ -42,7 +42,9 @@ _$DescriptionChangedSEImpl _$$DescriptionChangedSEImplFromJson(
     _$DescriptionChangedSEImpl(
       ID.fromJson(json['parent']),
       DateTime.parse(json['at'] as String),
-      json['description'] as String,
+      json['description'] == null
+          ? null
+          : NonEmptyString.fromJson(json['description']),
       $type: json['runtimeType'] as String?,
     );
 
@@ -76,7 +78,9 @@ _$CategoryChangedSEImpl _$$CategoryChangedSEImplFromJson(
     _$CategoryChangedSEImpl(
       ID.fromJson(json['parent']),
       DateTime.parse(json['at'] as String),
-      json['category'] as String,
+      json['category'] == null
+          ? null
+          : NonEmptyString.fromJson(json['category']),
       $type: json['runtimeType'] as String?,
     );
 
@@ -89,26 +93,46 @@ Map<String, dynamic> _$$CategoryChangedSEImplToJson(
       'runtimeType': instance.$type,
     };
 
-_$StatusChangedSEImpl _$$StatusChangedSEImplFromJson(
+_$MarkedAsInProgressImpl _$$MarkedAsInProgressImplFromJson(
         Map<String, dynamic> json) =>
-    _$StatusChangedSEImpl(
+    _$MarkedAsInProgressImpl(
       ID.fromJson(json['parent']),
       DateTime.parse(json['at'] as String),
-      $enumDecode(_$ToDoStatusEnumMap, json['status']),
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$StatusChangedSEImplToJson(
-        _$StatusChangedSEImpl instance) =>
+Map<String, dynamic> _$$MarkedAsInProgressImplToJson(
+        _$MarkedAsInProgressImpl instance) =>
     <String, dynamic>{
       'parent': instance.parent,
       'at': instance.at.toIso8601String(),
-      'status': _$ToDoStatusEnumMap[instance.status]!,
       'runtimeType': instance.$type,
     };
 
-const _$ToDoStatusEnumMap = {
-  ToDoStatus.IN_PROGRESS: 'IN_PROGRESS',
-  ToDoStatus.TO_DO: 'TO_DO',
-  ToDoStatus.DONE: 'DONE',
-};
+_$MarkedAsDoneImpl _$$MarkedAsDoneImplFromJson(Map<String, dynamic> json) =>
+    _$MarkedAsDoneImpl(
+      ID.fromJson(json['parent']),
+      DateTime.parse(json['at'] as String),
+      $type: json['runtimeType'] as String?,
+    );
+
+Map<String, dynamic> _$$MarkedAsDoneImplToJson(_$MarkedAsDoneImpl instance) =>
+    <String, dynamic>{
+      'parent': instance.parent,
+      'at': instance.at.toIso8601String(),
+      'runtimeType': instance.$type,
+    };
+
+_$MarkedAsToDoImpl _$$MarkedAsToDoImplFromJson(Map<String, dynamic> json) =>
+    _$MarkedAsToDoImpl(
+      ID.fromJson(json['parent']),
+      DateTime.parse(json['at'] as String),
+      $type: json['runtimeType'] as String?,
+    );
+
+Map<String, dynamic> _$$MarkedAsToDoImplToJson(_$MarkedAsToDoImpl instance) =>
+    <String, dynamic>{
+      'parent': instance.parent,
+      'at': instance.at.toIso8601String(),
+      'runtimeType': instance.$type,
+    };

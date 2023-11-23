@@ -4,6 +4,7 @@ import 'package:planner/externals/externals.dart';
 import 'package:planner/externals/provider.dart';
 import 'package:planner/stories/done/index.dart';
 import 'package:planner/stories/in_progress/index.dart';
+import 'package:planner/stories/thoughts/index.dart';
 import 'package:planner/stories/to_do/index.dart';
 
 import 'stories/add_todo/index.dart';
@@ -53,7 +54,7 @@ class UI extends HookWidget {
         shape: const CircleBorder(),
         child: const Icon(Icons.add),
         onPressed: () =>
-            askForToDoInfo(context).then((_) => page.value = Page.TO_DO),
+            askForCreateToDoInfo(context).then((_) => page.value = Page.TO_DO),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
@@ -104,6 +105,6 @@ final _buildTitleByPage = (Page page) => switch (page) {
 final _buildWidgetByPage = (Page page) => switch (page) {
       Page.TO_DO => const ToDo(),
       Page.IN_PROGRESS => const InProgress(),
-      Page.THOUGHTS => const Text('By'),
+      Page.THOUGHTS => const Thoughts(),
       Page.DONE => const Done(),
     };
