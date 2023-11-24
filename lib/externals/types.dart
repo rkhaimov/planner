@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:planner/reusables/either.dart';
+import 'package:planner/reusables/natural_number.dart';
+import 'package:planner/reusables/non_empty_string.dart';
 import 'package:planner/reusables/utils.dart';
 
 part 'types.freezed.dart';
@@ -9,62 +9,25 @@ part 'types.g.dart';
 
 // flutter pub run build_runner build --delete-conflicting-outputs
 class ID {
-  final int value;
+  final NaturalNumber _raw;
 
-  factory ID.zero() => ID._(0);
+  factory ID.initial() => ID._(NaturalNumber.zero());
 
-  factory ID.after(ID other) => ID._(other.value + 1);
+  factory ID.last(ID left, ID right) => ID._(left._raw.max(right._raw));
 
-  factory ID.fromJson(Object? json) => ID._(json as int);
+  factory ID.fromJson(Object? json) => ID._(NaturalNumber.fromJson(json));
 
-  ID._(this.value);
+  ID._(this._raw);
 
-  @override
-  int get hashCode => value.hashCode;
-
-  @override
-  bool operator ==(Object other) => value == requireType<ID>(other).value;
-
-  int toJson() => value;
-}
-
-// Trimmed non empty string
-class NonEmptyString {
-  final String raw;
-
-  static NonEmptyString? create(String source) {
-    final trimmed = source.trim();
-
-    if (trimmed.isEmpty) {
-      return null;
-    }
-
-    return NonEmptyString._(trimmed);
-  }
-
-  NonEmptyString._(this.raw);
-
-  NonEmptyString trim() => this;
-
-  NonEmptyString toUpperCase() => NonEmptyString._(raw.toUpperCase());
-
-  (NonEmptyString, String) toFirstAndRest() =>
-      (NonEmptyString._(raw.substring(0, 1)), raw.substring(1));
-
-  NonEmptyString join(String right) =>
-      NonEmptyString._('$raw${NonEmptyString.create(right)?.raw ?? ''}');
-
-  factory NonEmptyString.fromJson(Object? json) =>
-      requireNotNull(NonEmptyString.create(json as String));
+  ID next() => ID._(_raw.increment());
 
   @override
-  int get hashCode => raw.hashCode;
+  int get hashCode => _raw.hashCode;
 
   @override
-  bool operator ==(Object other) =>
-      raw == requireType<NonEmptyString>(other).raw;
+  bool operator ==(Object other) => _raw == requireType<ID>(other)._raw;
 
-  String toJson() => raw;
+  int toJson() => _raw.toJson();
 }
 
 // TODO: Replace primitives with complex types
@@ -74,6 +37,11 @@ sealed class SourcedEvent with _$SourcedEvent {
     ID parent,
     DateTime at,
   ) = CreatedSE;
+
+  factory SourcedEvent.DeletedSE(
+    ID parent,
+    DateTime at,
+  ) = DeletedSE;
 
   factory SourcedEvent.TitleChangedSE(
     ID parent,

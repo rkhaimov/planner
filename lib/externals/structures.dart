@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:planner/externals/deprecated.dart';
 import 'package:planner/externals/types.dart';
+import 'package:planner/reusables/non_empty_string.dart';
 import 'package:planner/reusables/types.dart';
 
 Iterable<SourcedEvent> withStructureVerified({required String all}) {

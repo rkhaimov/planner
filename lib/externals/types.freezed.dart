@@ -18,6 +18,8 @@ SourcedEvent _$SourcedEventFromJson(Map<String, dynamic> json) {
   switch (json['runtimeType']) {
     case 'CreatedSE':
       return CreatedSE.fromJson(json);
+    case 'DeletedSE':
+      return DeletedSE.fromJson(json);
     case 'TitleChangedSE':
       return TitleChangedSE.fromJson(json);
     case 'DescriptionChangedSE':
@@ -46,6 +48,7 @@ mixin _$SourcedEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(ID parent, DateTime at) CreatedSE,
+    required TResult Function(ID parent, DateTime at) DeletedSE,
     required TResult Function(ID parent, DateTime at, NonEmptyString? title)
         TitleChangedSE,
     required TResult Function(
@@ -62,6 +65,7 @@ mixin _$SourcedEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(ID parent, DateTime at)? CreatedSE,
+    TResult? Function(ID parent, DateTime at)? DeletedSE,
     TResult? Function(ID parent, DateTime at, NonEmptyString? title)?
         TitleChangedSE,
     TResult? Function(ID parent, DateTime at, NonEmptyString? description)?
@@ -77,6 +81,7 @@ mixin _$SourcedEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(ID parent, DateTime at)? CreatedSE,
+    TResult Function(ID parent, DateTime at)? DeletedSE,
     TResult Function(ID parent, DateTime at, NonEmptyString? title)?
         TitleChangedSE,
     TResult Function(ID parent, DateTime at, NonEmptyString? description)?
@@ -93,6 +98,7 @@ mixin _$SourcedEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(CreatedSE value) CreatedSE,
+    required TResult Function(DeletedSE value) DeletedSE,
     required TResult Function(TitleChangedSE value) TitleChangedSE,
     required TResult Function(DescriptionChangedSE value) DescriptionChangedSE,
     required TResult Function(MarkedAsThoughtSE value) MarkedAsThoughtSE,
@@ -105,6 +111,7 @@ mixin _$SourcedEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CreatedSE value)? CreatedSE,
+    TResult? Function(DeletedSE value)? DeletedSE,
     TResult? Function(TitleChangedSE value)? TitleChangedSE,
     TResult? Function(DescriptionChangedSE value)? DescriptionChangedSE,
     TResult? Function(MarkedAsThoughtSE value)? MarkedAsThoughtSE,
@@ -117,6 +124,7 @@ mixin _$SourcedEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CreatedSE value)? CreatedSE,
+    TResult Function(DeletedSE value)? DeletedSE,
     TResult Function(TitleChangedSE value)? TitleChangedSE,
     TResult Function(DescriptionChangedSE value)? DescriptionChangedSE,
     TResult Function(MarkedAsThoughtSE value)? MarkedAsThoughtSE,
@@ -254,6 +262,7 @@ class _$CreatedSEImpl implements CreatedSE {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(ID parent, DateTime at) CreatedSE,
+    required TResult Function(ID parent, DateTime at) DeletedSE,
     required TResult Function(ID parent, DateTime at, NonEmptyString? title)
         TitleChangedSE,
     required TResult Function(
@@ -273,6 +282,7 @@ class _$CreatedSEImpl implements CreatedSE {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(ID parent, DateTime at)? CreatedSE,
+    TResult? Function(ID parent, DateTime at)? DeletedSE,
     TResult? Function(ID parent, DateTime at, NonEmptyString? title)?
         TitleChangedSE,
     TResult? Function(ID parent, DateTime at, NonEmptyString? description)?
@@ -291,6 +301,7 @@ class _$CreatedSEImpl implements CreatedSE {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(ID parent, DateTime at)? CreatedSE,
+    TResult Function(ID parent, DateTime at)? DeletedSE,
     TResult Function(ID parent, DateTime at, NonEmptyString? title)?
         TitleChangedSE,
     TResult Function(ID parent, DateTime at, NonEmptyString? description)?
@@ -313,6 +324,7 @@ class _$CreatedSEImpl implements CreatedSE {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(CreatedSE value) CreatedSE,
+    required TResult Function(DeletedSE value) DeletedSE,
     required TResult Function(TitleChangedSE value) TitleChangedSE,
     required TResult Function(DescriptionChangedSE value) DescriptionChangedSE,
     required TResult Function(MarkedAsThoughtSE value) MarkedAsThoughtSE,
@@ -328,6 +340,7 @@ class _$CreatedSEImpl implements CreatedSE {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CreatedSE value)? CreatedSE,
+    TResult? Function(DeletedSE value)? DeletedSE,
     TResult? Function(TitleChangedSE value)? TitleChangedSE,
     TResult? Function(DescriptionChangedSE value)? DescriptionChangedSE,
     TResult? Function(MarkedAsThoughtSE value)? MarkedAsThoughtSE,
@@ -343,6 +356,7 @@ class _$CreatedSEImpl implements CreatedSE {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CreatedSE value)? CreatedSE,
+    TResult Function(DeletedSE value)? DeletedSE,
     TResult Function(TitleChangedSE value)? TitleChangedSE,
     TResult Function(DescriptionChangedSE value)? DescriptionChangedSE,
     TResult Function(MarkedAsThoughtSE value)? MarkedAsThoughtSE,
@@ -379,6 +393,223 @@ abstract class CreatedSE implements SourcedEvent {
   @override
   @JsonKey(ignore: true)
   _$$CreatedSEImplCopyWith<_$CreatedSEImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DeletedSEImplCopyWith<$Res>
+    implements $SourcedEventCopyWith<$Res> {
+  factory _$$DeletedSEImplCopyWith(
+          _$DeletedSEImpl value, $Res Function(_$DeletedSEImpl) then) =
+      __$$DeletedSEImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({ID parent, DateTime at});
+}
+
+/// @nodoc
+class __$$DeletedSEImplCopyWithImpl<$Res>
+    extends _$SourcedEventCopyWithImpl<$Res, _$DeletedSEImpl>
+    implements _$$DeletedSEImplCopyWith<$Res> {
+  __$$DeletedSEImplCopyWithImpl(
+      _$DeletedSEImpl _value, $Res Function(_$DeletedSEImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? parent = null,
+    Object? at = null,
+  }) {
+    return _then(_$DeletedSEImpl(
+      null == parent
+          ? _value.parent
+          : parent // ignore: cast_nullable_to_non_nullable
+              as ID,
+      null == at
+          ? _value.at
+          : at // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$DeletedSEImpl implements DeletedSE {
+  _$DeletedSEImpl(this.parent, this.at, {final String? $type})
+      : $type = $type ?? 'DeletedSE';
+
+  factory _$DeletedSEImpl.fromJson(Map<String, dynamic> json) =>
+      _$$DeletedSEImplFromJson(json);
+
+  @override
+  final ID parent;
+  @override
+  final DateTime at;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'SourcedEvent.DeletedSE(parent: $parent, at: $at)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DeletedSEImpl &&
+            (identical(other.parent, parent) || other.parent == parent) &&
+            (identical(other.at, at) || other.at == at));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, parent, at);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DeletedSEImplCopyWith<_$DeletedSEImpl> get copyWith =>
+      __$$DeletedSEImplCopyWithImpl<_$DeletedSEImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(ID parent, DateTime at) CreatedSE,
+    required TResult Function(ID parent, DateTime at) DeletedSE,
+    required TResult Function(ID parent, DateTime at, NonEmptyString? title)
+        TitleChangedSE,
+    required TResult Function(
+            ID parent, DateTime at, NonEmptyString? description)
+        DescriptionChangedSE,
+    required TResult Function(ID parent, DateTime at) MarkedAsThoughtSE,
+    required TResult Function(ID parent, DateTime at, NonEmptyString? category)
+        CategoryChangedSE,
+    required TResult Function(ID parent, DateTime at) MarkedAsInProgress,
+    required TResult Function(ID parent, DateTime at) MarkedAsDone,
+    required TResult Function(ID parent, DateTime at) MarkedAsToDo,
+  }) {
+    return DeletedSE(parent, at);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(ID parent, DateTime at)? CreatedSE,
+    TResult? Function(ID parent, DateTime at)? DeletedSE,
+    TResult? Function(ID parent, DateTime at, NonEmptyString? title)?
+        TitleChangedSE,
+    TResult? Function(ID parent, DateTime at, NonEmptyString? description)?
+        DescriptionChangedSE,
+    TResult? Function(ID parent, DateTime at)? MarkedAsThoughtSE,
+    TResult? Function(ID parent, DateTime at, NonEmptyString? category)?
+        CategoryChangedSE,
+    TResult? Function(ID parent, DateTime at)? MarkedAsInProgress,
+    TResult? Function(ID parent, DateTime at)? MarkedAsDone,
+    TResult? Function(ID parent, DateTime at)? MarkedAsToDo,
+  }) {
+    return DeletedSE?.call(parent, at);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(ID parent, DateTime at)? CreatedSE,
+    TResult Function(ID parent, DateTime at)? DeletedSE,
+    TResult Function(ID parent, DateTime at, NonEmptyString? title)?
+        TitleChangedSE,
+    TResult Function(ID parent, DateTime at, NonEmptyString? description)?
+        DescriptionChangedSE,
+    TResult Function(ID parent, DateTime at)? MarkedAsThoughtSE,
+    TResult Function(ID parent, DateTime at, NonEmptyString? category)?
+        CategoryChangedSE,
+    TResult Function(ID parent, DateTime at)? MarkedAsInProgress,
+    TResult Function(ID parent, DateTime at)? MarkedAsDone,
+    TResult Function(ID parent, DateTime at)? MarkedAsToDo,
+    required TResult orElse(),
+  }) {
+    if (DeletedSE != null) {
+      return DeletedSE(parent, at);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CreatedSE value) CreatedSE,
+    required TResult Function(DeletedSE value) DeletedSE,
+    required TResult Function(TitleChangedSE value) TitleChangedSE,
+    required TResult Function(DescriptionChangedSE value) DescriptionChangedSE,
+    required TResult Function(MarkedAsThoughtSE value) MarkedAsThoughtSE,
+    required TResult Function(CategoryChangedSE value) CategoryChangedSE,
+    required TResult Function(MarkedAsInProgress value) MarkedAsInProgress,
+    required TResult Function(MarkedAsDone value) MarkedAsDone,
+    required TResult Function(MarkedAsToDo value) MarkedAsToDo,
+  }) {
+    return DeletedSE(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(CreatedSE value)? CreatedSE,
+    TResult? Function(DeletedSE value)? DeletedSE,
+    TResult? Function(TitleChangedSE value)? TitleChangedSE,
+    TResult? Function(DescriptionChangedSE value)? DescriptionChangedSE,
+    TResult? Function(MarkedAsThoughtSE value)? MarkedAsThoughtSE,
+    TResult? Function(CategoryChangedSE value)? CategoryChangedSE,
+    TResult? Function(MarkedAsInProgress value)? MarkedAsInProgress,
+    TResult? Function(MarkedAsDone value)? MarkedAsDone,
+    TResult? Function(MarkedAsToDo value)? MarkedAsToDo,
+  }) {
+    return DeletedSE?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CreatedSE value)? CreatedSE,
+    TResult Function(DeletedSE value)? DeletedSE,
+    TResult Function(TitleChangedSE value)? TitleChangedSE,
+    TResult Function(DescriptionChangedSE value)? DescriptionChangedSE,
+    TResult Function(MarkedAsThoughtSE value)? MarkedAsThoughtSE,
+    TResult Function(CategoryChangedSE value)? CategoryChangedSE,
+    TResult Function(MarkedAsInProgress value)? MarkedAsInProgress,
+    TResult Function(MarkedAsDone value)? MarkedAsDone,
+    TResult Function(MarkedAsToDo value)? MarkedAsToDo,
+    required TResult orElse(),
+  }) {
+    if (DeletedSE != null) {
+      return DeletedSE(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$DeletedSEImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class DeletedSE implements SourcedEvent {
+  factory DeletedSE(final ID parent, final DateTime at) = _$DeletedSEImpl;
+
+  factory DeletedSE.fromJson(Map<String, dynamic> json) =
+      _$DeletedSEImpl.fromJson;
+
+  @override
+  ID get parent;
+  @override
+  DateTime get at;
+  @override
+  @JsonKey(ignore: true)
+  _$$DeletedSEImplCopyWith<_$DeletedSEImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -474,6 +705,7 @@ class _$TitleChangedSEImpl implements TitleChangedSE {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(ID parent, DateTime at) CreatedSE,
+    required TResult Function(ID parent, DateTime at) DeletedSE,
     required TResult Function(ID parent, DateTime at, NonEmptyString? title)
         TitleChangedSE,
     required TResult Function(
@@ -493,6 +725,7 @@ class _$TitleChangedSEImpl implements TitleChangedSE {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(ID parent, DateTime at)? CreatedSE,
+    TResult? Function(ID parent, DateTime at)? DeletedSE,
     TResult? Function(ID parent, DateTime at, NonEmptyString? title)?
         TitleChangedSE,
     TResult? Function(ID parent, DateTime at, NonEmptyString? description)?
@@ -511,6 +744,7 @@ class _$TitleChangedSEImpl implements TitleChangedSE {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(ID parent, DateTime at)? CreatedSE,
+    TResult Function(ID parent, DateTime at)? DeletedSE,
     TResult Function(ID parent, DateTime at, NonEmptyString? title)?
         TitleChangedSE,
     TResult Function(ID parent, DateTime at, NonEmptyString? description)?
@@ -533,6 +767,7 @@ class _$TitleChangedSEImpl implements TitleChangedSE {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(CreatedSE value) CreatedSE,
+    required TResult Function(DeletedSE value) DeletedSE,
     required TResult Function(TitleChangedSE value) TitleChangedSE,
     required TResult Function(DescriptionChangedSE value) DescriptionChangedSE,
     required TResult Function(MarkedAsThoughtSE value) MarkedAsThoughtSE,
@@ -548,6 +783,7 @@ class _$TitleChangedSEImpl implements TitleChangedSE {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CreatedSE value)? CreatedSE,
+    TResult? Function(DeletedSE value)? DeletedSE,
     TResult? Function(TitleChangedSE value)? TitleChangedSE,
     TResult? Function(DescriptionChangedSE value)? DescriptionChangedSE,
     TResult? Function(MarkedAsThoughtSE value)? MarkedAsThoughtSE,
@@ -563,6 +799,7 @@ class _$TitleChangedSEImpl implements TitleChangedSE {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CreatedSE value)? CreatedSE,
+    TResult Function(DeletedSE value)? DeletedSE,
     TResult Function(TitleChangedSE value)? TitleChangedSE,
     TResult Function(DescriptionChangedSE value)? DescriptionChangedSE,
     TResult Function(MarkedAsThoughtSE value)? MarkedAsThoughtSE,
@@ -700,6 +937,7 @@ class _$DescriptionChangedSEImpl implements DescriptionChangedSE {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(ID parent, DateTime at) CreatedSE,
+    required TResult Function(ID parent, DateTime at) DeletedSE,
     required TResult Function(ID parent, DateTime at, NonEmptyString? title)
         TitleChangedSE,
     required TResult Function(
@@ -719,6 +957,7 @@ class _$DescriptionChangedSEImpl implements DescriptionChangedSE {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(ID parent, DateTime at)? CreatedSE,
+    TResult? Function(ID parent, DateTime at)? DeletedSE,
     TResult? Function(ID parent, DateTime at, NonEmptyString? title)?
         TitleChangedSE,
     TResult? Function(ID parent, DateTime at, NonEmptyString? description)?
@@ -737,6 +976,7 @@ class _$DescriptionChangedSEImpl implements DescriptionChangedSE {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(ID parent, DateTime at)? CreatedSE,
+    TResult Function(ID parent, DateTime at)? DeletedSE,
     TResult Function(ID parent, DateTime at, NonEmptyString? title)?
         TitleChangedSE,
     TResult Function(ID parent, DateTime at, NonEmptyString? description)?
@@ -759,6 +999,7 @@ class _$DescriptionChangedSEImpl implements DescriptionChangedSE {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(CreatedSE value) CreatedSE,
+    required TResult Function(DeletedSE value) DeletedSE,
     required TResult Function(TitleChangedSE value) TitleChangedSE,
     required TResult Function(DescriptionChangedSE value) DescriptionChangedSE,
     required TResult Function(MarkedAsThoughtSE value) MarkedAsThoughtSE,
@@ -774,6 +1015,7 @@ class _$DescriptionChangedSEImpl implements DescriptionChangedSE {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CreatedSE value)? CreatedSE,
+    TResult? Function(DeletedSE value)? DeletedSE,
     TResult? Function(TitleChangedSE value)? TitleChangedSE,
     TResult? Function(DescriptionChangedSE value)? DescriptionChangedSE,
     TResult? Function(MarkedAsThoughtSE value)? MarkedAsThoughtSE,
@@ -789,6 +1031,7 @@ class _$DescriptionChangedSEImpl implements DescriptionChangedSE {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CreatedSE value)? CreatedSE,
+    TResult Function(DeletedSE value)? DeletedSE,
     TResult Function(TitleChangedSE value)? TitleChangedSE,
     TResult Function(DescriptionChangedSE value)? DescriptionChangedSE,
     TResult Function(MarkedAsThoughtSE value)? MarkedAsThoughtSE,
@@ -914,6 +1157,7 @@ class _$MarkedAsThoughtSEImpl implements MarkedAsThoughtSE {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(ID parent, DateTime at) CreatedSE,
+    required TResult Function(ID parent, DateTime at) DeletedSE,
     required TResult Function(ID parent, DateTime at, NonEmptyString? title)
         TitleChangedSE,
     required TResult Function(
@@ -933,6 +1177,7 @@ class _$MarkedAsThoughtSEImpl implements MarkedAsThoughtSE {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(ID parent, DateTime at)? CreatedSE,
+    TResult? Function(ID parent, DateTime at)? DeletedSE,
     TResult? Function(ID parent, DateTime at, NonEmptyString? title)?
         TitleChangedSE,
     TResult? Function(ID parent, DateTime at, NonEmptyString? description)?
@@ -951,6 +1196,7 @@ class _$MarkedAsThoughtSEImpl implements MarkedAsThoughtSE {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(ID parent, DateTime at)? CreatedSE,
+    TResult Function(ID parent, DateTime at)? DeletedSE,
     TResult Function(ID parent, DateTime at, NonEmptyString? title)?
         TitleChangedSE,
     TResult Function(ID parent, DateTime at, NonEmptyString? description)?
@@ -973,6 +1219,7 @@ class _$MarkedAsThoughtSEImpl implements MarkedAsThoughtSE {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(CreatedSE value) CreatedSE,
+    required TResult Function(DeletedSE value) DeletedSE,
     required TResult Function(TitleChangedSE value) TitleChangedSE,
     required TResult Function(DescriptionChangedSE value) DescriptionChangedSE,
     required TResult Function(MarkedAsThoughtSE value) MarkedAsThoughtSE,
@@ -988,6 +1235,7 @@ class _$MarkedAsThoughtSEImpl implements MarkedAsThoughtSE {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CreatedSE value)? CreatedSE,
+    TResult? Function(DeletedSE value)? DeletedSE,
     TResult? Function(TitleChangedSE value)? TitleChangedSE,
     TResult? Function(DescriptionChangedSE value)? DescriptionChangedSE,
     TResult? Function(MarkedAsThoughtSE value)? MarkedAsThoughtSE,
@@ -1003,6 +1251,7 @@ class _$MarkedAsThoughtSEImpl implements MarkedAsThoughtSE {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CreatedSE value)? CreatedSE,
+    TResult Function(DeletedSE value)? DeletedSE,
     TResult Function(TitleChangedSE value)? TitleChangedSE,
     TResult Function(DescriptionChangedSE value)? DescriptionChangedSE,
     TResult Function(MarkedAsThoughtSE value)? MarkedAsThoughtSE,
@@ -1137,6 +1386,7 @@ class _$CategoryChangedSEImpl implements CategoryChangedSE {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(ID parent, DateTime at) CreatedSE,
+    required TResult Function(ID parent, DateTime at) DeletedSE,
     required TResult Function(ID parent, DateTime at, NonEmptyString? title)
         TitleChangedSE,
     required TResult Function(
@@ -1156,6 +1406,7 @@ class _$CategoryChangedSEImpl implements CategoryChangedSE {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(ID parent, DateTime at)? CreatedSE,
+    TResult? Function(ID parent, DateTime at)? DeletedSE,
     TResult? Function(ID parent, DateTime at, NonEmptyString? title)?
         TitleChangedSE,
     TResult? Function(ID parent, DateTime at, NonEmptyString? description)?
@@ -1174,6 +1425,7 @@ class _$CategoryChangedSEImpl implements CategoryChangedSE {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(ID parent, DateTime at)? CreatedSE,
+    TResult Function(ID parent, DateTime at)? DeletedSE,
     TResult Function(ID parent, DateTime at, NonEmptyString? title)?
         TitleChangedSE,
     TResult Function(ID parent, DateTime at, NonEmptyString? description)?
@@ -1196,6 +1448,7 @@ class _$CategoryChangedSEImpl implements CategoryChangedSE {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(CreatedSE value) CreatedSE,
+    required TResult Function(DeletedSE value) DeletedSE,
     required TResult Function(TitleChangedSE value) TitleChangedSE,
     required TResult Function(DescriptionChangedSE value) DescriptionChangedSE,
     required TResult Function(MarkedAsThoughtSE value) MarkedAsThoughtSE,
@@ -1211,6 +1464,7 @@ class _$CategoryChangedSEImpl implements CategoryChangedSE {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CreatedSE value)? CreatedSE,
+    TResult? Function(DeletedSE value)? DeletedSE,
     TResult? Function(TitleChangedSE value)? TitleChangedSE,
     TResult? Function(DescriptionChangedSE value)? DescriptionChangedSE,
     TResult? Function(MarkedAsThoughtSE value)? MarkedAsThoughtSE,
@@ -1226,6 +1480,7 @@ class _$CategoryChangedSEImpl implements CategoryChangedSE {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CreatedSE value)? CreatedSE,
+    TResult Function(DeletedSE value)? DeletedSE,
     TResult Function(TitleChangedSE value)? TitleChangedSE,
     TResult Function(DescriptionChangedSE value)? DescriptionChangedSE,
     TResult Function(MarkedAsThoughtSE value)? MarkedAsThoughtSE,
@@ -1352,6 +1607,7 @@ class _$MarkedAsInProgressImpl implements MarkedAsInProgress {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(ID parent, DateTime at) CreatedSE,
+    required TResult Function(ID parent, DateTime at) DeletedSE,
     required TResult Function(ID parent, DateTime at, NonEmptyString? title)
         TitleChangedSE,
     required TResult Function(
@@ -1371,6 +1627,7 @@ class _$MarkedAsInProgressImpl implements MarkedAsInProgress {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(ID parent, DateTime at)? CreatedSE,
+    TResult? Function(ID parent, DateTime at)? DeletedSE,
     TResult? Function(ID parent, DateTime at, NonEmptyString? title)?
         TitleChangedSE,
     TResult? Function(ID parent, DateTime at, NonEmptyString? description)?
@@ -1389,6 +1646,7 @@ class _$MarkedAsInProgressImpl implements MarkedAsInProgress {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(ID parent, DateTime at)? CreatedSE,
+    TResult Function(ID parent, DateTime at)? DeletedSE,
     TResult Function(ID parent, DateTime at, NonEmptyString? title)?
         TitleChangedSE,
     TResult Function(ID parent, DateTime at, NonEmptyString? description)?
@@ -1411,6 +1669,7 @@ class _$MarkedAsInProgressImpl implements MarkedAsInProgress {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(CreatedSE value) CreatedSE,
+    required TResult Function(DeletedSE value) DeletedSE,
     required TResult Function(TitleChangedSE value) TitleChangedSE,
     required TResult Function(DescriptionChangedSE value) DescriptionChangedSE,
     required TResult Function(MarkedAsThoughtSE value) MarkedAsThoughtSE,
@@ -1426,6 +1685,7 @@ class _$MarkedAsInProgressImpl implements MarkedAsInProgress {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CreatedSE value)? CreatedSE,
+    TResult? Function(DeletedSE value)? DeletedSE,
     TResult? Function(TitleChangedSE value)? TitleChangedSE,
     TResult? Function(DescriptionChangedSE value)? DescriptionChangedSE,
     TResult? Function(MarkedAsThoughtSE value)? MarkedAsThoughtSE,
@@ -1441,6 +1701,7 @@ class _$MarkedAsInProgressImpl implements MarkedAsInProgress {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CreatedSE value)? CreatedSE,
+    TResult Function(DeletedSE value)? DeletedSE,
     TResult Function(TitleChangedSE value)? TitleChangedSE,
     TResult Function(DescriptionChangedSE value)? DescriptionChangedSE,
     TResult Function(MarkedAsThoughtSE value)? MarkedAsThoughtSE,
@@ -1564,6 +1825,7 @@ class _$MarkedAsDoneImpl implements MarkedAsDone {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(ID parent, DateTime at) CreatedSE,
+    required TResult Function(ID parent, DateTime at) DeletedSE,
     required TResult Function(ID parent, DateTime at, NonEmptyString? title)
         TitleChangedSE,
     required TResult Function(
@@ -1583,6 +1845,7 @@ class _$MarkedAsDoneImpl implements MarkedAsDone {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(ID parent, DateTime at)? CreatedSE,
+    TResult? Function(ID parent, DateTime at)? DeletedSE,
     TResult? Function(ID parent, DateTime at, NonEmptyString? title)?
         TitleChangedSE,
     TResult? Function(ID parent, DateTime at, NonEmptyString? description)?
@@ -1601,6 +1864,7 @@ class _$MarkedAsDoneImpl implements MarkedAsDone {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(ID parent, DateTime at)? CreatedSE,
+    TResult Function(ID parent, DateTime at)? DeletedSE,
     TResult Function(ID parent, DateTime at, NonEmptyString? title)?
         TitleChangedSE,
     TResult Function(ID parent, DateTime at, NonEmptyString? description)?
@@ -1623,6 +1887,7 @@ class _$MarkedAsDoneImpl implements MarkedAsDone {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(CreatedSE value) CreatedSE,
+    required TResult Function(DeletedSE value) DeletedSE,
     required TResult Function(TitleChangedSE value) TitleChangedSE,
     required TResult Function(DescriptionChangedSE value) DescriptionChangedSE,
     required TResult Function(MarkedAsThoughtSE value) MarkedAsThoughtSE,
@@ -1638,6 +1903,7 @@ class _$MarkedAsDoneImpl implements MarkedAsDone {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CreatedSE value)? CreatedSE,
+    TResult? Function(DeletedSE value)? DeletedSE,
     TResult? Function(TitleChangedSE value)? TitleChangedSE,
     TResult? Function(DescriptionChangedSE value)? DescriptionChangedSE,
     TResult? Function(MarkedAsThoughtSE value)? MarkedAsThoughtSE,
@@ -1653,6 +1919,7 @@ class _$MarkedAsDoneImpl implements MarkedAsDone {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CreatedSE value)? CreatedSE,
+    TResult Function(DeletedSE value)? DeletedSE,
     TResult Function(TitleChangedSE value)? TitleChangedSE,
     TResult Function(DescriptionChangedSE value)? DescriptionChangedSE,
     TResult Function(MarkedAsThoughtSE value)? MarkedAsThoughtSE,
@@ -1775,6 +2042,7 @@ class _$MarkedAsToDoImpl implements MarkedAsToDo {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(ID parent, DateTime at) CreatedSE,
+    required TResult Function(ID parent, DateTime at) DeletedSE,
     required TResult Function(ID parent, DateTime at, NonEmptyString? title)
         TitleChangedSE,
     required TResult Function(
@@ -1794,6 +2062,7 @@ class _$MarkedAsToDoImpl implements MarkedAsToDo {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(ID parent, DateTime at)? CreatedSE,
+    TResult? Function(ID parent, DateTime at)? DeletedSE,
     TResult? Function(ID parent, DateTime at, NonEmptyString? title)?
         TitleChangedSE,
     TResult? Function(ID parent, DateTime at, NonEmptyString? description)?
@@ -1812,6 +2081,7 @@ class _$MarkedAsToDoImpl implements MarkedAsToDo {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(ID parent, DateTime at)? CreatedSE,
+    TResult Function(ID parent, DateTime at)? DeletedSE,
     TResult Function(ID parent, DateTime at, NonEmptyString? title)?
         TitleChangedSE,
     TResult Function(ID parent, DateTime at, NonEmptyString? description)?
@@ -1834,6 +2104,7 @@ class _$MarkedAsToDoImpl implements MarkedAsToDo {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(CreatedSE value) CreatedSE,
+    required TResult Function(DeletedSE value) DeletedSE,
     required TResult Function(TitleChangedSE value) TitleChangedSE,
     required TResult Function(DescriptionChangedSE value) DescriptionChangedSE,
     required TResult Function(MarkedAsThoughtSE value) MarkedAsThoughtSE,
@@ -1849,6 +2120,7 @@ class _$MarkedAsToDoImpl implements MarkedAsToDo {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CreatedSE value)? CreatedSE,
+    TResult? Function(DeletedSE value)? DeletedSE,
     TResult? Function(TitleChangedSE value)? TitleChangedSE,
     TResult? Function(DescriptionChangedSE value)? DescriptionChangedSE,
     TResult? Function(MarkedAsThoughtSE value)? MarkedAsThoughtSE,
@@ -1864,6 +2136,7 @@ class _$MarkedAsToDoImpl implements MarkedAsToDo {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CreatedSE value)? CreatedSE,
+    TResult Function(DeletedSE value)? DeletedSE,
     TResult Function(TitleChangedSE value)? TitleChangedSE,
     TResult Function(DescriptionChangedSE value)? DescriptionChangedSE,
     TResult Function(MarkedAsThoughtSE value)? MarkedAsThoughtSE,

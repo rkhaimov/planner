@@ -24,6 +24,16 @@ linter:
     prefer_function_declarations_over_variables: false
     avoid_print: false
     avoid_function_literals_in_foreach_calls: false
+    prefer_final_fields: true
+    exhaustive_cases: true
+    prefer_single_quotes: true
+    prefer_final_locals: true
 
 # Additional information about this file can be found at
 # https://dart.dev/guides/language/analysis-options
+analyzer:
+  errors:
+    unrelated_type_equality_checks: error
+    null_argument_to_non_null_type: error
+    argument_type_not_assignable_to_error_handler: error
+    void_checks: error

@@ -33,6 +33,7 @@ Iterable<ThoughtStruct> toThoughtStruct(Iterable<SourcedEvent> events) {
                   return curr.copyWith(category: struct);
                 },
               ),
+            DeletedSE() => _onDeleted(all, event),
             MarkedAsThoughtSE() => all,
             MarkedAsInProgress() => all,
             MarkedAsDone() => all,
@@ -46,12 +47,24 @@ Map<ID, ThoughtStruct> _onCreated(
 ) {
   require(
     all.containsKey(event.parent).not(),
-    'Single ToDo can not be created more than once',
+    'Single thought can not be created more than once',
   );
 
   all[event.parent] = ThoughtStruct(id: event.parent);
 
   return all;
+}
+
+Map<ID, ThoughtStruct> _onDeleted(
+  Map<ID, ThoughtStruct> all,
+  DeletedSE event,
+) {
+  require(
+    all.containsKey(event.parent),
+    'Thought must be created before it is deleted',
+  );
+
+  return all..remove(event.parent);
 }
 
 Map<ID, ThoughtStruct> _update(
@@ -61,7 +74,7 @@ Map<ID, ThoughtStruct> _update(
 ) {
   final todo = requireNotNull(
     all[event.parent],
-    'ToDo must be created before it is updated',
+    'Thought must be created before it is updated',
   );
 
   all[event.parent] = update(todo);

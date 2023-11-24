@@ -13,12 +13,12 @@ T requireNotNull<T>(T? value,
   return value;
 }
 
-T requireType<T>(dynamic value) {
+T requireType<T>(dynamic value, [String? message]) {
   if (value is T) {
     return value;
   }
 
-  throw Exception('Expected value to have type $T');
+  throw Exception(message ?? 'Expected value to have type $T');
 }
 
 extension Not on bool {

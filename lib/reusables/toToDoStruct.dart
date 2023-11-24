@@ -21,7 +21,6 @@ Iterable<ToDoStruct> toToDoStruct(Iterable<SourcedEvent> events) {
           event,
           (curr) => curr.copyWith(description: event.description),
         ),
-      MarkedAsThoughtSE() => all,
       CategoryChangedSE() => _update(
           all,
           event,
@@ -49,6 +48,8 @@ Iterable<ToDoStruct> toToDoStruct(Iterable<SourcedEvent> events) {
           event,
           (curr) => curr.copyWith(status: ToDoStatus.TO_DO),
         ),
+      DeletedSE() => _onDeleted(all, event),
+      MarkedAsThoughtSE() => all,
     },
   ).values;
 }
@@ -65,6 +66,18 @@ Map<ID, ToDoStruct> _onCreated(
   all[event.parent] = ToDoStruct(id: event.parent);
 
   return all;
+}
+
+Map<ID, ToDoStruct> _onDeleted(
+  Map<ID, ToDoStruct> all,
+  DeletedSE event,
+) {
+  require(
+    all.containsKey(event.parent),
+    'ToDo must be created before it is deleted',
+  );
+
+  return all..remove(event.parent);
 }
 
 Map<ID, ToDoStruct> _update(

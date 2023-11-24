@@ -90,7 +90,7 @@ Iterable<TileBuilder> _buildItemRenderers(
 final _buildCategoryTile =
     (BuildContext context, CategoryStruct category) => ListTile(
           title: Text(
-            category.value.raw,
+            category.value.toString(),
             style: Theme.of(context).textTheme.headlineSmall,
           ),
         );
@@ -103,34 +103,41 @@ final _buildToDoTile = (
   final description = todo.description;
 
   return ListTile(
-    title: Text(todo.title?.raw ?? '<НЕТ ОГЛАВЛЕНИЯ>'),
-    subtitle: description == null ? null : Text(description.raw),
+    title: Text(todo.title?.toString() ?? '<НЕТ ОГЛАВЛЕНИЯ>'),
+    subtitle: description == null ? null : Text(description.toString()),
     onTap: () => showModalBottomSheet(
       context: context,
-      builder: (_) => Container(
-        // TODO: Get rid off hard code values
-        height: 250,
-        padding: const EdgeInsets.symmetric(vertical: 20),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text('Select an action',
-                style: Theme.of(context).textTheme.bodyLarge),
-            const Spacer(flex: 1),
-            ListView(
-              shrinkWrap: true,
-              children: buildActions(todo).toList(),
-            ),
-          ],
-        ),
-      ),
+      builder: (_) {
+        final actions = buildActions(todo);
+        // TODO: Get rid of hardcoded values
+        const tileHeight = 56;
+
+        return Container(
+          height: actions.length * tileHeight + 100,
+          padding: const EdgeInsets.symmetric(vertical: 20),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                'Select an action',
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
+              const Spacer(flex: 1),
+              ListView(
+                shrinkWrap: true,
+                children: actions.toList(),
+              ),
+            ],
+          ),
+        );
+      },
     ),
   );
 };
 
 final _buildOthersCategoryTile = (BuildContext context) => ListTile(
       title: Text(
-        "Others",
+        'Others',
         style: Theme.of(context)
             .textTheme
             .headlineSmall

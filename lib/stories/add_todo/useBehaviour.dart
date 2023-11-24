@@ -3,6 +3,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:planner/externals/provider.dart';
 import 'package:planner/externals/types.dart';
 import 'package:planner/reusables/datetime.dart';
+import 'package:planner/reusables/non_empty_string.dart';
 
 final useBehaviour = () {
   final context = useContext();
@@ -13,11 +14,11 @@ final useBehaviour = () {
   final thought = useState(false);
 
   final submit = () async {
-    final latest = (await externals.getAllSourcedEvents().request())
+    final id = (await externals.getAllSourcedEvents().request())
         .whereType<CreatedSE>()
-        .lastOrNull;
+        .fold(ID.initial(), (latest, curr) => ID.last(latest, curr.parent))
+        .next();
 
-    final id = latest == null ? ID.zero() : ID.after(latest.parent);
     final at = now();
 
     await externals.pushSourcedEvent(CreatedSE(id, at));

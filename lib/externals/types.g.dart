@@ -20,6 +20,20 @@ Map<String, dynamic> _$$CreatedSEImplToJson(_$CreatedSEImpl instance) =>
       'runtimeType': instance.$type,
     };
 
+_$DeletedSEImpl _$$DeletedSEImplFromJson(Map<String, dynamic> json) =>
+    _$DeletedSEImpl(
+      ID.fromJson(json['parent']),
+      DateTime.parse(json['at'] as String),
+      $type: json['runtimeType'] as String?,
+    );
+
+Map<String, dynamic> _$$DeletedSEImplToJson(_$DeletedSEImpl instance) =>
+    <String, dynamic>{
+      'parent': instance.parent,
+      'at': instance.at.toIso8601String(),
+      'runtimeType': instance.$type,
+    };
+
 _$TitleChangedSEImpl _$$TitleChangedSEImplFromJson(Map<String, dynamic> json) =>
     _$TitleChangedSEImpl(
       ID.fromJson(json['parent']),

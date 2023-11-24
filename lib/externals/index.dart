@@ -14,7 +14,7 @@ final createOriginExternals = () async {
     jsonEncode(
       withIntegrityAndConsistencyVerified(
         withStructureVerified(all: prefs.getString('events') ?? '[]'),
-      ),
+      ).toList(),
     ),
   );
 

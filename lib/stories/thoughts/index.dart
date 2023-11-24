@@ -79,7 +79,7 @@ Iterable<TileBuilder> _buildItemRenderers(
 final _buildCategoryTile =
     (BuildContext context, CategoryStruct category) => ListTile(
           title: Text(
-            category.value.raw,
+            category.value.toString(),
             style: Theme.of(context).textTheme.headlineSmall,
           ),
         );
@@ -88,8 +88,8 @@ final _buildThoughtTile = (BuildContext context, ThoughtStruct thought) {
   final description = thought.description;
 
   return ListTile(
-    title: Text(thought.title?.raw ?? '<НЕТ ОГЛАВЛЕНИЯ>'),
-    subtitle: description == null ? null : Text(description.raw),
+    title: Text(thought.title?.toString() ?? '<НЕТ ОГЛАВЛЕНИЯ>'),
+    subtitle: description == null ? null : Text(description.toString()),
   );
 };
 

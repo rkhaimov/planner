@@ -50,7 +50,8 @@ class _ViewToDo extends HookWidget {
                     style: Theme.of(context).textTheme.titleLarge,
                   ),
                 ),
-                ListTile(title: Text(todo.title?.raw ?? '<TITLE IS EMPTY>')),
+                ListTile(
+                    title: Text(todo.title?.toString() ?? '<TITLE IS EMPTY>')),
                 ListTile(
                   title: Text(
                     'Description',
@@ -58,8 +59,8 @@ class _ViewToDo extends HookWidget {
                   ),
                 ),
                 ListTile(
-                    title: Text(
-                        todo.description?.raw ?? '<DESCRIPTION IS EMPTY>')),
+                    title: Text(todo.description?.toString() ??
+                        '<DESCRIPTION IS EMPTY>')),
                 ListTile(
                   title: Text(
                     'Category',
@@ -67,8 +68,8 @@ class _ViewToDo extends HookWidget {
                   ),
                 ),
                 ListTile(
-                  title:
-                      Text(todo.category?.value.raw ?? '<CATEGORY IS EMPTY>'),
+                  title: Text(
+                      todo.category?.value.toString() ?? '<CATEGORY IS EMPTY>'),
                 ),
                 ListTile(
                   title: Text(

@@ -3,14 +3,17 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:planner/externals/provider.dart';
 import 'package:planner/externals/types.dart';
 import 'package:planner/reusables/datetime.dart';
+import 'package:planner/reusables/non_empty_string.dart';
 import 'package:planner/reusables/types.dart';
 
 final useBehaviour = ({required ToDoStruct todo}) {
   final context = useContext();
   final externals = useExternals();
-  final title = useTextEditingController(text: todo.title?.raw);
-  final description = useTextEditingController(text: todo.description?.raw);
-  final category = useTextEditingController(text: todo.category?.value.raw);
+  final title = useTextEditingController(text: todo.title?.toString());
+  final description =
+      useTextEditingController(text: todo.description?.toString());
+  final category =
+      useTextEditingController(text: todo.category?.value.toString());
 
   // TODO: Should be optimized
   // TODO: Empty string and null string should be the same

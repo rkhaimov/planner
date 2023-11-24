@@ -13,27 +13,24 @@ final withIntegrityAndConsistencyVerified = (Iterable<SourcedEvent> all) {
   return rules.fold(all, (events, it) => it.transform(events)).toList();
 };
 
+// TODO: Some parts of data is being lost during transform
 final Rule _allIdsAreDifferentRule = (
   satisfies: (se) =>
       se.whereType<CreatedSE>().length ==
       se.whereType<CreatedSE>().map((it) => it.parent).toSet().length,
-  transform: (se) {
-    // TODO: Some parts of data is being lost
-    var id = ID.zero();
-
-    return se.map((it) {
-      switch (it) {
-        case CreatedSE():
-          final updated = it.copyWith(parent: id);
-
-          id = ID.after(id);
-
-          return updated;
-        case _:
-          return it;
-      }
-    });
-  },
+  transform: (se) => se.fold(
+        (ID.initial(), <SourcedEvent>[]),
+        (all, curr) => switch (curr) {
+          CreatedSE() => (
+              all.$1.next(),
+              [...all.$2, curr.copyWith(parent: all.$1)],
+            ),
+          _ => (
+              all.$1,
+              [...all.$2, curr],
+            ),
+        },
+      ).$2,
 );
 
 typedef Rule = ({

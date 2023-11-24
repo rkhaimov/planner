@@ -128,6 +128,21 @@ final generalStories = createGroup('GeneralStories', [
         .tap(find.byIcon(Icons.arrow_back)),
   ),
   createStory(
+    title: 'ToDoRemove',
+    act: (actor) => actor
+        .tap(find.byIcon(Icons.add))
+        .enterText(find.text('Title'), 'Реализовать тесты')
+        .tap(find.byIcon(Icons.add))
+        .tap(find.text('Реализовать тесты'))
+        .tap(find.text('Remove'))
+        .screenshot('RemoveConfirmation')
+        .tap(find.text('NO'))
+        .screenshot('RemovalDenied')
+        .tap(find.text('Реализовать тесты'))
+        .tap(find.text('Remove'))
+        .tap(find.text('YES')),
+  ),
+  createStory(
     title: 'CreateThought',
     act: (actor) => actor
         .tap(find.byIcon(Icons.add))
