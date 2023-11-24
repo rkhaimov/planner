@@ -1,10 +1,9 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:planner/reusables/types.dart';
+import 'package:planner/reusables/aggregate/types.dart';
 
 import 'types.dart';
 
 part 'deprecated.freezed.dart';
-
 part 'deprecated.g.dart';
 
 @freezed
@@ -38,7 +37,7 @@ sealed class SourcedEventDeprecated with _$SourcedEventDeprecated {
   factory SourcedEventDeprecated.StatusChangedSE(
     ID parent,
     DateTime at,
-    ToDoStatus status,
+    AggregateStatus status,
   ) = StatusChangedSEDeprecated;
 
   factory SourcedEventDeprecated.fromJson(Map<String, dynamic> json) =>

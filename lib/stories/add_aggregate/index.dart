@@ -1,21 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:planner/reusables/utils.dart';
-import 'package:planner/stories/add_todo/useBehaviour.dart';
+
+import './useBehaviour.dart';
 
 // TODO: Duplicate
-final askForCreateToDoInfo = (BuildContext context) => Navigator.of(context)
-    .push(MaterialPageRoute(builder: (_) => const _AddToDo()));
+final askForCreateAggregateInfo = (BuildContext context) =>
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (_) => const _AddAggregate()));
 
-class _AddToDo extends HookWidget {
-  const _AddToDo();
+class _AddAggregate extends HookWidget {
+  const _AddAggregate();
 
   @override
   Widget build(BuildContext context) {
     final behaviour = useBehaviour();
 
     return Scaffold(
-      appBar: AppBar(title: const Text('ADD TODO')),
+      appBar: AppBar(title: const Text('ADD AGGREGATE')),
       floatingActionButton: IconButton(
         onPressed: behaviour.submit,
         icon: const Icon(Icons.add),

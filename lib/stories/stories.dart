@@ -3,6 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:planner/storybook/story_foundations.dart';
 
 // TODO: Sorting
+// TODO: One test can be the arrangement of the other one
 final generalStories = createGroup('GeneralStories', [
   createStory(
     title: 'CategoryGrouping',
@@ -153,5 +154,70 @@ final generalStories = createGroup('GeneralStories', [
         .tap(find.byIcon(Icons.add))
         .screenshot('ToDoTab')
         .tap(find.byIcon(Icons.psychology_outlined)),
+  ),
+  createStory(
+    title: 'TransitionToThought',
+    act: (actor) => actor
+        .tap(find.byIcon(Icons.add))
+        .enterText(find.text('Title'), 'Обдумать план')
+        .enterText(find.text('Description'), 'С нужным описанием')
+        .enterText(find.text('Category'), 'Здоровье')
+        .tap(find.byIcon(Icons.add))
+        .tap(find.text('Обдумать план'))
+        .tap(find.text('Open info'))
+        .tap(find.byIcon(Icons.edit))
+        .tap(find.text('Thought'))
+        .screenshot('EditedForm')
+        .tap(find.byIcon(Icons.check))
+        .screenshot('ThoughtView')
+        .tap(find.byIcon(Icons.arrow_back))
+        .screenshot('ToDoView')
+        .tap(find.byIcon(Icons.psychology_outlined)),
+  ),
+  createStory(
+    title: 'ThoughtView',
+    act: (actor) => actor
+        .tap(find.byIcon(Icons.add))
+        .enterText(find.text('Title'), 'Продумать план')
+        .tap(find.text('Thought'))
+        .tap(find.byIcon(Icons.add))
+        .tap(find.byIcon(Icons.psychology_outlined))
+        .tap(find.text('Продумать план'))
+        .tap(find.text('Open info')),
+  ),
+  createStory(
+    title: 'ThoughtEdit',
+    act: (actor) => actor
+        .tap(find.byIcon(Icons.add))
+        .enterText(find.text('Title'), 'Продумать план')
+        .tap(find.text('Thought'))
+        .tap(find.byIcon(Icons.add))
+        .tap(find.byIcon(Icons.psychology_outlined))
+        .tap(find.text('Продумать план'))
+        .tap(find.text('Open info'))
+        .tap(find.byIcon(Icons.edit))
+        .enterText(find.text('Category'), 'Новая категория')
+        .enterText(find.text('Description'), 'С измененным описанием')
+        .screenshot('EditedForm')
+        .tap(find.byIcon(Icons.check))
+        .screenshot('ThoughtView')
+        .tap(find.byIcon(Icons.arrow_back)),
+  ),
+  createStory(
+    title: 'ThoughtRemove',
+    act: (actor) => actor
+        .tap(find.byIcon(Icons.add))
+        .enterText(find.text('Title'), 'Продумать план')
+        .tap(find.text('Thought'))
+        .tap(find.byIcon(Icons.add))
+        .tap(find.byIcon(Icons.psychology_outlined))
+        .tap(find.text('Продумать план'))
+        .tap(find.text('Remove'))
+        .screenshot('RemoveConfirmation')
+        .tap(find.text('NO'))
+        .screenshot('RemovalDenied')
+        .tap(find.text('Продумать план'))
+        .tap(find.text('Remove'))
+        .tap(find.text('YES')),
   )
 ]);

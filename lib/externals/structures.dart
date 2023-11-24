@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:planner/externals/deprecated.dart';
 import 'package:planner/externals/types.dart';
+import 'package:planner/reusables/aggregate/types.dart';
 import 'package:planner/reusables/non_empty_string.dart';
-import 'package:planner/reusables/types.dart';
 
 Iterable<SourcedEvent> withStructureVerified({required String all}) {
   try {
@@ -37,8 +37,8 @@ SourcedEvent _fromDeprecated(SourcedEventDeprecated it) => switch (it) {
           NonEmptyString.create(it.category),
         ),
       StatusChangedSEDeprecated() => switch (it.status) {
-          ToDoStatus.IN_PROGRESS => MarkedAsInProgress(it.parent, it.at),
-          ToDoStatus.TO_DO => MarkedAsToDo(it.parent, it.at),
-          ToDoStatus.DONE => MarkedAsDone(it.parent, it.at),
+          AggregateStatus.IN_PROGRESS => MarkedAsInProgress(it.parent, it.at),
+          AggregateStatus.TO_DO => MarkedAsToDo(it.parent, it.at),
+          AggregateStatus.DONE => MarkedAsDone(it.parent, it.at),
         },
     };

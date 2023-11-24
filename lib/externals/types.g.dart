@@ -87,6 +87,21 @@ Map<String, dynamic> _$$MarkedAsThoughtSEImplToJson(
       'runtimeType': instance.$type,
     };
 
+_$MarkedAsToDoSEImpl _$$MarkedAsToDoSEImplFromJson(Map<String, dynamic> json) =>
+    _$MarkedAsToDoSEImpl(
+      ID.fromJson(json['parent']),
+      DateTime.parse(json['at'] as String),
+      $type: json['runtimeType'] as String?,
+    );
+
+Map<String, dynamic> _$$MarkedAsToDoSEImplToJson(
+        _$MarkedAsToDoSEImpl instance) =>
+    <String, dynamic>{
+      'parent': instance.parent,
+      'at': instance.at.toIso8601String(),
+      'runtimeType': instance.$type,
+    };
+
 _$CategoryChangedSEImpl _$$CategoryChangedSEImplFromJson(
         Map<String, dynamic> json) =>
     _$CategoryChangedSEImpl(

@@ -3,18 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:planner/externals/provider.dart';
 import 'package:planner/externals/types.dart';
+import 'package:planner/reusables/aggregate/index.dart';
+import 'package:planner/reusables/aggregate/types.dart';
 import 'package:planner/reusables/cq/query_builder.dart';
-import 'package:planner/reusables/toToDoStruct.dart';
-import 'package:planner/reusables/types.dart';
-import 'package:planner/stories/edit_todo/index.dart';
+import 'package:planner/stories/edit_aggregate/index.dart';
 
-final viewToDoInfo = (BuildContext context, ID id) => Navigator.of(context)
-    .push(MaterialPageRoute(builder: (_) => _ViewToDo(id: id)));
+final viewAggregateInfo = (BuildContext context, ID id) => Navigator.of(context)
+    .push(MaterialPageRoute(builder: (_) => _ViewAggregate(id: id)));
 
-class _ViewToDo extends HookWidget {
+class _ViewAggregate extends HookWidget {
   final ID id;
 
-  const _ViewToDo({required this.id});
+  const _ViewAggregate({required this.id});
 
   @override
   Widget build(BuildContext context) {
@@ -24,20 +24,20 @@ class _ViewToDo extends HookWidget {
       createQuery: externals.getAllSourcedEvents,
       onInitializing: (context) => Text('Waiting'),
       onData: (context, events) {
-        final todo =
-            toToDoStruct(events).singleWhereOrNull((it) => it.id == id);
+        final aggregate =
+            toAggregateStruct(events).singleWhereOrNull((it) => it.id == id);
 
-        if (todo == null) {
+        if (aggregate == null) {
           return Scaffold(
-            appBar: AppBar(title: const Text('VIEW TODO')),
-            body: Text('Referenced to do is no longer available'),
+            appBar: AppBar(title: const Text('VIEW AGGREGATE')),
+            body: Text('Referenced aggregate is no longer available'),
           );
         }
 
         return Scaffold(
-          appBar: AppBar(title: const Text('VIEW TODO')),
+          appBar: AppBar(title: const Text('VIEW AGGREGATE')),
           floatingActionButton: IconButton(
-            onPressed: () => askForEditToDoInfo(context, todo),
+            onPressed: () => askForEditAggregateInfo(context, aggregate),
             icon: const Icon(Icons.edit),
           ),
           body: Padding(
@@ -51,7 +51,8 @@ class _ViewToDo extends HookWidget {
                   ),
                 ),
                 ListTile(
-                    title: Text(todo.title?.toString() ?? '<TITLE IS EMPTY>')),
+                    title: Text(
+                        aggregate.title?.toString() ?? '<TITLE IS EMPTY>')),
                 ListTile(
                   title: Text(
                     'Description',
@@ -59,7 +60,7 @@ class _ViewToDo extends HookWidget {
                   ),
                 ),
                 ListTile(
-                    title: Text(todo.description?.toString() ??
+                    title: Text(aggregate.description?.toString() ??
                         '<DESCRIPTION IS EMPTY>')),
                 ListTile(
                   title: Text(
@@ -68,8 +69,8 @@ class _ViewToDo extends HookWidget {
                   ),
                 ),
                 ListTile(
-                  title: Text(
-                      todo.category?.value.toString() ?? '<CATEGORY IS EMPTY>'),
+                  title: Text(aggregate.category?.value.toString() ??
+                      '<CATEGORY IS EMPTY>'),
                 ),
                 ListTile(
                   title: Text(
@@ -79,8 +80,16 @@ class _ViewToDo extends HookWidget {
                 ),
                 // TODO: Status duplication
                 ListTile(
-                  title: Text(todo.status?.name ?? ToDoStatus.TO_DO.name),
+                  title: Text(
+                      aggregate.status?.name ?? AggregateStatus.TO_DO.name),
                 ),
+                ListTile(
+                  title: Text(
+                    'Thought',
+                    style: Theme.of(context).textTheme.titleLarge,
+                  ),
+                ),
+                ListTile(title: Text(aggregate.thought == true ? 'YES' : 'NO')),
               ],
             ),
           ),

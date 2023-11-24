@@ -58,6 +58,8 @@ sealed class SourcedEvent with _$SourcedEvent {
   factory SourcedEvent.MarkedAsThoughtSE(ID parent, DateTime at) =
       MarkedAsThoughtSE;
 
+  factory SourcedEvent.MarkedAsToDoSE(ID parent, DateTime at) = MarkedAsToDoSE;
+
   factory SourcedEvent.CategoryChangedSE(
     ID parent,
     DateTime at,

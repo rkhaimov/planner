@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:planner/externals/provider.dart';
+import 'package:planner/reusables/category_struct.dart';
 import 'package:planner/reusables/cq/query_builder.dart';
-import 'package:planner/reusables/toToDoStruct.dart';
-import 'package:planner/reusables/types.dart';
+import 'package:planner/reusables/todo/toToDoStruct.dart';
+import 'package:planner/reusables/todo/types.dart';
 
 typedef ToDoActionBuilder = Iterable<ListTile> Function(ToDoStruct todo);
 
@@ -125,6 +126,7 @@ final _buildToDoTile = (
               const Spacer(flex: 1),
               ListView(
                 shrinkWrap: true,
+                // TODO: Deduplicate actions
                 children: actions.toList(),
               ),
             ],

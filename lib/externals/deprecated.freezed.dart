@@ -53,7 +53,7 @@ mixin _$SourcedEventDeprecated {
     required TResult Function(ID parent, DateTime at) MarkedAsThoughtSE,
     required TResult Function(ID parent, DateTime at, String category)
         CategoryChangedSE,
-    required TResult Function(ID parent, DateTime at, ToDoStatus status)
+    required TResult Function(ID parent, DateTime at, AggregateStatus status)
         StatusChangedSE,
   }) =>
       throw _privateConstructorUsedError;
@@ -66,7 +66,7 @@ mixin _$SourcedEventDeprecated {
     TResult? Function(ID parent, DateTime at)? MarkedAsThoughtSE,
     TResult? Function(ID parent, DateTime at, String category)?
         CategoryChangedSE,
-    TResult? Function(ID parent, DateTime at, ToDoStatus status)?
+    TResult? Function(ID parent, DateTime at, AggregateStatus status)?
         StatusChangedSE,
   }) =>
       throw _privateConstructorUsedError;
@@ -79,7 +79,7 @@ mixin _$SourcedEventDeprecated {
     TResult Function(ID parent, DateTime at)? MarkedAsThoughtSE,
     TResult Function(ID parent, DateTime at, String category)?
         CategoryChangedSE,
-    TResult Function(ID parent, DateTime at, ToDoStatus status)?
+    TResult Function(ID parent, DateTime at, AggregateStatus status)?
         StatusChangedSE,
     required TResult orElse(),
   }) =>
@@ -257,7 +257,7 @@ class _$CreatedSEDeprecatedImpl implements CreatedSEDeprecated {
     required TResult Function(ID parent, DateTime at) MarkedAsThoughtSE,
     required TResult Function(ID parent, DateTime at, String category)
         CategoryChangedSE,
-    required TResult Function(ID parent, DateTime at, ToDoStatus status)
+    required TResult Function(ID parent, DateTime at, AggregateStatus status)
         StatusChangedSE,
   }) {
     return CreatedSE(parent, at);
@@ -273,7 +273,7 @@ class _$CreatedSEDeprecatedImpl implements CreatedSEDeprecated {
     TResult? Function(ID parent, DateTime at)? MarkedAsThoughtSE,
     TResult? Function(ID parent, DateTime at, String category)?
         CategoryChangedSE,
-    TResult? Function(ID parent, DateTime at, ToDoStatus status)?
+    TResult? Function(ID parent, DateTime at, AggregateStatus status)?
         StatusChangedSE,
   }) {
     return CreatedSE?.call(parent, at);
@@ -289,7 +289,7 @@ class _$CreatedSEDeprecatedImpl implements CreatedSEDeprecated {
     TResult Function(ID parent, DateTime at)? MarkedAsThoughtSE,
     TResult Function(ID parent, DateTime at, String category)?
         CategoryChangedSE,
-    TResult Function(ID parent, DateTime at, ToDoStatus status)?
+    TResult Function(ID parent, DateTime at, AggregateStatus status)?
         StatusChangedSE,
     required TResult orElse(),
   }) {
@@ -475,7 +475,7 @@ class _$TitleChangedSEDeprecatedImpl implements TitleChangedSEDeprecated {
     required TResult Function(ID parent, DateTime at) MarkedAsThoughtSE,
     required TResult Function(ID parent, DateTime at, String category)
         CategoryChangedSE,
-    required TResult Function(ID parent, DateTime at, ToDoStatus status)
+    required TResult Function(ID parent, DateTime at, AggregateStatus status)
         StatusChangedSE,
   }) {
     return TitleChangedSE(parent, at, title);
@@ -491,7 +491,7 @@ class _$TitleChangedSEDeprecatedImpl implements TitleChangedSEDeprecated {
     TResult? Function(ID parent, DateTime at)? MarkedAsThoughtSE,
     TResult? Function(ID parent, DateTime at, String category)?
         CategoryChangedSE,
-    TResult? Function(ID parent, DateTime at, ToDoStatus status)?
+    TResult? Function(ID parent, DateTime at, AggregateStatus status)?
         StatusChangedSE,
   }) {
     return TitleChangedSE?.call(parent, at, title);
@@ -507,7 +507,7 @@ class _$TitleChangedSEDeprecatedImpl implements TitleChangedSEDeprecated {
     TResult Function(ID parent, DateTime at)? MarkedAsThoughtSE,
     TResult Function(ID parent, DateTime at, String category)?
         CategoryChangedSE,
-    TResult Function(ID parent, DateTime at, ToDoStatus status)?
+    TResult Function(ID parent, DateTime at, AggregateStatus status)?
         StatusChangedSE,
     required TResult orElse(),
   }) {
@@ -699,7 +699,7 @@ class _$DescriptionChangedSEDeprecatedImpl
     required TResult Function(ID parent, DateTime at) MarkedAsThoughtSE,
     required TResult Function(ID parent, DateTime at, String category)
         CategoryChangedSE,
-    required TResult Function(ID parent, DateTime at, ToDoStatus status)
+    required TResult Function(ID parent, DateTime at, AggregateStatus status)
         StatusChangedSE,
   }) {
     return DescriptionChangedSE(parent, at, description);
@@ -715,7 +715,7 @@ class _$DescriptionChangedSEDeprecatedImpl
     TResult? Function(ID parent, DateTime at)? MarkedAsThoughtSE,
     TResult? Function(ID parent, DateTime at, String category)?
         CategoryChangedSE,
-    TResult? Function(ID parent, DateTime at, ToDoStatus status)?
+    TResult? Function(ID parent, DateTime at, AggregateStatus status)?
         StatusChangedSE,
   }) {
     return DescriptionChangedSE?.call(parent, at, description);
@@ -731,7 +731,7 @@ class _$DescriptionChangedSEDeprecatedImpl
     TResult Function(ID parent, DateTime at)? MarkedAsThoughtSE,
     TResult Function(ID parent, DateTime at, String category)?
         CategoryChangedSE,
-    TResult Function(ID parent, DateTime at, ToDoStatus status)?
+    TResult Function(ID parent, DateTime at, AggregateStatus status)?
         StatusChangedSE,
     required TResult orElse(),
   }) {
@@ -913,7 +913,7 @@ class _$MarkedAsThoughtSEDeprecatedImpl implements MarkedAsThoughtSEDeprecated {
     required TResult Function(ID parent, DateTime at) MarkedAsThoughtSE,
     required TResult Function(ID parent, DateTime at, String category)
         CategoryChangedSE,
-    required TResult Function(ID parent, DateTime at, ToDoStatus status)
+    required TResult Function(ID parent, DateTime at, AggregateStatus status)
         StatusChangedSE,
   }) {
     return MarkedAsThoughtSE(parent, at);
@@ -929,7 +929,7 @@ class _$MarkedAsThoughtSEDeprecatedImpl implements MarkedAsThoughtSEDeprecated {
     TResult? Function(ID parent, DateTime at)? MarkedAsThoughtSE,
     TResult? Function(ID parent, DateTime at, String category)?
         CategoryChangedSE,
-    TResult? Function(ID parent, DateTime at, ToDoStatus status)?
+    TResult? Function(ID parent, DateTime at, AggregateStatus status)?
         StatusChangedSE,
   }) {
     return MarkedAsThoughtSE?.call(parent, at);
@@ -945,7 +945,7 @@ class _$MarkedAsThoughtSEDeprecatedImpl implements MarkedAsThoughtSEDeprecated {
     TResult Function(ID parent, DateTime at)? MarkedAsThoughtSE,
     TResult Function(ID parent, DateTime at, String category)?
         CategoryChangedSE,
-    TResult Function(ID parent, DateTime at, ToDoStatus status)?
+    TResult Function(ID parent, DateTime at, AggregateStatus status)?
         StatusChangedSE,
     required TResult orElse(),
   }) {
@@ -1133,7 +1133,7 @@ class _$CategoryChangedSEDeprecatedImpl implements CategoryChangedSEDeprecated {
     required TResult Function(ID parent, DateTime at) MarkedAsThoughtSE,
     required TResult Function(ID parent, DateTime at, String category)
         CategoryChangedSE,
-    required TResult Function(ID parent, DateTime at, ToDoStatus status)
+    required TResult Function(ID parent, DateTime at, AggregateStatus status)
         StatusChangedSE,
   }) {
     return CategoryChangedSE(parent, at, category);
@@ -1149,7 +1149,7 @@ class _$CategoryChangedSEDeprecatedImpl implements CategoryChangedSEDeprecated {
     TResult? Function(ID parent, DateTime at)? MarkedAsThoughtSE,
     TResult? Function(ID parent, DateTime at, String category)?
         CategoryChangedSE,
-    TResult? Function(ID parent, DateTime at, ToDoStatus status)?
+    TResult? Function(ID parent, DateTime at, AggregateStatus status)?
         StatusChangedSE,
   }) {
     return CategoryChangedSE?.call(parent, at, category);
@@ -1165,7 +1165,7 @@ class _$CategoryChangedSEDeprecatedImpl implements CategoryChangedSEDeprecated {
     TResult Function(ID parent, DateTime at)? MarkedAsThoughtSE,
     TResult Function(ID parent, DateTime at, String category)?
         CategoryChangedSE,
-    TResult Function(ID parent, DateTime at, ToDoStatus status)?
+    TResult Function(ID parent, DateTime at, AggregateStatus status)?
         StatusChangedSE,
     required TResult orElse(),
   }) {
@@ -1259,7 +1259,7 @@ abstract class _$$StatusChangedSEDeprecatedImplCopyWith<$Res>
       __$$StatusChangedSEDeprecatedImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({ID parent, DateTime at, ToDoStatus status});
+  $Res call({ID parent, DateTime at, AggregateStatus status});
 }
 
 /// @nodoc
@@ -1291,7 +1291,7 @@ class __$$StatusChangedSEDeprecatedImplCopyWithImpl<$Res>
       null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as ToDoStatus,
+              as AggregateStatus,
     ));
   }
 }
@@ -1311,7 +1311,7 @@ class _$StatusChangedSEDeprecatedImpl implements StatusChangedSEDeprecated {
   @override
   final DateTime at;
   @override
-  final ToDoStatus status;
+  final AggregateStatus status;
 
   @JsonKey(name: 'runtimeType')
   final String $type;
@@ -1353,7 +1353,7 @@ class _$StatusChangedSEDeprecatedImpl implements StatusChangedSEDeprecated {
     required TResult Function(ID parent, DateTime at) MarkedAsThoughtSE,
     required TResult Function(ID parent, DateTime at, String category)
         CategoryChangedSE,
-    required TResult Function(ID parent, DateTime at, ToDoStatus status)
+    required TResult Function(ID parent, DateTime at, AggregateStatus status)
         StatusChangedSE,
   }) {
     return StatusChangedSE(parent, at, status);
@@ -1369,7 +1369,7 @@ class _$StatusChangedSEDeprecatedImpl implements StatusChangedSEDeprecated {
     TResult? Function(ID parent, DateTime at)? MarkedAsThoughtSE,
     TResult? Function(ID parent, DateTime at, String category)?
         CategoryChangedSE,
-    TResult? Function(ID parent, DateTime at, ToDoStatus status)?
+    TResult? Function(ID parent, DateTime at, AggregateStatus status)?
         StatusChangedSE,
   }) {
     return StatusChangedSE?.call(parent, at, status);
@@ -1385,7 +1385,7 @@ class _$StatusChangedSEDeprecatedImpl implements StatusChangedSEDeprecated {
     TResult Function(ID parent, DateTime at)? MarkedAsThoughtSE,
     TResult Function(ID parent, DateTime at, String category)?
         CategoryChangedSE,
-    TResult Function(ID parent, DateTime at, ToDoStatus status)?
+    TResult Function(ID parent, DateTime at, AggregateStatus status)?
         StatusChangedSE,
     required TResult orElse(),
   }) {
@@ -1453,7 +1453,7 @@ class _$StatusChangedSEDeprecatedImpl implements StatusChangedSEDeprecated {
 
 abstract class StatusChangedSEDeprecated implements SourcedEventDeprecated {
   factory StatusChangedSEDeprecated(
-          final ID parent, final DateTime at, final ToDoStatus status) =
+          final ID parent, final DateTime at, final AggregateStatus status) =
       _$StatusChangedSEDeprecatedImpl;
 
   factory StatusChangedSEDeprecated.fromJson(Map<String, dynamic> json) =
@@ -1463,7 +1463,7 @@ abstract class StatusChangedSEDeprecated implements SourcedEventDeprecated {
   ID get parent;
   @override
   DateTime get at;
-  ToDoStatus get status;
+  AggregateStatus get status;
   @override
   @JsonKey(ignore: true)
   _$$StatusChangedSEDeprecatedImplCopyWith<_$StatusChangedSEDeprecatedImpl>

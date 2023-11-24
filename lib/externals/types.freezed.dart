@@ -26,6 +26,8 @@ SourcedEvent _$SourcedEventFromJson(Map<String, dynamic> json) {
       return DescriptionChangedSE.fromJson(json);
     case 'MarkedAsThoughtSE':
       return MarkedAsThoughtSE.fromJson(json);
+    case 'MarkedAsToDoSE':
+      return MarkedAsToDoSE.fromJson(json);
     case 'CategoryChangedSE':
       return CategoryChangedSE.fromJson(json);
     case 'MarkedAsInProgress':
@@ -55,6 +57,7 @@ mixin _$SourcedEvent {
             ID parent, DateTime at, NonEmptyString? description)
         DescriptionChangedSE,
     required TResult Function(ID parent, DateTime at) MarkedAsThoughtSE,
+    required TResult Function(ID parent, DateTime at) MarkedAsToDoSE,
     required TResult Function(ID parent, DateTime at, NonEmptyString? category)
         CategoryChangedSE,
     required TResult Function(ID parent, DateTime at) MarkedAsInProgress,
@@ -71,6 +74,7 @@ mixin _$SourcedEvent {
     TResult? Function(ID parent, DateTime at, NonEmptyString? description)?
         DescriptionChangedSE,
     TResult? Function(ID parent, DateTime at)? MarkedAsThoughtSE,
+    TResult? Function(ID parent, DateTime at)? MarkedAsToDoSE,
     TResult? Function(ID parent, DateTime at, NonEmptyString? category)?
         CategoryChangedSE,
     TResult? Function(ID parent, DateTime at)? MarkedAsInProgress,
@@ -87,6 +91,7 @@ mixin _$SourcedEvent {
     TResult Function(ID parent, DateTime at, NonEmptyString? description)?
         DescriptionChangedSE,
     TResult Function(ID parent, DateTime at)? MarkedAsThoughtSE,
+    TResult Function(ID parent, DateTime at)? MarkedAsToDoSE,
     TResult Function(ID parent, DateTime at, NonEmptyString? category)?
         CategoryChangedSE,
     TResult Function(ID parent, DateTime at)? MarkedAsInProgress,
@@ -102,6 +107,7 @@ mixin _$SourcedEvent {
     required TResult Function(TitleChangedSE value) TitleChangedSE,
     required TResult Function(DescriptionChangedSE value) DescriptionChangedSE,
     required TResult Function(MarkedAsThoughtSE value) MarkedAsThoughtSE,
+    required TResult Function(MarkedAsToDoSE value) MarkedAsToDoSE,
     required TResult Function(CategoryChangedSE value) CategoryChangedSE,
     required TResult Function(MarkedAsInProgress value) MarkedAsInProgress,
     required TResult Function(MarkedAsDone value) MarkedAsDone,
@@ -115,6 +121,7 @@ mixin _$SourcedEvent {
     TResult? Function(TitleChangedSE value)? TitleChangedSE,
     TResult? Function(DescriptionChangedSE value)? DescriptionChangedSE,
     TResult? Function(MarkedAsThoughtSE value)? MarkedAsThoughtSE,
+    TResult? Function(MarkedAsToDoSE value)? MarkedAsToDoSE,
     TResult? Function(CategoryChangedSE value)? CategoryChangedSE,
     TResult? Function(MarkedAsInProgress value)? MarkedAsInProgress,
     TResult? Function(MarkedAsDone value)? MarkedAsDone,
@@ -128,6 +135,7 @@ mixin _$SourcedEvent {
     TResult Function(TitleChangedSE value)? TitleChangedSE,
     TResult Function(DescriptionChangedSE value)? DescriptionChangedSE,
     TResult Function(MarkedAsThoughtSE value)? MarkedAsThoughtSE,
+    TResult Function(MarkedAsToDoSE value)? MarkedAsToDoSE,
     TResult Function(CategoryChangedSE value)? CategoryChangedSE,
     TResult Function(MarkedAsInProgress value)? MarkedAsInProgress,
     TResult Function(MarkedAsDone value)? MarkedAsDone,
@@ -269,6 +277,7 @@ class _$CreatedSEImpl implements CreatedSE {
             ID parent, DateTime at, NonEmptyString? description)
         DescriptionChangedSE,
     required TResult Function(ID parent, DateTime at) MarkedAsThoughtSE,
+    required TResult Function(ID parent, DateTime at) MarkedAsToDoSE,
     required TResult Function(ID parent, DateTime at, NonEmptyString? category)
         CategoryChangedSE,
     required TResult Function(ID parent, DateTime at) MarkedAsInProgress,
@@ -288,6 +297,7 @@ class _$CreatedSEImpl implements CreatedSE {
     TResult? Function(ID parent, DateTime at, NonEmptyString? description)?
         DescriptionChangedSE,
     TResult? Function(ID parent, DateTime at)? MarkedAsThoughtSE,
+    TResult? Function(ID parent, DateTime at)? MarkedAsToDoSE,
     TResult? Function(ID parent, DateTime at, NonEmptyString? category)?
         CategoryChangedSE,
     TResult? Function(ID parent, DateTime at)? MarkedAsInProgress,
@@ -307,6 +317,7 @@ class _$CreatedSEImpl implements CreatedSE {
     TResult Function(ID parent, DateTime at, NonEmptyString? description)?
         DescriptionChangedSE,
     TResult Function(ID parent, DateTime at)? MarkedAsThoughtSE,
+    TResult Function(ID parent, DateTime at)? MarkedAsToDoSE,
     TResult Function(ID parent, DateTime at, NonEmptyString? category)?
         CategoryChangedSE,
     TResult Function(ID parent, DateTime at)? MarkedAsInProgress,
@@ -328,6 +339,7 @@ class _$CreatedSEImpl implements CreatedSE {
     required TResult Function(TitleChangedSE value) TitleChangedSE,
     required TResult Function(DescriptionChangedSE value) DescriptionChangedSE,
     required TResult Function(MarkedAsThoughtSE value) MarkedAsThoughtSE,
+    required TResult Function(MarkedAsToDoSE value) MarkedAsToDoSE,
     required TResult Function(CategoryChangedSE value) CategoryChangedSE,
     required TResult Function(MarkedAsInProgress value) MarkedAsInProgress,
     required TResult Function(MarkedAsDone value) MarkedAsDone,
@@ -344,6 +356,7 @@ class _$CreatedSEImpl implements CreatedSE {
     TResult? Function(TitleChangedSE value)? TitleChangedSE,
     TResult? Function(DescriptionChangedSE value)? DescriptionChangedSE,
     TResult? Function(MarkedAsThoughtSE value)? MarkedAsThoughtSE,
+    TResult? Function(MarkedAsToDoSE value)? MarkedAsToDoSE,
     TResult? Function(CategoryChangedSE value)? CategoryChangedSE,
     TResult? Function(MarkedAsInProgress value)? MarkedAsInProgress,
     TResult? Function(MarkedAsDone value)? MarkedAsDone,
@@ -360,6 +373,7 @@ class _$CreatedSEImpl implements CreatedSE {
     TResult Function(TitleChangedSE value)? TitleChangedSE,
     TResult Function(DescriptionChangedSE value)? DescriptionChangedSE,
     TResult Function(MarkedAsThoughtSE value)? MarkedAsThoughtSE,
+    TResult Function(MarkedAsToDoSE value)? MarkedAsToDoSE,
     TResult Function(CategoryChangedSE value)? CategoryChangedSE,
     TResult Function(MarkedAsInProgress value)? MarkedAsInProgress,
     TResult Function(MarkedAsDone value)? MarkedAsDone,
@@ -486,6 +500,7 @@ class _$DeletedSEImpl implements DeletedSE {
             ID parent, DateTime at, NonEmptyString? description)
         DescriptionChangedSE,
     required TResult Function(ID parent, DateTime at) MarkedAsThoughtSE,
+    required TResult Function(ID parent, DateTime at) MarkedAsToDoSE,
     required TResult Function(ID parent, DateTime at, NonEmptyString? category)
         CategoryChangedSE,
     required TResult Function(ID parent, DateTime at) MarkedAsInProgress,
@@ -505,6 +520,7 @@ class _$DeletedSEImpl implements DeletedSE {
     TResult? Function(ID parent, DateTime at, NonEmptyString? description)?
         DescriptionChangedSE,
     TResult? Function(ID parent, DateTime at)? MarkedAsThoughtSE,
+    TResult? Function(ID parent, DateTime at)? MarkedAsToDoSE,
     TResult? Function(ID parent, DateTime at, NonEmptyString? category)?
         CategoryChangedSE,
     TResult? Function(ID parent, DateTime at)? MarkedAsInProgress,
@@ -524,6 +540,7 @@ class _$DeletedSEImpl implements DeletedSE {
     TResult Function(ID parent, DateTime at, NonEmptyString? description)?
         DescriptionChangedSE,
     TResult Function(ID parent, DateTime at)? MarkedAsThoughtSE,
+    TResult Function(ID parent, DateTime at)? MarkedAsToDoSE,
     TResult Function(ID parent, DateTime at, NonEmptyString? category)?
         CategoryChangedSE,
     TResult Function(ID parent, DateTime at)? MarkedAsInProgress,
@@ -545,6 +562,7 @@ class _$DeletedSEImpl implements DeletedSE {
     required TResult Function(TitleChangedSE value) TitleChangedSE,
     required TResult Function(DescriptionChangedSE value) DescriptionChangedSE,
     required TResult Function(MarkedAsThoughtSE value) MarkedAsThoughtSE,
+    required TResult Function(MarkedAsToDoSE value) MarkedAsToDoSE,
     required TResult Function(CategoryChangedSE value) CategoryChangedSE,
     required TResult Function(MarkedAsInProgress value) MarkedAsInProgress,
     required TResult Function(MarkedAsDone value) MarkedAsDone,
@@ -561,6 +579,7 @@ class _$DeletedSEImpl implements DeletedSE {
     TResult? Function(TitleChangedSE value)? TitleChangedSE,
     TResult? Function(DescriptionChangedSE value)? DescriptionChangedSE,
     TResult? Function(MarkedAsThoughtSE value)? MarkedAsThoughtSE,
+    TResult? Function(MarkedAsToDoSE value)? MarkedAsToDoSE,
     TResult? Function(CategoryChangedSE value)? CategoryChangedSE,
     TResult? Function(MarkedAsInProgress value)? MarkedAsInProgress,
     TResult? Function(MarkedAsDone value)? MarkedAsDone,
@@ -577,6 +596,7 @@ class _$DeletedSEImpl implements DeletedSE {
     TResult Function(TitleChangedSE value)? TitleChangedSE,
     TResult Function(DescriptionChangedSE value)? DescriptionChangedSE,
     TResult Function(MarkedAsThoughtSE value)? MarkedAsThoughtSE,
+    TResult Function(MarkedAsToDoSE value)? MarkedAsToDoSE,
     TResult Function(CategoryChangedSE value)? CategoryChangedSE,
     TResult Function(MarkedAsInProgress value)? MarkedAsInProgress,
     TResult Function(MarkedAsDone value)? MarkedAsDone,
@@ -712,6 +732,7 @@ class _$TitleChangedSEImpl implements TitleChangedSE {
             ID parent, DateTime at, NonEmptyString? description)
         DescriptionChangedSE,
     required TResult Function(ID parent, DateTime at) MarkedAsThoughtSE,
+    required TResult Function(ID parent, DateTime at) MarkedAsToDoSE,
     required TResult Function(ID parent, DateTime at, NonEmptyString? category)
         CategoryChangedSE,
     required TResult Function(ID parent, DateTime at) MarkedAsInProgress,
@@ -731,6 +752,7 @@ class _$TitleChangedSEImpl implements TitleChangedSE {
     TResult? Function(ID parent, DateTime at, NonEmptyString? description)?
         DescriptionChangedSE,
     TResult? Function(ID parent, DateTime at)? MarkedAsThoughtSE,
+    TResult? Function(ID parent, DateTime at)? MarkedAsToDoSE,
     TResult? Function(ID parent, DateTime at, NonEmptyString? category)?
         CategoryChangedSE,
     TResult? Function(ID parent, DateTime at)? MarkedAsInProgress,
@@ -750,6 +772,7 @@ class _$TitleChangedSEImpl implements TitleChangedSE {
     TResult Function(ID parent, DateTime at, NonEmptyString? description)?
         DescriptionChangedSE,
     TResult Function(ID parent, DateTime at)? MarkedAsThoughtSE,
+    TResult Function(ID parent, DateTime at)? MarkedAsToDoSE,
     TResult Function(ID parent, DateTime at, NonEmptyString? category)?
         CategoryChangedSE,
     TResult Function(ID parent, DateTime at)? MarkedAsInProgress,
@@ -771,6 +794,7 @@ class _$TitleChangedSEImpl implements TitleChangedSE {
     required TResult Function(TitleChangedSE value) TitleChangedSE,
     required TResult Function(DescriptionChangedSE value) DescriptionChangedSE,
     required TResult Function(MarkedAsThoughtSE value) MarkedAsThoughtSE,
+    required TResult Function(MarkedAsToDoSE value) MarkedAsToDoSE,
     required TResult Function(CategoryChangedSE value) CategoryChangedSE,
     required TResult Function(MarkedAsInProgress value) MarkedAsInProgress,
     required TResult Function(MarkedAsDone value) MarkedAsDone,
@@ -787,6 +811,7 @@ class _$TitleChangedSEImpl implements TitleChangedSE {
     TResult? Function(TitleChangedSE value)? TitleChangedSE,
     TResult? Function(DescriptionChangedSE value)? DescriptionChangedSE,
     TResult? Function(MarkedAsThoughtSE value)? MarkedAsThoughtSE,
+    TResult? Function(MarkedAsToDoSE value)? MarkedAsToDoSE,
     TResult? Function(CategoryChangedSE value)? CategoryChangedSE,
     TResult? Function(MarkedAsInProgress value)? MarkedAsInProgress,
     TResult? Function(MarkedAsDone value)? MarkedAsDone,
@@ -803,6 +828,7 @@ class _$TitleChangedSEImpl implements TitleChangedSE {
     TResult Function(TitleChangedSE value)? TitleChangedSE,
     TResult Function(DescriptionChangedSE value)? DescriptionChangedSE,
     TResult Function(MarkedAsThoughtSE value)? MarkedAsThoughtSE,
+    TResult Function(MarkedAsToDoSE value)? MarkedAsToDoSE,
     TResult Function(CategoryChangedSE value)? CategoryChangedSE,
     TResult Function(MarkedAsInProgress value)? MarkedAsInProgress,
     TResult Function(MarkedAsDone value)? MarkedAsDone,
@@ -944,6 +970,7 @@ class _$DescriptionChangedSEImpl implements DescriptionChangedSE {
             ID parent, DateTime at, NonEmptyString? description)
         DescriptionChangedSE,
     required TResult Function(ID parent, DateTime at) MarkedAsThoughtSE,
+    required TResult Function(ID parent, DateTime at) MarkedAsToDoSE,
     required TResult Function(ID parent, DateTime at, NonEmptyString? category)
         CategoryChangedSE,
     required TResult Function(ID parent, DateTime at) MarkedAsInProgress,
@@ -963,6 +990,7 @@ class _$DescriptionChangedSEImpl implements DescriptionChangedSE {
     TResult? Function(ID parent, DateTime at, NonEmptyString? description)?
         DescriptionChangedSE,
     TResult? Function(ID parent, DateTime at)? MarkedAsThoughtSE,
+    TResult? Function(ID parent, DateTime at)? MarkedAsToDoSE,
     TResult? Function(ID parent, DateTime at, NonEmptyString? category)?
         CategoryChangedSE,
     TResult? Function(ID parent, DateTime at)? MarkedAsInProgress,
@@ -982,6 +1010,7 @@ class _$DescriptionChangedSEImpl implements DescriptionChangedSE {
     TResult Function(ID parent, DateTime at, NonEmptyString? description)?
         DescriptionChangedSE,
     TResult Function(ID parent, DateTime at)? MarkedAsThoughtSE,
+    TResult Function(ID parent, DateTime at)? MarkedAsToDoSE,
     TResult Function(ID parent, DateTime at, NonEmptyString? category)?
         CategoryChangedSE,
     TResult Function(ID parent, DateTime at)? MarkedAsInProgress,
@@ -1003,6 +1032,7 @@ class _$DescriptionChangedSEImpl implements DescriptionChangedSE {
     required TResult Function(TitleChangedSE value) TitleChangedSE,
     required TResult Function(DescriptionChangedSE value) DescriptionChangedSE,
     required TResult Function(MarkedAsThoughtSE value) MarkedAsThoughtSE,
+    required TResult Function(MarkedAsToDoSE value) MarkedAsToDoSE,
     required TResult Function(CategoryChangedSE value) CategoryChangedSE,
     required TResult Function(MarkedAsInProgress value) MarkedAsInProgress,
     required TResult Function(MarkedAsDone value) MarkedAsDone,
@@ -1019,6 +1049,7 @@ class _$DescriptionChangedSEImpl implements DescriptionChangedSE {
     TResult? Function(TitleChangedSE value)? TitleChangedSE,
     TResult? Function(DescriptionChangedSE value)? DescriptionChangedSE,
     TResult? Function(MarkedAsThoughtSE value)? MarkedAsThoughtSE,
+    TResult? Function(MarkedAsToDoSE value)? MarkedAsToDoSE,
     TResult? Function(CategoryChangedSE value)? CategoryChangedSE,
     TResult? Function(MarkedAsInProgress value)? MarkedAsInProgress,
     TResult? Function(MarkedAsDone value)? MarkedAsDone,
@@ -1035,6 +1066,7 @@ class _$DescriptionChangedSEImpl implements DescriptionChangedSE {
     TResult Function(TitleChangedSE value)? TitleChangedSE,
     TResult Function(DescriptionChangedSE value)? DescriptionChangedSE,
     TResult Function(MarkedAsThoughtSE value)? MarkedAsThoughtSE,
+    TResult Function(MarkedAsToDoSE value)? MarkedAsToDoSE,
     TResult Function(CategoryChangedSE value)? CategoryChangedSE,
     TResult Function(MarkedAsInProgress value)? MarkedAsInProgress,
     TResult Function(MarkedAsDone value)? MarkedAsDone,
@@ -1164,6 +1196,7 @@ class _$MarkedAsThoughtSEImpl implements MarkedAsThoughtSE {
             ID parent, DateTime at, NonEmptyString? description)
         DescriptionChangedSE,
     required TResult Function(ID parent, DateTime at) MarkedAsThoughtSE,
+    required TResult Function(ID parent, DateTime at) MarkedAsToDoSE,
     required TResult Function(ID parent, DateTime at, NonEmptyString? category)
         CategoryChangedSE,
     required TResult Function(ID parent, DateTime at) MarkedAsInProgress,
@@ -1183,6 +1216,7 @@ class _$MarkedAsThoughtSEImpl implements MarkedAsThoughtSE {
     TResult? Function(ID parent, DateTime at, NonEmptyString? description)?
         DescriptionChangedSE,
     TResult? Function(ID parent, DateTime at)? MarkedAsThoughtSE,
+    TResult? Function(ID parent, DateTime at)? MarkedAsToDoSE,
     TResult? Function(ID parent, DateTime at, NonEmptyString? category)?
         CategoryChangedSE,
     TResult? Function(ID parent, DateTime at)? MarkedAsInProgress,
@@ -1202,6 +1236,7 @@ class _$MarkedAsThoughtSEImpl implements MarkedAsThoughtSE {
     TResult Function(ID parent, DateTime at, NonEmptyString? description)?
         DescriptionChangedSE,
     TResult Function(ID parent, DateTime at)? MarkedAsThoughtSE,
+    TResult Function(ID parent, DateTime at)? MarkedAsToDoSE,
     TResult Function(ID parent, DateTime at, NonEmptyString? category)?
         CategoryChangedSE,
     TResult Function(ID parent, DateTime at)? MarkedAsInProgress,
@@ -1223,6 +1258,7 @@ class _$MarkedAsThoughtSEImpl implements MarkedAsThoughtSE {
     required TResult Function(TitleChangedSE value) TitleChangedSE,
     required TResult Function(DescriptionChangedSE value) DescriptionChangedSE,
     required TResult Function(MarkedAsThoughtSE value) MarkedAsThoughtSE,
+    required TResult Function(MarkedAsToDoSE value) MarkedAsToDoSE,
     required TResult Function(CategoryChangedSE value) CategoryChangedSE,
     required TResult Function(MarkedAsInProgress value) MarkedAsInProgress,
     required TResult Function(MarkedAsDone value) MarkedAsDone,
@@ -1239,6 +1275,7 @@ class _$MarkedAsThoughtSEImpl implements MarkedAsThoughtSE {
     TResult? Function(TitleChangedSE value)? TitleChangedSE,
     TResult? Function(DescriptionChangedSE value)? DescriptionChangedSE,
     TResult? Function(MarkedAsThoughtSE value)? MarkedAsThoughtSE,
+    TResult? Function(MarkedAsToDoSE value)? MarkedAsToDoSE,
     TResult? Function(CategoryChangedSE value)? CategoryChangedSE,
     TResult? Function(MarkedAsInProgress value)? MarkedAsInProgress,
     TResult? Function(MarkedAsDone value)? MarkedAsDone,
@@ -1255,6 +1292,7 @@ class _$MarkedAsThoughtSEImpl implements MarkedAsThoughtSE {
     TResult Function(TitleChangedSE value)? TitleChangedSE,
     TResult Function(DescriptionChangedSE value)? DescriptionChangedSE,
     TResult Function(MarkedAsThoughtSE value)? MarkedAsThoughtSE,
+    TResult Function(MarkedAsToDoSE value)? MarkedAsToDoSE,
     TResult Function(CategoryChangedSE value)? CategoryChangedSE,
     TResult Function(MarkedAsInProgress value)? MarkedAsInProgress,
     TResult Function(MarkedAsDone value)? MarkedAsDone,
@@ -1289,6 +1327,231 @@ abstract class MarkedAsThoughtSE implements SourcedEvent {
   @override
   @JsonKey(ignore: true)
   _$$MarkedAsThoughtSEImplCopyWith<_$MarkedAsThoughtSEImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$MarkedAsToDoSEImplCopyWith<$Res>
+    implements $SourcedEventCopyWith<$Res> {
+  factory _$$MarkedAsToDoSEImplCopyWith(_$MarkedAsToDoSEImpl value,
+          $Res Function(_$MarkedAsToDoSEImpl) then) =
+      __$$MarkedAsToDoSEImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({ID parent, DateTime at});
+}
+
+/// @nodoc
+class __$$MarkedAsToDoSEImplCopyWithImpl<$Res>
+    extends _$SourcedEventCopyWithImpl<$Res, _$MarkedAsToDoSEImpl>
+    implements _$$MarkedAsToDoSEImplCopyWith<$Res> {
+  __$$MarkedAsToDoSEImplCopyWithImpl(
+      _$MarkedAsToDoSEImpl _value, $Res Function(_$MarkedAsToDoSEImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? parent = null,
+    Object? at = null,
+  }) {
+    return _then(_$MarkedAsToDoSEImpl(
+      null == parent
+          ? _value.parent
+          : parent // ignore: cast_nullable_to_non_nullable
+              as ID,
+      null == at
+          ? _value.at
+          : at // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$MarkedAsToDoSEImpl implements MarkedAsToDoSE {
+  _$MarkedAsToDoSEImpl(this.parent, this.at, {final String? $type})
+      : $type = $type ?? 'MarkedAsToDoSE';
+
+  factory _$MarkedAsToDoSEImpl.fromJson(Map<String, dynamic> json) =>
+      _$$MarkedAsToDoSEImplFromJson(json);
+
+  @override
+  final ID parent;
+  @override
+  final DateTime at;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'SourcedEvent.MarkedAsToDoSE(parent: $parent, at: $at)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$MarkedAsToDoSEImpl &&
+            (identical(other.parent, parent) || other.parent == parent) &&
+            (identical(other.at, at) || other.at == at));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, parent, at);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$MarkedAsToDoSEImplCopyWith<_$MarkedAsToDoSEImpl> get copyWith =>
+      __$$MarkedAsToDoSEImplCopyWithImpl<_$MarkedAsToDoSEImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(ID parent, DateTime at) CreatedSE,
+    required TResult Function(ID parent, DateTime at) DeletedSE,
+    required TResult Function(ID parent, DateTime at, NonEmptyString? title)
+        TitleChangedSE,
+    required TResult Function(
+            ID parent, DateTime at, NonEmptyString? description)
+        DescriptionChangedSE,
+    required TResult Function(ID parent, DateTime at) MarkedAsThoughtSE,
+    required TResult Function(ID parent, DateTime at) MarkedAsToDoSE,
+    required TResult Function(ID parent, DateTime at, NonEmptyString? category)
+        CategoryChangedSE,
+    required TResult Function(ID parent, DateTime at) MarkedAsInProgress,
+    required TResult Function(ID parent, DateTime at) MarkedAsDone,
+    required TResult Function(ID parent, DateTime at) MarkedAsToDo,
+  }) {
+    return MarkedAsToDoSE(parent, at);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(ID parent, DateTime at)? CreatedSE,
+    TResult? Function(ID parent, DateTime at)? DeletedSE,
+    TResult? Function(ID parent, DateTime at, NonEmptyString? title)?
+        TitleChangedSE,
+    TResult? Function(ID parent, DateTime at, NonEmptyString? description)?
+        DescriptionChangedSE,
+    TResult? Function(ID parent, DateTime at)? MarkedAsThoughtSE,
+    TResult? Function(ID parent, DateTime at)? MarkedAsToDoSE,
+    TResult? Function(ID parent, DateTime at, NonEmptyString? category)?
+        CategoryChangedSE,
+    TResult? Function(ID parent, DateTime at)? MarkedAsInProgress,
+    TResult? Function(ID parent, DateTime at)? MarkedAsDone,
+    TResult? Function(ID parent, DateTime at)? MarkedAsToDo,
+  }) {
+    return MarkedAsToDoSE?.call(parent, at);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(ID parent, DateTime at)? CreatedSE,
+    TResult Function(ID parent, DateTime at)? DeletedSE,
+    TResult Function(ID parent, DateTime at, NonEmptyString? title)?
+        TitleChangedSE,
+    TResult Function(ID parent, DateTime at, NonEmptyString? description)?
+        DescriptionChangedSE,
+    TResult Function(ID parent, DateTime at)? MarkedAsThoughtSE,
+    TResult Function(ID parent, DateTime at)? MarkedAsToDoSE,
+    TResult Function(ID parent, DateTime at, NonEmptyString? category)?
+        CategoryChangedSE,
+    TResult Function(ID parent, DateTime at)? MarkedAsInProgress,
+    TResult Function(ID parent, DateTime at)? MarkedAsDone,
+    TResult Function(ID parent, DateTime at)? MarkedAsToDo,
+    required TResult orElse(),
+  }) {
+    if (MarkedAsToDoSE != null) {
+      return MarkedAsToDoSE(parent, at);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CreatedSE value) CreatedSE,
+    required TResult Function(DeletedSE value) DeletedSE,
+    required TResult Function(TitleChangedSE value) TitleChangedSE,
+    required TResult Function(DescriptionChangedSE value) DescriptionChangedSE,
+    required TResult Function(MarkedAsThoughtSE value) MarkedAsThoughtSE,
+    required TResult Function(MarkedAsToDoSE value) MarkedAsToDoSE,
+    required TResult Function(CategoryChangedSE value) CategoryChangedSE,
+    required TResult Function(MarkedAsInProgress value) MarkedAsInProgress,
+    required TResult Function(MarkedAsDone value) MarkedAsDone,
+    required TResult Function(MarkedAsToDo value) MarkedAsToDo,
+  }) {
+    return MarkedAsToDoSE(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(CreatedSE value)? CreatedSE,
+    TResult? Function(DeletedSE value)? DeletedSE,
+    TResult? Function(TitleChangedSE value)? TitleChangedSE,
+    TResult? Function(DescriptionChangedSE value)? DescriptionChangedSE,
+    TResult? Function(MarkedAsThoughtSE value)? MarkedAsThoughtSE,
+    TResult? Function(MarkedAsToDoSE value)? MarkedAsToDoSE,
+    TResult? Function(CategoryChangedSE value)? CategoryChangedSE,
+    TResult? Function(MarkedAsInProgress value)? MarkedAsInProgress,
+    TResult? Function(MarkedAsDone value)? MarkedAsDone,
+    TResult? Function(MarkedAsToDo value)? MarkedAsToDo,
+  }) {
+    return MarkedAsToDoSE?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CreatedSE value)? CreatedSE,
+    TResult Function(DeletedSE value)? DeletedSE,
+    TResult Function(TitleChangedSE value)? TitleChangedSE,
+    TResult Function(DescriptionChangedSE value)? DescriptionChangedSE,
+    TResult Function(MarkedAsThoughtSE value)? MarkedAsThoughtSE,
+    TResult Function(MarkedAsToDoSE value)? MarkedAsToDoSE,
+    TResult Function(CategoryChangedSE value)? CategoryChangedSE,
+    TResult Function(MarkedAsInProgress value)? MarkedAsInProgress,
+    TResult Function(MarkedAsDone value)? MarkedAsDone,
+    TResult Function(MarkedAsToDo value)? MarkedAsToDo,
+    required TResult orElse(),
+  }) {
+    if (MarkedAsToDoSE != null) {
+      return MarkedAsToDoSE(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$MarkedAsToDoSEImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class MarkedAsToDoSE implements SourcedEvent {
+  factory MarkedAsToDoSE(final ID parent, final DateTime at) =
+      _$MarkedAsToDoSEImpl;
+
+  factory MarkedAsToDoSE.fromJson(Map<String, dynamic> json) =
+      _$MarkedAsToDoSEImpl.fromJson;
+
+  @override
+  ID get parent;
+  @override
+  DateTime get at;
+  @override
+  @JsonKey(ignore: true)
+  _$$MarkedAsToDoSEImplCopyWith<_$MarkedAsToDoSEImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1393,6 +1656,7 @@ class _$CategoryChangedSEImpl implements CategoryChangedSE {
             ID parent, DateTime at, NonEmptyString? description)
         DescriptionChangedSE,
     required TResult Function(ID parent, DateTime at) MarkedAsThoughtSE,
+    required TResult Function(ID parent, DateTime at) MarkedAsToDoSE,
     required TResult Function(ID parent, DateTime at, NonEmptyString? category)
         CategoryChangedSE,
     required TResult Function(ID parent, DateTime at) MarkedAsInProgress,
@@ -1412,6 +1676,7 @@ class _$CategoryChangedSEImpl implements CategoryChangedSE {
     TResult? Function(ID parent, DateTime at, NonEmptyString? description)?
         DescriptionChangedSE,
     TResult? Function(ID parent, DateTime at)? MarkedAsThoughtSE,
+    TResult? Function(ID parent, DateTime at)? MarkedAsToDoSE,
     TResult? Function(ID parent, DateTime at, NonEmptyString? category)?
         CategoryChangedSE,
     TResult? Function(ID parent, DateTime at)? MarkedAsInProgress,
@@ -1431,6 +1696,7 @@ class _$CategoryChangedSEImpl implements CategoryChangedSE {
     TResult Function(ID parent, DateTime at, NonEmptyString? description)?
         DescriptionChangedSE,
     TResult Function(ID parent, DateTime at)? MarkedAsThoughtSE,
+    TResult Function(ID parent, DateTime at)? MarkedAsToDoSE,
     TResult Function(ID parent, DateTime at, NonEmptyString? category)?
         CategoryChangedSE,
     TResult Function(ID parent, DateTime at)? MarkedAsInProgress,
@@ -1452,6 +1718,7 @@ class _$CategoryChangedSEImpl implements CategoryChangedSE {
     required TResult Function(TitleChangedSE value) TitleChangedSE,
     required TResult Function(DescriptionChangedSE value) DescriptionChangedSE,
     required TResult Function(MarkedAsThoughtSE value) MarkedAsThoughtSE,
+    required TResult Function(MarkedAsToDoSE value) MarkedAsToDoSE,
     required TResult Function(CategoryChangedSE value) CategoryChangedSE,
     required TResult Function(MarkedAsInProgress value) MarkedAsInProgress,
     required TResult Function(MarkedAsDone value) MarkedAsDone,
@@ -1468,6 +1735,7 @@ class _$CategoryChangedSEImpl implements CategoryChangedSE {
     TResult? Function(TitleChangedSE value)? TitleChangedSE,
     TResult? Function(DescriptionChangedSE value)? DescriptionChangedSE,
     TResult? Function(MarkedAsThoughtSE value)? MarkedAsThoughtSE,
+    TResult? Function(MarkedAsToDoSE value)? MarkedAsToDoSE,
     TResult? Function(CategoryChangedSE value)? CategoryChangedSE,
     TResult? Function(MarkedAsInProgress value)? MarkedAsInProgress,
     TResult? Function(MarkedAsDone value)? MarkedAsDone,
@@ -1484,6 +1752,7 @@ class _$CategoryChangedSEImpl implements CategoryChangedSE {
     TResult Function(TitleChangedSE value)? TitleChangedSE,
     TResult Function(DescriptionChangedSE value)? DescriptionChangedSE,
     TResult Function(MarkedAsThoughtSE value)? MarkedAsThoughtSE,
+    TResult Function(MarkedAsToDoSE value)? MarkedAsToDoSE,
     TResult Function(CategoryChangedSE value)? CategoryChangedSE,
     TResult Function(MarkedAsInProgress value)? MarkedAsInProgress,
     TResult Function(MarkedAsDone value)? MarkedAsDone,
@@ -1614,6 +1883,7 @@ class _$MarkedAsInProgressImpl implements MarkedAsInProgress {
             ID parent, DateTime at, NonEmptyString? description)
         DescriptionChangedSE,
     required TResult Function(ID parent, DateTime at) MarkedAsThoughtSE,
+    required TResult Function(ID parent, DateTime at) MarkedAsToDoSE,
     required TResult Function(ID parent, DateTime at, NonEmptyString? category)
         CategoryChangedSE,
     required TResult Function(ID parent, DateTime at) MarkedAsInProgress,
@@ -1633,6 +1903,7 @@ class _$MarkedAsInProgressImpl implements MarkedAsInProgress {
     TResult? Function(ID parent, DateTime at, NonEmptyString? description)?
         DescriptionChangedSE,
     TResult? Function(ID parent, DateTime at)? MarkedAsThoughtSE,
+    TResult? Function(ID parent, DateTime at)? MarkedAsToDoSE,
     TResult? Function(ID parent, DateTime at, NonEmptyString? category)?
         CategoryChangedSE,
     TResult? Function(ID parent, DateTime at)? MarkedAsInProgress,
@@ -1652,6 +1923,7 @@ class _$MarkedAsInProgressImpl implements MarkedAsInProgress {
     TResult Function(ID parent, DateTime at, NonEmptyString? description)?
         DescriptionChangedSE,
     TResult Function(ID parent, DateTime at)? MarkedAsThoughtSE,
+    TResult Function(ID parent, DateTime at)? MarkedAsToDoSE,
     TResult Function(ID parent, DateTime at, NonEmptyString? category)?
         CategoryChangedSE,
     TResult Function(ID parent, DateTime at)? MarkedAsInProgress,
@@ -1673,6 +1945,7 @@ class _$MarkedAsInProgressImpl implements MarkedAsInProgress {
     required TResult Function(TitleChangedSE value) TitleChangedSE,
     required TResult Function(DescriptionChangedSE value) DescriptionChangedSE,
     required TResult Function(MarkedAsThoughtSE value) MarkedAsThoughtSE,
+    required TResult Function(MarkedAsToDoSE value) MarkedAsToDoSE,
     required TResult Function(CategoryChangedSE value) CategoryChangedSE,
     required TResult Function(MarkedAsInProgress value) MarkedAsInProgress,
     required TResult Function(MarkedAsDone value) MarkedAsDone,
@@ -1689,6 +1962,7 @@ class _$MarkedAsInProgressImpl implements MarkedAsInProgress {
     TResult? Function(TitleChangedSE value)? TitleChangedSE,
     TResult? Function(DescriptionChangedSE value)? DescriptionChangedSE,
     TResult? Function(MarkedAsThoughtSE value)? MarkedAsThoughtSE,
+    TResult? Function(MarkedAsToDoSE value)? MarkedAsToDoSE,
     TResult? Function(CategoryChangedSE value)? CategoryChangedSE,
     TResult? Function(MarkedAsInProgress value)? MarkedAsInProgress,
     TResult? Function(MarkedAsDone value)? MarkedAsDone,
@@ -1705,6 +1979,7 @@ class _$MarkedAsInProgressImpl implements MarkedAsInProgress {
     TResult Function(TitleChangedSE value)? TitleChangedSE,
     TResult Function(DescriptionChangedSE value)? DescriptionChangedSE,
     TResult Function(MarkedAsThoughtSE value)? MarkedAsThoughtSE,
+    TResult Function(MarkedAsToDoSE value)? MarkedAsToDoSE,
     TResult Function(CategoryChangedSE value)? CategoryChangedSE,
     TResult Function(MarkedAsInProgress value)? MarkedAsInProgress,
     TResult Function(MarkedAsDone value)? MarkedAsDone,
@@ -1832,6 +2107,7 @@ class _$MarkedAsDoneImpl implements MarkedAsDone {
             ID parent, DateTime at, NonEmptyString? description)
         DescriptionChangedSE,
     required TResult Function(ID parent, DateTime at) MarkedAsThoughtSE,
+    required TResult Function(ID parent, DateTime at) MarkedAsToDoSE,
     required TResult Function(ID parent, DateTime at, NonEmptyString? category)
         CategoryChangedSE,
     required TResult Function(ID parent, DateTime at) MarkedAsInProgress,
@@ -1851,6 +2127,7 @@ class _$MarkedAsDoneImpl implements MarkedAsDone {
     TResult? Function(ID parent, DateTime at, NonEmptyString? description)?
         DescriptionChangedSE,
     TResult? Function(ID parent, DateTime at)? MarkedAsThoughtSE,
+    TResult? Function(ID parent, DateTime at)? MarkedAsToDoSE,
     TResult? Function(ID parent, DateTime at, NonEmptyString? category)?
         CategoryChangedSE,
     TResult? Function(ID parent, DateTime at)? MarkedAsInProgress,
@@ -1870,6 +2147,7 @@ class _$MarkedAsDoneImpl implements MarkedAsDone {
     TResult Function(ID parent, DateTime at, NonEmptyString? description)?
         DescriptionChangedSE,
     TResult Function(ID parent, DateTime at)? MarkedAsThoughtSE,
+    TResult Function(ID parent, DateTime at)? MarkedAsToDoSE,
     TResult Function(ID parent, DateTime at, NonEmptyString? category)?
         CategoryChangedSE,
     TResult Function(ID parent, DateTime at)? MarkedAsInProgress,
@@ -1891,6 +2169,7 @@ class _$MarkedAsDoneImpl implements MarkedAsDone {
     required TResult Function(TitleChangedSE value) TitleChangedSE,
     required TResult Function(DescriptionChangedSE value) DescriptionChangedSE,
     required TResult Function(MarkedAsThoughtSE value) MarkedAsThoughtSE,
+    required TResult Function(MarkedAsToDoSE value) MarkedAsToDoSE,
     required TResult Function(CategoryChangedSE value) CategoryChangedSE,
     required TResult Function(MarkedAsInProgress value) MarkedAsInProgress,
     required TResult Function(MarkedAsDone value) MarkedAsDone,
@@ -1907,6 +2186,7 @@ class _$MarkedAsDoneImpl implements MarkedAsDone {
     TResult? Function(TitleChangedSE value)? TitleChangedSE,
     TResult? Function(DescriptionChangedSE value)? DescriptionChangedSE,
     TResult? Function(MarkedAsThoughtSE value)? MarkedAsThoughtSE,
+    TResult? Function(MarkedAsToDoSE value)? MarkedAsToDoSE,
     TResult? Function(CategoryChangedSE value)? CategoryChangedSE,
     TResult? Function(MarkedAsInProgress value)? MarkedAsInProgress,
     TResult? Function(MarkedAsDone value)? MarkedAsDone,
@@ -1923,6 +2203,7 @@ class _$MarkedAsDoneImpl implements MarkedAsDone {
     TResult Function(TitleChangedSE value)? TitleChangedSE,
     TResult Function(DescriptionChangedSE value)? DescriptionChangedSE,
     TResult Function(MarkedAsThoughtSE value)? MarkedAsThoughtSE,
+    TResult Function(MarkedAsToDoSE value)? MarkedAsToDoSE,
     TResult Function(CategoryChangedSE value)? CategoryChangedSE,
     TResult Function(MarkedAsInProgress value)? MarkedAsInProgress,
     TResult Function(MarkedAsDone value)? MarkedAsDone,
@@ -2049,6 +2330,7 @@ class _$MarkedAsToDoImpl implements MarkedAsToDo {
             ID parent, DateTime at, NonEmptyString? description)
         DescriptionChangedSE,
     required TResult Function(ID parent, DateTime at) MarkedAsThoughtSE,
+    required TResult Function(ID parent, DateTime at) MarkedAsToDoSE,
     required TResult Function(ID parent, DateTime at, NonEmptyString? category)
         CategoryChangedSE,
     required TResult Function(ID parent, DateTime at) MarkedAsInProgress,
@@ -2068,6 +2350,7 @@ class _$MarkedAsToDoImpl implements MarkedAsToDo {
     TResult? Function(ID parent, DateTime at, NonEmptyString? description)?
         DescriptionChangedSE,
     TResult? Function(ID parent, DateTime at)? MarkedAsThoughtSE,
+    TResult? Function(ID parent, DateTime at)? MarkedAsToDoSE,
     TResult? Function(ID parent, DateTime at, NonEmptyString? category)?
         CategoryChangedSE,
     TResult? Function(ID parent, DateTime at)? MarkedAsInProgress,
@@ -2087,6 +2370,7 @@ class _$MarkedAsToDoImpl implements MarkedAsToDo {
     TResult Function(ID parent, DateTime at, NonEmptyString? description)?
         DescriptionChangedSE,
     TResult Function(ID parent, DateTime at)? MarkedAsThoughtSE,
+    TResult Function(ID parent, DateTime at)? MarkedAsToDoSE,
     TResult Function(ID parent, DateTime at, NonEmptyString? category)?
         CategoryChangedSE,
     TResult Function(ID parent, DateTime at)? MarkedAsInProgress,
@@ -2108,6 +2392,7 @@ class _$MarkedAsToDoImpl implements MarkedAsToDo {
     required TResult Function(TitleChangedSE value) TitleChangedSE,
     required TResult Function(DescriptionChangedSE value) DescriptionChangedSE,
     required TResult Function(MarkedAsThoughtSE value) MarkedAsThoughtSE,
+    required TResult Function(MarkedAsToDoSE value) MarkedAsToDoSE,
     required TResult Function(CategoryChangedSE value) CategoryChangedSE,
     required TResult Function(MarkedAsInProgress value) MarkedAsInProgress,
     required TResult Function(MarkedAsDone value) MarkedAsDone,
@@ -2124,6 +2409,7 @@ class _$MarkedAsToDoImpl implements MarkedAsToDo {
     TResult? Function(TitleChangedSE value)? TitleChangedSE,
     TResult? Function(DescriptionChangedSE value)? DescriptionChangedSE,
     TResult? Function(MarkedAsThoughtSE value)? MarkedAsThoughtSE,
+    TResult? Function(MarkedAsToDoSE value)? MarkedAsToDoSE,
     TResult? Function(CategoryChangedSE value)? CategoryChangedSE,
     TResult? Function(MarkedAsInProgress value)? MarkedAsInProgress,
     TResult? Function(MarkedAsDone value)? MarkedAsDone,
@@ -2140,6 +2426,7 @@ class _$MarkedAsToDoImpl implements MarkedAsToDo {
     TResult Function(TitleChangedSE value)? TitleChangedSE,
     TResult Function(DescriptionChangedSE value)? DescriptionChangedSE,
     TResult Function(MarkedAsThoughtSE value)? MarkedAsThoughtSE,
+    TResult Function(MarkedAsToDoSE value)? MarkedAsToDoSE,
     TResult Function(CategoryChangedSE value)? CategoryChangedSE,
     TResult Function(MarkedAsInProgress value)? MarkedAsInProgress,
     TResult Function(MarkedAsDone value)? MarkedAsDone,

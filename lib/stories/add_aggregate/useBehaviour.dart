@@ -41,9 +41,11 @@ final useBehaviour = () {
       NonEmptyString.create(category.text),
     ));
 
-    if (thought.value) {
-      await externals.pushSourcedEvent(MarkedAsThoughtSE(id, at));
-    }
+    await externals.pushSourcedEvent(
+      thought.value
+          ? MarkedAsThoughtSE(id, at)
+          : SourcedEvent.MarkedAsToDo(id, at),
+    );
 
     Navigator.of(context).pop();
   };

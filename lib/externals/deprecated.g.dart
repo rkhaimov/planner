@@ -97,7 +97,7 @@ _$StatusChangedSEDeprecatedImpl _$$StatusChangedSEDeprecatedImplFromJson(
     _$StatusChangedSEDeprecatedImpl(
       ID.fromJson(json['parent']),
       DateTime.parse(json['at'] as String),
-      $enumDecode(_$ToDoStatusEnumMap, json['status']),
+      $enumDecode(_$AggregateStatusEnumMap, json['status']),
       $type: json['runtimeType'] as String?,
     );
 
@@ -106,12 +106,12 @@ Map<String, dynamic> _$$StatusChangedSEDeprecatedImplToJson(
     <String, dynamic>{
       'parent': instance.parent,
       'at': instance.at.toIso8601String(),
-      'status': _$ToDoStatusEnumMap[instance.status]!,
+      'status': _$AggregateStatusEnumMap[instance.status]!,
       'runtimeType': instance.$type,
     };
 
-const _$ToDoStatusEnumMap = {
-  ToDoStatus.IN_PROGRESS: 'IN_PROGRESS',
-  ToDoStatus.TO_DO: 'TO_DO',
-  ToDoStatus.DONE: 'DONE',
+const _$AggregateStatusEnumMap = {
+  AggregateStatus.IN_PROGRESS: 'IN_PROGRESS',
+  AggregateStatus.TO_DO: 'TO_DO',
+  AggregateStatus.DONE: 'DONE',
 };

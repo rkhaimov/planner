@@ -2,18 +2,23 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:planner/externals/provider.dart';
 import 'package:planner/externals/types.dart';
+import 'package:planner/reusables/aggregate/types.dart';
 import 'package:planner/reusables/datetime.dart';
 import 'package:planner/reusables/non_empty_string.dart';
-import 'package:planner/reusables/types.dart';
 
-final useBehaviour = ({required ToDoStruct todo}) {
+final useBehaviour = ({required AggregateStruct aggregate}) {
   final context = useContext();
   final externals = useExternals();
-  final title = useTextEditingController(text: todo.title?.toString());
+
+  final title = useTextEditingController(text: aggregate.title?.toString());
+
   final description =
-      useTextEditingController(text: todo.description?.toString());
+      useTextEditingController(text: aggregate.description?.toString());
+
   final category =
-      useTextEditingController(text: todo.category?.value.toString());
+      useTextEditingController(text: aggregate.category?.value.toString());
+
+  final thought = useState(aggregate.thought ?? false);
 
   // TODO: Should be optimized
   // TODO: Empty string and null string should be the same
@@ -22,7 +27,7 @@ final useBehaviour = ({required ToDoStruct todo}) {
 
     await externals.pushSourcedEvent(
       TitleChangedSE(
-        todo.id,
+        aggregate.id,
         at,
         NonEmptyString.create(title.text),
       ),
@@ -30,7 +35,7 @@ final useBehaviour = ({required ToDoStruct todo}) {
 
     await externals.pushSourcedEvent(
       DescriptionChangedSE(
-        todo.id,
+        aggregate.id,
         at,
         NonEmptyString.create(description.text),
       ),
@@ -38,10 +43,16 @@ final useBehaviour = ({required ToDoStruct todo}) {
 
     await externals.pushSourcedEvent(
       CategoryChangedSE(
-        todo.id,
+        aggregate.id,
         at,
         NonEmptyString.create(category.text),
       ),
+    );
+
+    await externals.pushSourcedEvent(
+      thought.value
+          ? MarkedAsThoughtSE(aggregate.id, at)
+          : MarkedAsToDo(aggregate.id, at),
     );
 
     Navigator.of(context).pop();
@@ -51,6 +62,7 @@ final useBehaviour = ({required ToDoStruct todo}) {
     title: title,
     description: description,
     category: category,
+    thought: thought,
     submit: submit,
   );
 };

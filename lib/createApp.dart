@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:planner/externals/externals.dart';
 import 'package:planner/externals/provider.dart';
+import 'package:planner/stories/add_aggregate/index.dart';
 import 'package:planner/stories/done/index.dart';
 import 'package:planner/stories/in_progress/index.dart';
 import 'package:planner/stories/thoughts/index.dart';
 import 'package:planner/stories/to_do/index.dart';
-
-import 'stories/add_todo/index.dart';
 
 class Root extends StatelessWidget {
   final OriginExternals externals;
@@ -53,8 +52,8 @@ class UI extends HookWidget {
       floatingActionButton: FloatingActionButton(
         shape: const CircleBorder(),
         child: const Icon(Icons.add),
-        onPressed: () =>
-            askForCreateToDoInfo(context).then((_) => page.value = Page.TO_DO),
+        onPressed: () => askForCreateAggregateInfo(context)
+            .then((_) => page.value = Page.TO_DO),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
